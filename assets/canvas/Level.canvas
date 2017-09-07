@@ -1,0 +1,131 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Level",
+    "sceneWidth": 1024,
+    "sceneHeight": 768,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "TYPE_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true,
+    "create_after": "this.afterCreate() ;\r\n",
+    "state_init_after": "this.afterInit() ;",
+    "state_preload_after": "this.afterPreload() ;"
+  },
+  "stateSettings": {
+    "scaleMode": "SHOW_ALL",
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      255,
+      255,
+      255
+    ],
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
+    "info": {
+      "editorName": "Level",
+      "children": [
+        {
+          "type": "button",
+          "id": "72120c87-12e5-4322-82df-11396e52f460",
+          "asset": "0",
+          "info": {
+            "editorName": "Bt01",
+            "editorPublic": true,
+            "x": 110,
+            "y": 90,
+            "callback": "this.OnBt01",
+            "overFrame": "0",
+            "downFrame": "1",
+            "upFrame": "0"
+          }
+        },
+        {
+          "type": "button",
+          "id": "92a70138-972b-422e-9809-7f9b2b604397",
+          "asset": "0",
+          "info": {
+            "editorName": "Bt02",
+            "editorPublic": true,
+            "x": 110,
+            "y": 213,
+            "callback": "this.OnBt02",
+            "overFrame": "0",
+            "downFrame": "1",
+            "upFrame": "0"
+          }
+        },
+        {
+          "type": "button",
+          "id": "1f00a540-7f1f-4b08-ba7c-7dae9924fb8d",
+          "asset": "0",
+          "info": {
+            "editorName": "Bt03",
+            "editorPublic": true,
+            "x": 110,
+            "y": 333,
+            "callback": "this.OnBt03",
+            "overFrame": "0",
+            "downFrame": "1",
+            "upFrame": "0"
+          }
+        },
+        {
+          "type": "button",
+          "id": "613627ec-af16-4d0f-b184-efaa99af5f45",
+          "asset": "0",
+          "info": {
+            "editorName": "Bt04",
+            "editorPublic": true,
+            "x": 110,
+            "y": 460,
+            "callback": "this.OnBt04",
+            "overFrame": "0",
+            "downFrame": "1",
+            "upFrame": "0"
+          }
+        },
+        {
+          "type": "button",
+          "id": "d430b4ce-df9e-46de-8c24-b0b47176ce8a",
+          "asset": "0",
+          "info": {
+            "editorName": "Bt05",
+            "editorPublic": true,
+            "x": 110,
+            "y": 601,
+            "callback": "this.OnBt05",
+            "overFrame": "0",
+            "downFrame": "1",
+            "upFrame": "0"
+          }
+        }
+      ]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "game",
+    "asset": "BA_StartBt",
+    "sprite": "0"
+  }},
+  "prefab-table": {}
+}
