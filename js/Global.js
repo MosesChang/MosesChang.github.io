@@ -66,7 +66,9 @@ var GameData = (function () {
         this.symbolNum = count;
         this.symbolBet = new Array(this.symbolNum);
         this.symbolPerBet = new Array(this.symbolNum);
+        this.symbolNoHitCount = new Array(this.symbolNum);
         for (var i = 0; i < this.symbolNum; i++) {
+            this.symbolNoHitCount[i] = 0;
             if (this.testerAllBit1 == true) {
                 this.symbolBet[i] = 1;
                 this.symbolPerBet[i] = 1;

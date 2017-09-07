@@ -896,10 +896,18 @@
       "frameMax": -1,
       "margin": 0,
       "spacing": 0
+    },
+    {
+      "type": "bitmapFont",
+      "key": "Number04",
+      "textureURL": "assets/game/Number/BU_Number04.png",
+      "atlasURL": "assets/game/Number/BU_Number04.xml",
+      "xSpacing": 0,
+      "ySpacing": 0
     }
   ],
   "meta": {
-    "generated": "1503482396021",
+    "generated": "1504762959101",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

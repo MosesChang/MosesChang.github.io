@@ -1,6 +1,7 @@
 var GameHistory = (function () {
-    function GameHistory(inLevel) {
+    function GameHistory(inLevel, inGameNumber) {
         this.level = inLevel;
+        this.gameNumber = inGameNumber;
         this.historyMaxNum = 10;
         this.aHistoryID = new Array();
     }
@@ -10,6 +11,19 @@ var GameHistory = (function () {
         }
         this.aHistoryID.unshift(hitSymbolID);
         this.showHistory();
+        /*
+        for( var i=0 ; i<gameData.symbolNum ; i++ ){
+            if( hitSymbolID == i ){
+                gameData.symbolNoHitCount[i] = 0 ;
+            }
+            else{
+                if( gameData.symbolNoHitCount[i] < 9999 )
+                    gameData.symbolNoHitCount[i] ++ ;
+            }
+        }
+        */
+        if (gameData.symbolNoHitCount[hitSymbolID] < 9999)
+            gameData.symbolNoHitCount[hitSymbolID]++;
     };
     GameHistory.prototype.showHistory = function () {
         this.level.fGroupHistory.removeAll();
