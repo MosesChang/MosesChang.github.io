@@ -2,8 +2,8 @@
   "canvas-version": 2,
   "settings": {
     "className": "Level",
-    "sceneWidth": 1024,
-    "sceneHeight": 768,
+    "sceneWidth": 540,
+    "sceneHeight": 960,
     "generateOnSave": true,
     "enableStepping": false,
     "lang": "TYPE_SCRIPT",
@@ -19,7 +19,8 @@
       200
     ],
     "showGrid": true,
-    "create_after": "this.afterCreate() ;\r\n",
+    "create_after": "this.afterCreate() ;",
+    "state_constructor_after": "this.afterConstructor() ;",
     "state_init_after": "this.afterInit() ;",
     "state_preload_after": "this.afterPreload() ;"
   },
@@ -43,89 +44,1524 @@
       "editorName": "Level",
       "children": [
         {
-          "type": "button",
-          "id": "72120c87-12e5-4322-82df-11396e52f460",
-          "asset": "0",
+          "type": "group",
+          "id": "17f988ec-4298-431e-92ad-4151c737329a",
           "info": {
-            "editorName": "Bt01",
-            "editorPublic": true,
-            "x": 110,
-            "y": 90,
-            "callback": "this.OnBt01",
-            "overFrame": "0",
-            "downFrame": "1",
-            "upFrame": "0"
+            "editorName": "groupBackground",
+            "children": [
+              {
+                "type": "image",
+                "id": "41911f0d-d8a6-4cf7-9abe-8b94c5b7c4f4",
+                "asset": "0",
+                "info": {
+                  "editorName": "GameBackground",
+                  "editorPublic": true
+                }
+              },
+              {
+                "type": "image",
+                "id": "9f8aee16-43cd-422a-a3c1-767fec9c2d5c",
+                "asset": "1",
+                "info": {
+                  "editorName": "ValueFrame",
+                  "x": 395,
+                  "y": 65
+                }
+              },
+              {
+                "type": "image",
+                "id": "7575e2f1-6304-40c8-994c-b9a70243cbe5",
+                "asset": "2",
+                "info": {
+                  "editorName": "TotalBetFrame",
+                  "x": 43,
+                  "y": 66
+                }
+              },
+              {
+                "type": "image",
+                "id": "aa350f17-786d-4878-898f-d267963fea60",
+                "asset": "3",
+                "info": {
+                  "editorName": "CreditFrame",
+                  "x": 281,
+                  "y": 94
+                }
+              },
+              {
+                "type": "image",
+                "id": "33579fd3-d50c-485e-9e7a-c464ebf9f1e3",
+                "asset": "4",
+                "info": {
+                  "editorName": "WinFrame",
+                  "x": 41,
+                  "y": 94
+                }
+              }
+            ]
           }
         },
         {
-          "type": "button",
-          "id": "92a70138-972b-422e-9809-7f9b2b604397",
-          "asset": "0",
+          "type": "group",
+          "id": "98fe76c3-15d2-4f03-8b32-dc6deb824bfb",
           "info": {
-            "editorName": "Bt02",
+            "editorName": "groupHistory",
             "editorPublic": true,
-            "x": 110,
-            "y": 213,
-            "callback": "this.OnBt02",
-            "overFrame": "0",
-            "downFrame": "1",
-            "upFrame": "0"
+            "children": []
           }
         },
         {
-          "type": "button",
-          "id": "1f00a540-7f1f-4b08-ba7c-7dae9924fb8d",
-          "asset": "0",
+          "type": "group",
+          "id": "7d0a8933-1982-4805-89b1-0a8e715c5ca3",
           "info": {
-            "editorName": "Bt03",
-            "editorPublic": true,
-            "x": 110,
-            "y": 333,
-            "callback": "this.OnBt03",
-            "overFrame": "0",
-            "downFrame": "1",
-            "upFrame": "0"
+            "editorName": "groupCenterSign",
+            "children": [
+              {
+                "type": "atlas-sprite",
+                "id": "36ca81d5-e587-463f-9a0c-2877190b82e0",
+                "asset": "5",
+                "info": {
+                  "editorName": "centerSignIdle1",
+                  "editorPublic": true,
+                  "x": 106,
+                  "y": 243,
+                  "animations": [{
+                    "name": "play",
+                    "frameRate": 30,
+                    "public": true,
+                    "frames": [
+                      "001",
+                      "002",
+                      "003",
+                      "004",
+                      "005",
+                      "006",
+                      "007",
+                      "008",
+                      "009",
+                      "010",
+                      "011",
+                      "012",
+                      "013",
+                      "014",
+                      "015",
+                      "016",
+                      "017",
+                      "018",
+                      "019",
+                      "020",
+                      "021",
+                      "022",
+                      "023",
+                      "024",
+                      "025",
+                      "026",
+                      "027",
+                      "028",
+                      "029",
+                      "030"
+                    ]
+                  }]
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "64e09d1d-3fed-47e6-9df1-344f90468ae4",
+                "asset": "6",
+                "info": {
+                  "editorName": "centerSignIdle2",
+                  "editorPublic": true,
+                  "x": 106,
+                  "y": 243,
+                  "animations": [{
+                    "name": "play",
+                    "frameRate": 30,
+                    "public": true,
+                    "frames": [
+                      "031",
+                      "032",
+                      "033",
+                      "034",
+                      "035",
+                      "036",
+                      "037",
+                      "038",
+                      "039",
+                      "040",
+                      "041",
+                      "042",
+                      "043",
+                      "044",
+                      "045",
+                      "046",
+                      "047",
+                      "048",
+                      "049",
+                      "050",
+                      "051",
+                      "052",
+                      "053",
+                      "054",
+                      "055",
+                      "056",
+                      "057",
+                      "058",
+                      "059",
+                      "060"
+                    ]
+                  }]
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "2f30b5b8-4d5a-45a9-9e30-9cbb62a8d83d",
+                "asset": "7",
+                "info": {
+                  "editorName": "centerSignIdle3",
+                  "editorPublic": true,
+                  "x": 106,
+                  "y": 243,
+                  "animations": [{
+                    "name": "play",
+                    "frameRate": 30,
+                    "public": true,
+                    "frames": [
+                      "061",
+                      "062",
+                      "063",
+                      "064",
+                      "065",
+                      "066",
+                      "067",
+                      "068",
+                      "069",
+                      "070",
+                      "071",
+                      "072",
+                      "073",
+                      "074",
+                      "075",
+                      "076",
+                      "077",
+                      "078",
+                      "079",
+                      "080",
+                      "081",
+                      "082",
+                      "083",
+                      "084",
+                      "085",
+                      "086",
+                      "087",
+                      "088",
+                      "089",
+                      "090"
+                    ]
+                  }]
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "a4b0f71a-48cb-4e84-8d9a-62fe590b731c",
+                "asset": "8",
+                "info": {
+                  "editorName": "centerSignIdle4",
+                  "editorPublic": true,
+                  "x": 106,
+                  "y": 243,
+                  "animations": [{
+                    "name": "play",
+                    "frameRate": 30,
+                    "public": true,
+                    "frames": [
+                      "091",
+                      "092",
+                      "093",
+                      "094",
+                      "095",
+                      "096",
+                      "097",
+                      "098",
+                      "099",
+                      "100",
+                      "101",
+                      "102",
+                      "103",
+                      "104",
+                      "105",
+                      "106",
+                      "107",
+                      "108",
+                      "109",
+                      "110",
+                      "111",
+                      "112",
+                      "113",
+                      "114",
+                      "115",
+                      "116",
+                      "117",
+                      "118",
+                      "119",
+                      "120"
+                    ]
+                  }]
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "84ee8605-2760-4454-863c-08e5b24a3c40",
+                "asset": "9",
+                "info": {
+                  "editorName": "centerSignWin1",
+                  "editorPublic": true,
+                  "x": 106,
+                  "y": 243,
+                  "animations": [{
+                    "name": "play",
+                    "frameRate": 30,
+                    "public": true,
+                    "frames": [
+                      "01",
+                      "02",
+                      "03",
+                      "04",
+                      "05",
+                      "06",
+                      "07",
+                      "08",
+                      "09",
+                      "10",
+                      "11",
+                      "12",
+                      "13",
+                      "14",
+                      "15",
+                      "16",
+                      "17",
+                      "18",
+                      "19",
+                      "20",
+                      "21",
+                      "22",
+                      "23",
+                      "24",
+                      "25",
+                      "26",
+                      "27",
+                      "28",
+                      "29",
+                      "30"
+                    ]
+                  }]
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "106ef9d1-2350-434d-bb2f-c1fb52ca0f9d",
+                "asset": "10",
+                "info": {
+                  "editorName": "centerSignWin2",
+                  "editorPublic": true,
+                  "x": 106,
+                  "y": 243,
+                  "animations": [{
+                    "name": "play",
+                    "frameRate": 30,
+                    "public": true,
+                    "frames": [
+                      "31",
+                      "32",
+                      "33",
+                      "34",
+                      "35",
+                      "36",
+                      "37",
+                      "38",
+                      "39",
+                      "40",
+                      "41",
+                      "42",
+                      "43",
+                      "44",
+                      "45",
+                      "46",
+                      "47",
+                      "48",
+                      "49",
+                      "50",
+                      "51",
+                      "52",
+                      "53",
+                      "54",
+                      "55",
+                      "56",
+                      "57",
+                      "58",
+                      "59",
+                      "60"
+                    ]
+                  }]
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "1a9d77fb-4570-4262-97ea-7851be7fcefe",
+                "asset": "11",
+                "info": {
+                  "editorName": "WinBoltLeft",
+                  "editorPublic": true,
+                  "editorShow": false,
+                  "y": 60,
+                  "animations": [{
+                    "name": "play",
+                    "frameRate": 30,
+                    "frames": [
+                      "01",
+                      "02",
+                      "03",
+                      "04",
+                      "05",
+                      "06",
+                      "07",
+                      "08",
+                      "09",
+                      "10",
+                      "11",
+                      "12",
+                      "13",
+                      "14",
+                      "15"
+                    ]
+                  }]
+                }
+              },
+              {
+                "type": "atlas-sprite",
+                "id": "d7c0b9e2-eb28-4f5b-9bc3-cd04b4ac5681",
+                "asset": "11",
+                "info": {
+                  "editorName": "WinBoltRight",
+                  "editorPublic": true,
+                  "editorShow": false,
+                  "x": 546,
+                  "y": 60,
+                  "scale.x": -1,
+                  "animations": [{
+                    "name": "play",
+                    "frameRate": 30,
+                    "frames": [
+                      "01",
+                      "02",
+                      "03",
+                      "04",
+                      "05",
+                      "06",
+                      "07",
+                      "08",
+                      "09",
+                      "10",
+                      "11",
+                      "12",
+                      "13",
+                      "14",
+                      "15"
+                    ]
+                  }]
+                }
+              }
+            ]
           }
         },
         {
-          "type": "button",
-          "id": "613627ec-af16-4d0f-b184-efaa99af5f45",
-          "asset": "0",
+          "type": "group",
+          "id": "7433b9b5-2283-45ce-af3f-22b81a7e2788",
           "info": {
-            "editorName": "Bt04",
-            "editorPublic": true,
-            "x": 110,
-            "y": 460,
-            "callback": "this.OnBt04",
-            "overFrame": "0",
-            "downFrame": "1",
-            "upFrame": "0"
+            "editorName": "groupBt",
+            "children": [
+              {
+                "type": "button",
+                "id": "ea76c3eb-f1f2-408e-97b6-207dddfe349c",
+                "asset": "12",
+                "info": {
+                  "editorName": "StartBt",
+                  "editorPublic": true,
+                  "x": 405,
+                  "y": 665,
+                  "callback": "this.OnBtStart",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "00e44235-5b3f-4338-b58b-ac92efd8513b",
+                "asset": "13",
+                "info": {
+                  "editorName": "AutoBt",
+                  "editorPublic": true,
+                  "x": 333,
+                  "y": 671,
+                  "callback": "this.OnBtAuto",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "5e3b626a-b37d-4b52-a8cd-b751520ca5ef",
+                "asset": "14",
+                "info": {
+                  "editorName": "DoubleLBt",
+                  "editorPublic": true,
+                  "x": 210,
+                  "y": 672,
+                  "callback": "this.OnBtDoubleL",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "89bd552d-c77d-4b44-bbd2-ef1c00a207f7",
+                "asset": "15",
+                "info": {
+                  "editorName": "DoubleRBt",
+                  "editorPublic": true,
+                  "x": 270,
+                  "y": 672,
+                  "callback": "this.OnBtDoubleR",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "7f8b73fd-95d2-4b26-8798-e7d3f847006b",
+                "asset": "16",
+                "info": {
+                  "editorName": "FunctionBt",
+                  "editorPublic": true,
+                  "x": 477,
+                  "y": 7,
+                  "callback": "this.OnBtFunction",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "2101c571-c811-472c-b4e2-5c0b6d1db498",
+                "asset": "17",
+                "info": {
+                  "editorName": "HomeBt",
+                  "editorPublic": true,
+                  "x": 5,
+                  "y": 7,
+                  "callback": "this.OnBtHome",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "82a0002a-9760-43d5-8cb5-121dc8582aaf",
+                "asset": "18",
+                "info": {
+                  "editorName": "Symbol01Bt",
+                  "editorPublic": true,
+                  "x": -13,
+                  "y": 843,
+                  "callback": "this.OnBtSym01",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "cfc41a8c-bb0b-446a-a069-ab531a738abb",
+                "asset": "19",
+                "info": {
+                  "editorName": "Symbol02Bt",
+                  "editorPublic": true,
+                  "x": 58,
+                  "y": 843,
+                  "callback": "this.OnBtSym02",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "39295c96-f9bb-472e-aadd-cbc11a4e7349",
+                "asset": "20",
+                "info": {
+                  "editorName": "Symbol03Bt",
+                  "editorPublic": true,
+                  "x": 129,
+                  "y": 843,
+                  "callback": "this.OnBtSym03",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "0c585af5-c42b-4a66-ba70-151f9c7e7f60",
+                "asset": "21",
+                "info": {
+                  "editorName": "Symbol04Bt",
+                  "editorPublic": true,
+                  "x": 201,
+                  "y": 843,
+                  "callback": "this.OnBtSym04",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "ee307038-7175-4b9c-9faf-215e7e662412",
+                "asset": "22",
+                "info": {
+                  "editorName": "Symbol05Bt",
+                  "editorPublic": true,
+                  "x": 270,
+                  "y": 843,
+                  "callback": "this.OnBtSym05",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "5df69018-0b1f-490e-a7cb-1e81bde19350",
+                "asset": "23",
+                "info": {
+                  "editorName": "Symbol06Bt",
+                  "editorPublic": true,
+                  "x": 333,
+                  "y": 843,
+                  "callback": "this.OnBtSym06",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "53e272b5-5ac5-422f-bc63-f5f30b0e9ecb",
+                "asset": "24",
+                "info": {
+                  "editorName": "Symbol07Bt",
+                  "editorPublic": true,
+                  "x": 397,
+                  "y": 843,
+                  "callback": "this.OnBtSym07",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              },
+              {
+                "type": "button",
+                "id": "1638021c-4672-4b8b-9847-49eb2b03f8d6",
+                "asset": "25",
+                "info": {
+                  "editorName": "Symbol08Bt",
+                  "editorPublic": true,
+                  "x": 461,
+                  "y": 843,
+                  "callback": "this.OnBtSym08",
+                  "overFrame": "0",
+                  "downFrame": "1",
+                  "upFrame": "0"
+                }
+              }
+            ]
           }
         },
         {
-          "type": "button",
-          "id": "d430b4ce-df9e-46de-8c24-b0b47176ce8a",
-          "asset": "0",
+          "type": "group",
+          "id": "99241893-06c6-4121-8a99-9660ab7ccca9",
           "info": {
-            "editorName": "Bt05",
+            "editorName": "groupSymbolNormal",
             "editorPublic": true,
-            "x": 110,
-            "y": 601,
-            "callback": "this.OnBt05",
-            "overFrame": "0",
-            "downFrame": "1",
-            "upFrame": "0"
+            "children": [
+              {
+                "type": "image",
+                "id": "ee59520a-28e1-48e0-aad9-5c8821e9db23",
+                "asset": "26",
+                "info": {
+                  "editorName": "Pay005x",
+                  "x": 484,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "db9a3b32-adf8-463f-a524-ec0a9e7c63ee",
+                "asset": "27",
+                "info": {
+                  "editorName": "Pay100x",
+                  "x": 36,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "fbaafca4-d10c-4a29-8ec6-1d6c149ccced",
+                "asset": "28",
+                "info": {
+                  "editorName": "Pay010x_2",
+                  "x": 407,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "fc7f7542-f04f-4f19-83bd-efd5ccfca89e",
+                "asset": "29",
+                "info": {
+                  "editorName": "Pay015x_2",
+                  "x": 355,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "727a18e1-d260-4df8-8014-1fb01d1060ea",
+                "asset": "30",
+                "info": {
+                  "editorName": "Pay020x_2",
+                  "x": 303,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "a249fcaf-ec67-43d3-8533-38ce80a3149e",
+                "asset": "30",
+                "info": {
+                  "editorName": "Pay020x_2-2",
+                  "x": 216,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "cc38be95-9fed-4f38-bae2-8770a21ee739",
+                "asset": "31",
+                "info": {
+                  "editorName": "Pay030x_2",
+                  "x": 164,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "7b80a7d6-ad62-41e8-9ee2-28320e588b4b",
+                "asset": "32",
+                "info": {
+                  "editorName": "Pay040x_2",
+                  "x": 112,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "2d6100ba-60db-4c47-bad0-e39eaed1706b",
+                "asset": "33",
+                "info": {
+                  "editorName": "PayFrameLightRight0",
+                  "editorPublic": true,
+                  "x": 392,
+                  "y": 764
+                }
+              },
+              {
+                "type": "image",
+                "id": "f2cf46e1-fd26-4293-9059-211069c33d4f",
+                "asset": "33",
+                "info": {
+                  "editorName": "PayFrameLightRight1",
+                  "editorPublic": true,
+                  "x": 340,
+                  "y": 764
+                }
+              },
+              {
+                "type": "image",
+                "id": "090b7dd8-4b29-4447-be3f-c046ce765867",
+                "asset": "33",
+                "info": {
+                  "editorName": "PayFrameLightRight2",
+                  "editorPublic": true,
+                  "x": 288,
+                  "y": 764
+                }
+              },
+              {
+                "type": "image",
+                "id": "ae9d5f78-80f3-4278-a9a2-1973fef36b66",
+                "asset": "33",
+                "info": {
+                  "editorName": "PayFrameLightLeft0",
+                  "editorPublic": true,
+                  "x": 202,
+                  "y": 764
+                }
+              },
+              {
+                "type": "image",
+                "id": "66c3eef7-c30f-447b-9686-5481314b9569",
+                "asset": "33",
+                "info": {
+                  "editorName": "PayFrameLightLeft1",
+                  "editorPublic": true,
+                  "x": 150,
+                  "y": 764
+                }
+              },
+              {
+                "type": "image",
+                "id": "e6afb14a-44cd-461a-b4fd-b164847453e8",
+                "asset": "33",
+                "info": {
+                  "editorName": "PayFrameLightLeft2",
+                  "editorPublic": true,
+                  "x": 98,
+                  "y": 764
+                }
+              },
+              {
+                "type": "image",
+                "id": "b42ac580-ec9d-48a4-93b8-e6ca18ba350a",
+                "asset": "34",
+                "info": {
+                  "editorName": "Pay010x_1Right0",
+                  "editorPublic": true,
+                  "x": 407,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "153c277a-8c00-4986-bc32-7402002e2ec8",
+                "asset": "35",
+                "info": {
+                  "editorName": "Pay015x_1Right1",
+                  "editorPublic": true,
+                  "x": 355,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "90333bbe-fc26-452b-9a56-b856e0cd1e8e",
+                "asset": "36",
+                "info": {
+                  "editorName": "Pay020x_1Right2",
+                  "editorPublic": true,
+                  "x": 303,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "2d3cea4d-08e3-422c-a325-296c6cabd465",
+                "asset": "36",
+                "info": {
+                  "editorName": "Pay020x_1Left0",
+                  "editorPublic": true,
+                  "x": 216,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "c75dc7c1-145f-49bd-87e0-914dd7af1156",
+                "asset": "37",
+                "info": {
+                  "editorName": "Pay030x_1Left1",
+                  "editorPublic": true,
+                  "x": 164,
+                  "y": 767
+                }
+              },
+              {
+                "type": "image",
+                "id": "b4f61fb5-56d2-44dc-a099-ef782ac773ee",
+                "asset": "38",
+                "info": {
+                  "editorName": "Pay040x_1Left2",
+                  "editorPublic": true,
+                  "x": 112,
+                  "y": 767
+                }
+              },
+              {
+                "type": "spritesheet",
+                "id": "a816db43-0953-4f91-8be7-0918805a2344",
+                "asset": "39",
+                "info": {
+                  "editorName": "JackpotLamp",
+                  "editorPublic": true,
+                  "x": 216,
+                  "y": 367,
+                  "animations": [{
+                    "name": "loop",
+                    "frameRate": 20,
+                    "frames": [
+                      "0",
+                      "1"
+                    ]
+                  }]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "group",
+          "id": "fe38b4cb-dc18-4e1f-9931-584d0a0d3a70",
+          "info": {
+            "editorName": "groupSymbolLight",
+            "editorPublic": true,
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "6122dbd6-d69a-4028-8b5a-9344c7510d30",
+          "info": {
+            "editorName": "groupLightNormal",
+            "editorPublic": true,
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "cc75e37b-7e35-4f04-9ee2-a4e19e19c591",
+          "info": {
+            "editorName": "groupLightLight",
+            "editorPublic": true,
+            "children": []
+          }
+        },
+        {
+          "type": "group",
+          "id": "a52e5667-1efa-4159-809f-d8ffac3051fe",
+          "info": {
+            "editorName": "groupNumber",
+            "editorPublic": true,
+            "children": [
+              {
+                "type": "image",
+                "id": "97ab5df6-6ae0-4731-be15-4a5cdace1121",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg",
+                  "x": 464,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "e24793b4-9dd0-405b-b9cc-cd3811ea0961",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg1",
+                  "x": 439,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "39e44152-435f-4fd4-9b1a-7649f1a26192",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg2",
+                  "x": 414,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "37b7e4a1-4653-4b7d-b48f-bf09c100b0e8",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg3",
+                  "x": 389,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "ed5ee99e-c9f7-45cd-9dc2-3581298a8565",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg4",
+                  "x": 364,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "014ce04f-6403-4638-b015-af6ab26897a8",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg5",
+                  "x": 339,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "f9cacbc6-e48a-44d6-b736-565d85d719ec",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg6",
+                  "x": 314,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "8059f9f9-56dc-4626-aa40-d5b5b38c0d11",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg7",
+                  "x": 289,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "b643048e-4f8d-41f7-a5df-5a84c6876f68",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg8",
+                  "x": 224,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "6b64fe1a-79b5-4fb9-9b0b-d340ebb48d5b",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg9",
+                  "x": 199,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "ba08062a-70db-4068-a4ae-11fc5609effd",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg10",
+                  "x": 174,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "5340ce09-d18f-48f7-9123-13f2e83b34f0",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg11",
+                  "x": 149,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "33e71d4a-35f8-4953-bd06-e148784598e2",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg12",
+                  "x": 124,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "b2f9102a-471b-4963-8690-c1d62a930b92",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg13",
+                  "x": 99,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "ab26ead4-c1e7-4db3-b369-527a30d088ec",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg14",
+                  "x": 74,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "7712ba6a-cf63-4b4e-a912-6a708ca35237",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg15",
+                  "x": 49,
+                  "y": 119
+                }
+              },
+              {
+                "type": "image",
+                "id": "9c4bf5b7-3722-4964-b755-41d604e6e9ec",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg",
+                  "x": 36,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "3d849889-f329-4864-95a6-acaf0361f95d",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg1",
+                  "x": 51,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "32b66219-45f3-4444-9eb1-d5abdb14632f",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg2",
+                  "x": 99,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "59b558f2-d0e6-4971-93ab-1812e51c47b8",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg3",
+                  "x": 114,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "6ec1144f-2075-4918-a0a2-93f513437052",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg4",
+                  "x": 162,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "33a3cd46-79e9-4461-877c-2fa68c3a7243",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg5",
+                  "x": 177,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "d802feef-61f7-42fc-b92e-b9d54459fe2d",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg6",
+                  "x": 225,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "c58d072b-dc0a-4ede-aacb-f672b428b51e",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg7",
+                  "x": 240,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "9007c12e-473b-42ce-b808-eaf3ceec52e8",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg8",
+                  "x": 288,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "62b43314-fa27-4a65-a38f-3311d87d04db",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg9",
+                  "x": 303,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "2ec0fef4-31b0-46e8-9fd3-32ab11d8cb0b",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg10",
+                  "x": 351,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "19e95589-2444-4624-8e8c-68b08edf195b",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg11",
+                  "x": 366,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "142f67db-ad08-4516-a74c-bb51fad3ba0d",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg12",
+                  "x": 414,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "87e43acb-d3ad-4869-ba4d-b4ce1362ae02",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg13",
+                  "x": 429,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "67cd5519-7427-4ef7-9f26-9b58bbefb2cd",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg14",
+                  "x": 477,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "f48261bb-51f4-4f2f-8f96-99eb8971d39d",
+                "asset": "41",
+                "info": {
+                  "editorName": "BetEightBg15",
+                  "x": 492,
+                  "y": 803
+                }
+              },
+              {
+                "type": "image",
+                "id": "de7fd6fa-cfe0-4599-9a1d-11bb18a428f5",
+                "asset": "42",
+                "info": {
+                  "editorName": "DoubleFrame",
+                  "x": 233,
+                  "y": 517
+                }
+              },
+              {
+                "type": "image",
+                "id": "ae791a20-9afd-44df-a0ca-120308c1a58d",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg16",
+                  "x": 270,
+                  "y": 525
+                }
+              },
+              {
+                "type": "image",
+                "id": "ca9b8757-8862-4388-a79e-5430148c4dc7",
+                "asset": "40",
+                "info": {
+                  "editorName": "CreditEightBg17",
+                  "x": 245,
+                  "y": 525
+                }
+              }
+            ]
           }
         }
       ]
     }
   },
   "type": "STATE",
-  "asset-table": {"0": {
-    "file": "WebContent/assets/pack.json",
-    "section": "game",
-    "asset": "BA_StartBt",
-    "sprite": "0"
-  }},
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "GameBackground"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "ValueFrame"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "TotalBetFrame"
+    },
+    "3": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "CreditFrame"
+    },
+    "4": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "WinFrame"
+    },
+    "5": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "CenterSignIdle1",
+      "sprite": "001"
+    },
+    "6": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "CenterSignIdle2",
+      "sprite": "032"
+    },
+    "7": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "CenterSignIdle3",
+      "sprite": "061"
+    },
+    "8": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "CenterSignIdle4",
+      "sprite": "091"
+    },
+    "9": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "CenterSignWin1",
+      "sprite": "01"
+    },
+    "10": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "CenterSignWin2",
+      "sprite": "31"
+    },
+    "11": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "WinBolt",
+      "sprite": "01"
+    },
+    "12": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "StartBt",
+      "sprite": "0"
+    },
+    "13": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "AutoBt",
+      "sprite": "0"
+    },
+    "14": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "DoubleLBt",
+      "sprite": "0"
+    },
+    "15": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "DoubleRBt",
+      "sprite": "0"
+    },
+    "16": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "FunctionBt",
+      "sprite": "0"
+    },
+    "17": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "HomeBt",
+      "sprite": "0"
+    },
+    "18": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Symbol01Bt",
+      "sprite": "0"
+    },
+    "19": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Symbol02Bt",
+      "sprite": "0"
+    },
+    "20": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Symbol03Bt",
+      "sprite": "0"
+    },
+    "21": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Symbol04Bt",
+      "sprite": "0"
+    },
+    "22": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Symbol05Bt",
+      "sprite": "0"
+    },
+    "23": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Symbol06Bt",
+      "sprite": "0"
+    },
+    "24": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Symbol07Bt",
+      "sprite": "0"
+    },
+    "25": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Symbol08Bt",
+      "sprite": "0"
+    },
+    "26": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay005x"
+    },
+    "27": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay100x"
+    },
+    "28": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay010x_2"
+    },
+    "29": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay015x_2"
+    },
+    "30": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay020x_2"
+    },
+    "31": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay030x_2"
+    },
+    "32": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay040x_2"
+    },
+    "33": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "PayFrameLight"
+    },
+    "34": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay010x_1"
+    },
+    "35": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay015x_1"
+    },
+    "36": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay020x_1"
+    },
+    "37": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay030x_1"
+    },
+    "38": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "Pay040x_1"
+    },
+    "39": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "JackpotLamp",
+      "sprite": "0"
+    },
+    "40": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "CreditEightBg"
+    },
+    "41": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "BetEightBg"
+    },
+    "42": {
+      "file": "WebContent/assets/pack.json",
+      "section": "Game",
+      "asset": "DoubleFrame"
+    }
+  },
   "prefab-table": {}
 }

@@ -1,16 +1,905 @@
 {
-  "game": [{
-    "type": "spritesheet",
-    "key": "BA_StartBt",
-    "url": "assets/BA_StartBt.png",
-    "frameWidth": 118,
-    "frameHeight": 73,
-    "frameMax": -1,
-    "margin": 0,
-    "spacing": 0
-  }],
+  "Game": [
+    {
+      "type": "image",
+      "key": "GameBackground",
+      "url": "assets/game/BU_BG.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "WinFrame",
+      "url": "assets/game/BU_WinFrame.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "CreditFrame",
+      "url": "assets/game/BU_CreditFrame.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "TotalBetFrame",
+      "url": "assets/game/BU_TotalbetFrame.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "ValueFrame",
+      "url": "assets/game/BU_ValueFrame.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "StartBt",
+      "url": "assets/game/Button/BA_StartBt.png",
+      "frameWidth": 118,
+      "frameHeight": 73,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "AutoBt",
+      "url": "assets/game/Button/BA_AutoBt.png",
+      "frameWidth": 74,
+      "frameHeight": 67,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "DoubleLBt",
+      "url": "assets/game/Button/BA_DoubleLBt.png",
+      "frameWidth": 60,
+      "frameHeight": 70,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "DoubleRBt",
+      "url": "assets/game/Button/BA_DoubleRBt.png",
+      "frameWidth": 60,
+      "frameHeight": 70,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "FunctionBt",
+      "url": "assets/game/Button/BU_FunctionBt.png",
+      "frameWidth": 58,
+      "frameHeight": 58,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "HomeBt",
+      "url": "assets/game/Button/BU_HomeBt.png",
+      "frameWidth": 58,
+      "frameHeight": 58,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Symbol01Bt",
+      "url": "assets/game/Button/BA_Symbol01Bt.png",
+      "frameWidth": 92,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Symbol02Bt",
+      "url": "assets/game/Button/BA_Symbol02Bt.png",
+      "frameWidth": 85,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Symbol03Bt",
+      "url": "assets/game/Button/BA_Symbol03Bt.png",
+      "frameWidth": 78,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Symbol04Bt",
+      "url": "assets/game/Button/BA_Symbol04Bt.png",
+      "frameWidth": 69,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Symbol05Bt",
+      "url": "assets/game/Button/BA_Symbol05Bt.png",
+      "frameWidth": 69,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Symbol06Bt",
+      "url": "assets/game/Button/BA_Symbol06Bt.png",
+      "frameWidth": 78,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Symbol07Bt",
+      "url": "assets/game/Button/BA_Symbol07Bt.png",
+      "frameWidth": 85,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "Symbol08Bt",
+      "url": "assets/game/Button/BA_Symbol08Bt.png",
+      "frameWidth": 92,
+      "frameHeight": 80,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "bitmapFont",
+      "key": "Number02",
+      "textureURL": "assets/game/Number/BU_Number02.png",
+      "atlasURL": "assets/game/Number/BU_Number02.xml",
+      "xSpacing": 0,
+      "ySpacing": 0
+    },
+    {
+      "type": "bitmapFont",
+      "key": "Number05",
+      "textureURL": "assets/game/Number/BU_Number05.png",
+      "atlasURL": "assets/game/Number/BU_Number05.xml",
+      "xSpacing": 0,
+      "ySpacing": 0
+    },
+    {
+      "type": "image",
+      "key": "CreditEightBg",
+      "url": "assets/game/Number/BU_Eight.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "BetEightBg",
+      "url": "assets/game/Number/BU_BetEightBg.png",
+      "overwrite": false
+    },
+    {
+      "type": "bitmapFont",
+      "key": "Number03",
+      "textureURL": "assets/game/Number/BU_Number03.png",
+      "atlasURL": "assets/game/Number/BU_Number03.xml",
+      "xSpacing": 0,
+      "ySpacing": 0
+    },
+    {
+      "type": "bitmapFont",
+      "key": "Number06",
+      "textureURL": "assets/game/Number/BU_Number06.png",
+      "atlasURL": "assets/game/Number/BU_Number06.xml",
+      "xSpacing": 0,
+      "ySpacing": 0
+    },
+    {
+      "type": "image",
+      "key": "DoubleFrame",
+      "url": "assets/game/Number/BU_DoubleFrame.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol01_1",
+      "url": "assets/game/Symbol/BU_Symbol01_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol01_2",
+      "url": "assets/game/Symbol/BU_Symbol01_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol02_1",
+      "url": "assets/game/Symbol/BU_Symbol02_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol02_2",
+      "url": "assets/game/Symbol/BU_Symbol02_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol03_1",
+      "url": "assets/game/Symbol/BU_Symbol03_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol03_2",
+      "url": "assets/game/Symbol/BU_Symbol03_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol04_1",
+      "url": "assets/game/Symbol/BU_Symbol04_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol04_2",
+      "url": "assets/game/Symbol/BU_Symbol04_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol05_1",
+      "url": "assets/game/Symbol/BU_Symbol05_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol05_2",
+      "url": "assets/game/Symbol/BU_Symbol05_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol06_1",
+      "url": "assets/game/Symbol/BU_Symbol06_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol06_2",
+      "url": "assets/game/Symbol/BU_Symbol06_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol07_1",
+      "url": "assets/game/Symbol/BU_Symbol07_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol07_2",
+      "url": "assets/game/Symbol/BU_Symbol07_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol08_1",
+      "url": "assets/game/Symbol/BU_Symbol08_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol08_2",
+      "url": "assets/game/Symbol/BU_Symbol08_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol09_1",
+      "url": "assets/game/Symbol/BU_Symbol09_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol09_2",
+      "url": "assets/game/Symbol/BU_Symbol09_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol10_1",
+      "url": "assets/game/Symbol/BU_Symbol10_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol10_2",
+      "url": "assets/game/Symbol/BU_Symbol10_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol11_1",
+      "url": "assets/game/Symbol/BU_Symbol11_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol11_2",
+      "url": "assets/game/Symbol/BU_Symbol11_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol12_1",
+      "url": "assets/game/Symbol/BU_Symbol12_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol12_2",
+      "url": "assets/game/Symbol/BU_Symbol12_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol13_1",
+      "url": "assets/game/Symbol/BU_Symbol13_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol13_2",
+      "url": "assets/game/Symbol/BU_Symbol13_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol14_1",
+      "url": "assets/game/Symbol/BU_Symbol14_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol14_2",
+      "url": "assets/game/Symbol/BU_Symbol14_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol15_1",
+      "url": "assets/game/Symbol/BU_Symbol15_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol15_2",
+      "url": "assets/game/Symbol/BU_Symbol15_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol16_1",
+      "url": "assets/game/Symbol/BU_Symbol16_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol16_2",
+      "url": "assets/game/Symbol/BU_Symbol16_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol17_1",
+      "url": "assets/game/Symbol/BU_Symbol17_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol17_2",
+      "url": "assets/game/Symbol/BU_Symbol17_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol18_1",
+      "url": "assets/game/Symbol/BU_Symbol18_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Symbol18_2",
+      "url": "assets/game/Symbol/BU_Symbol18_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "SlotLight01",
+      "url": "assets/game/Symbol/BU_LT01.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "SlotLight02",
+      "url": "assets/game/Symbol/BU_LT02.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "PayFrameLight",
+      "url": "assets/game/BU_PayFrameLt.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay005x",
+      "url": "assets/game/BU_Pay5x.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay010x_1",
+      "url": "assets/game/BU_Pay10x_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay010x_2",
+      "url": "assets/game/BU_Pay10x_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay015x_1",
+      "url": "assets/game/BU_Pay15x_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay015x_2",
+      "url": "assets/game/BU_Pay15x_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay020x_1",
+      "url": "assets/game/BU_Pay20x_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay020x_2",
+      "url": "assets/game/BU_Pay20x_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay030x_1",
+      "url": "assets/game/BU_Pay30x_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay030x_2",
+      "url": "assets/game/BU_Pay30x_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay040x_1",
+      "url": "assets/game/BU_Pay40x_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay040x_2",
+      "url": "assets/game/BU_Pay40x_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Pay100x",
+      "url": "assets/game/BU_Pay100x.png",
+      "overwrite": false
+    },
+    {
+      "type": "atlas",
+      "key": "CenterSignIdle1",
+      "textureURL": "assets/game/Atlas/CenterSignIdle1.png",
+      "atlasURL": "assets/game/Atlas/CenterSignIdle1.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "atlas",
+      "key": "CenterSignIdle2",
+      "textureURL": "assets/game/Atlas/CenterSignIdle2.png",
+      "atlasURL": "assets/game/Atlas/CenterSignIdle2.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "atlas",
+      "key": "CenterSignIdle3",
+      "textureURL": "assets/game/Atlas/CenterSignIdle3.png",
+      "atlasURL": "assets/game/Atlas/CenterSignIdle3.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "atlas",
+      "key": "CenterSignIdle4",
+      "textureURL": "assets/game/Atlas/CenterSignIdle4.png",
+      "atlasURL": "assets/game/Atlas/CenterSignIdle4.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "atlas",
+      "key": "CenterSignWin1",
+      "textureURL": "assets/game/Atlas/CenterSignWin1.png",
+      "atlasURL": "assets/game/Atlas/CenterSignWin1.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "atlas",
+      "key": "CenterSignWin2",
+      "textureURL": "assets/game/Atlas/CenterSignWin2.png",
+      "atlasURL": "assets/game/Atlas/CenterSignWin2.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "atlas",
+      "key": "WinBolt",
+      "textureURL": "assets/game/Atlas/WinBolt.png",
+      "atlasURL": "assets/game/Atlas/WinBolt.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "audio",
+      "key": "BS_BetBt01",
+      "urls": ["assets/game/Audio/BS_BetBt01.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BetBt02",
+      "urls": ["assets/game/Audio/BS_BetBt02.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BetBt03",
+      "urls": ["assets/game/Audio/BS_BetBt03.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BetBt04",
+      "urls": ["assets/game/Audio/BS_BetBt04.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BetBt05",
+      "urls": ["assets/game/Audio/BS_BetBt05.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BetBt06",
+      "urls": ["assets/game/Audio/BS_BetBt06.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BetBt07",
+      "urls": ["assets/game/Audio/BS_BetBt07.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BetBt08",
+      "urls": ["assets/game/Audio/BS_BetBt08.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BonusNoWin",
+      "urls": ["assets/game/Audio/BS_BonusNoWin.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BonusRun01",
+      "urls": ["assets/game/Audio/BS_BonusRun01.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BonusRun02",
+      "urls": ["assets/game/Audio/BS_BonusRun02.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BonusRun03",
+      "urls": ["assets/game/Audio/BS_BonusRun03.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BonusWin01",
+      "urls": ["assets/game/Audio/BS_BonusWin01.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BonusWin02",
+      "urls": ["assets/game/Audio/BS_BonusWin02.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_BonusWin03",
+      "urls": ["assets/game/Audio/BS_BonusWin03.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_DoubleLose",
+      "urls": ["assets/game/Audio/BS_DoubleLose.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_DoubleRun",
+      "urls": ["assets/game/Audio/BS_DoubleRun.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_DoubleWin",
+      "urls": ["assets/game/Audio/BS_DoubleWin.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_HitJP",
+      "urls": ["assets/game/Audio/BS_HitJP.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_HitLuckyTime01",
+      "urls": ["assets/game/Audio/BS_HitLuckyTime01.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_HitLuckyTime02",
+      "urls": ["assets/game/Audio/BS_HitLuckyTime02.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01",
+      "urls": ["assets/game/Audio/BS_Normal01.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal02",
+      "urls": ["assets/game/Audio/BS_Normal02.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03",
+      "urls": ["assets/game/Audio/BS_Normal03.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_NormalRun",
+      "urls": ["assets/game/Audio/BS_NormalRun.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG01",
+      "urls": ["assets/game/Audio/BS_WinBG01.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG02",
+      "urls": ["assets/game/Audio/BS_WinBG02.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG03",
+      "urls": ["assets/game/Audio/BS_WinBG03.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG04",
+      "urls": ["assets/game/Audio/BS_WinBG04.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG05",
+      "urls": ["assets/game/Audio/BS_WinBG05.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG06",
+      "urls": ["assets/game/Audio/BS_WinBG06.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG07",
+      "urls": ["assets/game/Audio/BS_WinBG07.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG08",
+      "urls": ["assets/game/Audio/BS_WinBG08.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "CS_PressBt",
+      "urls": ["assets/game/Audio/CS_PressBt.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "CS_Scoring",
+      "urls": ["assets/game/Audio/CS_Scoring.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "image",
+      "key": "Number04",
+      "url": "assets/game/Number/BU_Number04.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result01_1",
+      "url": "assets/game/Result/BU_Result01_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result01_2",
+      "url": "assets/game/Result/BU_Result01_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result02_1",
+      "url": "assets/game/Result/BU_Result02_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result02_2",
+      "url": "assets/game/Result/BU_Result02_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result03_1",
+      "url": "assets/game/Result/BU_Result03_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result03_2",
+      "url": "assets/game/Result/BU_Result03_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result04_1",
+      "url": "assets/game/Result/BU_Result04_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result04_2",
+      "url": "assets/game/Result/BU_Result04_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result05_1",
+      "url": "assets/game/Result/BU_Result05_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result05_2",
+      "url": "assets/game/Result/BU_Result05_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result06_1",
+      "url": "assets/game/Result/BU_Result06_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result06_2",
+      "url": "assets/game/Result/BU_Result06_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result07_1",
+      "url": "assets/game/Result/BU_Result07_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result07_2",
+      "url": "assets/game/Result/BU_Result07_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result08_1",
+      "url": "assets/game/Result/BU_Result08_1.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "Result08_2",
+      "url": "assets/game/Result/BU_Result08_2.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "JackpotLamp",
+      "url": "assets/game/BU_JP.png",
+      "frameWidth": 107,
+      "frameHeight": 99,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    }
+  ],
   "meta": {
-    "generated": "1502435108023",
+    "generated": "1503482396021",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
