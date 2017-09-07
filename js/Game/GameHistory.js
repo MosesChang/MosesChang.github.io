@@ -11,19 +11,19 @@ var GameHistory = (function () {
         }
         this.aHistoryID.unshift(hitSymbolID);
         this.showHistory();
-        /*
-        for( var i=0 ; i<gameData.symbolNum ; i++ ){
-            if( hitSymbolID == i ){
-                gameData.symbolNoHitCount[i] = 0 ;
+        for (var i = 0; i < gameData.symbolNum; i++) {
+            if (hitSymbolID == i) {
+                gameData.symbolNoHitCount[i] = 0;
             }
-            else{
-                if( gameData.symbolNoHitCount[i] < 9999 )
-                    gameData.symbolNoHitCount[i] ++ ;
+            else {
+                if (gameData.symbolNoHitCount[i] < 999)
+                    gameData.symbolNoHitCount[i]++;
             }
         }
+        /*
+        if( gameData.symbolNoHitCount[hitSymbolID] < 999 )
+            gameData.symbolNoHitCount[hitSymbolID] ++ ;
         */
-        if (gameData.symbolNoHitCount[hitSymbolID] < 9999)
-            gameData.symbolNoHitCount[hitSymbolID]++;
     };
     GameHistory.prototype.showHistory = function () {
         this.level.fGroupHistory.removeAll();
