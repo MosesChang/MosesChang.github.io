@@ -42,12 +42,14 @@
     "id": "8a0fc0bc-e3be-4656-9585-f855ac8ba0bb",
     "info": {
       "editorName": "Level",
+      "setAll": [],
       "children": [
         {
           "type": "group",
           "id": "17f988ec-4298-431e-92ad-4151c737329a",
           "info": {
             "editorName": "groupBackground",
+            "setAll": [],
             "children": [
               {
                 "type": "image",
@@ -107,6 +109,7 @@
           "info": {
             "editorName": "groupHistory",
             "editorPublic": true,
+            "setAll": [],
             "children": []
           }
         },
@@ -115,6 +118,7 @@
           "id": "7d0a8933-1982-4805-89b1-0a8e715c5ca3",
           "info": {
             "editorName": "groupCenterSign",
+            "setAll": [],
             "children": [
               {
                 "type": "atlas-sprite",
@@ -444,7 +448,7 @@
                   "editorName": "WinBoltRight",
                   "editorPublic": true,
                   "editorShow": false,
-                  "x": 546,
+                  "x": 540,
                   "y": 60,
                   "scale.x": -1,
                   "animations": [{
@@ -478,6 +482,7 @@
           "id": "7433b9b5-2283-45ce-af3f-22b81a7e2788",
           "info": {
             "editorName": "groupBt",
+            "setAll": [],
             "children": [
               {
                 "type": "button",
@@ -496,14 +501,15 @@
               },
               {
                 "type": "button",
-                "id": "00e44235-5b3f-4338-b58b-ac92efd8513b",
+                "id": "43cf3a0f-4c3f-4a95-adfa-3331bc7ef3d8",
                 "asset": "13",
                 "info": {
-                  "editorName": "AutoBt",
+                  "editorName": "AllAdd1Bt",
                   "editorPublic": true,
                   "x": 333,
                   "y": 671,
-                  "callback": "this.OnBtAuto",
+                  "callback": "",
+                  "callbackContext": "",
                   "overFrame": "0",
                   "downFrame": "1",
                   "upFrame": "0"
@@ -578,7 +584,8 @@
                   "editorPublic": true,
                   "x": -13,
                   "y": 843,
-                  "callback": "this.OnBtSym01",
+                  "callback": "",
+                  "callbackContext": "",
                   "overFrame": "0",
                   "downFrame": "1",
                   "upFrame": "0"
@@ -593,7 +600,8 @@
                   "editorPublic": true,
                   "x": 58,
                   "y": 843,
-                  "callback": "this.OnBtSym02",
+                  "callback": "",
+                  "callbackContext": "",
                   "overFrame": "0",
                   "downFrame": "1",
                   "upFrame": "0"
@@ -608,7 +616,8 @@
                   "editorPublic": true,
                   "x": 129,
                   "y": 843,
-                  "callback": "this.OnBtSym03",
+                  "callback": "",
+                  "callbackContext": "",
                   "overFrame": "0",
                   "downFrame": "1",
                   "upFrame": "0"
@@ -623,7 +632,8 @@
                   "editorPublic": true,
                   "x": 201,
                   "y": 843,
-                  "callback": "this.OnBtSym04",
+                  "callback": "",
+                  "callbackContext": "",
                   "overFrame": "0",
                   "downFrame": "1",
                   "upFrame": "0"
@@ -638,7 +648,8 @@
                   "editorPublic": true,
                   "x": 270,
                   "y": 843,
-                  "callback": "this.OnBtSym05",
+                  "callback": "",
+                  "callbackContext": "",
                   "overFrame": "0",
                   "downFrame": "1",
                   "upFrame": "0"
@@ -653,7 +664,8 @@
                   "editorPublic": true,
                   "x": 333,
                   "y": 843,
-                  "callback": "this.OnBtSym06",
+                  "callback": "",
+                  "callbackContext": "",
                   "overFrame": "0",
                   "downFrame": "1",
                   "upFrame": "0"
@@ -668,7 +680,8 @@
                   "editorPublic": true,
                   "x": 397,
                   "y": 843,
-                  "callback": "this.OnBtSym07",
+                  "callback": "",
+                  "callbackContext": "",
                   "overFrame": "0",
                   "downFrame": "1",
                   "upFrame": "0"
@@ -683,7 +696,8 @@
                   "editorPublic": true,
                   "x": 461,
                   "y": 843,
-                  "callback": "this.OnBtSym08",
+                  "callback": "",
+                  "callbackContext": "",
                   "overFrame": "0",
                   "downFrame": "1",
                   "upFrame": "0"
@@ -698,6 +712,7 @@
           "info": {
             "editorName": "groupSymbolNormal",
             "editorPublic": true,
+            "setAll": [],
             "children": [
               {
                 "type": "image",
@@ -939,6 +954,7 @@
           "info": {
             "editorName": "groupSymbolLight",
             "editorPublic": true,
+            "setAll": [],
             "children": []
           }
         },
@@ -948,6 +964,7 @@
           "info": {
             "editorName": "groupLightNormal",
             "editorPublic": true,
+            "setAll": [],
             "children": []
           }
         },
@@ -957,6 +974,7 @@
           "info": {
             "editorName": "groupLightLight",
             "editorPublic": true,
+            "setAll": [],
             "children": []
           }
         },
@@ -966,6 +984,7 @@
           "info": {
             "editorName": "groupNumber",
             "editorPublic": true,
+            "setAll": [],
             "children": [
               {
                 "type": "image",
@@ -1129,168 +1148,8 @@
               },
               {
                 "type": "image",
-                "id": "9c4bf5b7-3722-4964-b755-41d604e6e9ec",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg",
-                  "x": 36,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "3d849889-f329-4864-95a6-acaf0361f95d",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg1",
-                  "x": 51,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "32b66219-45f3-4444-9eb1-d5abdb14632f",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg2",
-                  "x": 99,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "59b558f2-d0e6-4971-93ab-1812e51c47b8",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg3",
-                  "x": 114,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "6ec1144f-2075-4918-a0a2-93f513437052",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg4",
-                  "x": 162,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "33a3cd46-79e9-4461-877c-2fa68c3a7243",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg5",
-                  "x": 177,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "d802feef-61f7-42fc-b92e-b9d54459fe2d",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg6",
-                  "x": 225,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "c58d072b-dc0a-4ede-aacb-f672b428b51e",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg7",
-                  "x": 240,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "9007c12e-473b-42ce-b808-eaf3ceec52e8",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg8",
-                  "x": 288,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "62b43314-fa27-4a65-a38f-3311d87d04db",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg9",
-                  "x": 303,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "2ec0fef4-31b0-46e8-9fd3-32ab11d8cb0b",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg10",
-                  "x": 351,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "19e95589-2444-4624-8e8c-68b08edf195b",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg11",
-                  "x": 366,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "142f67db-ad08-4516-a74c-bb51fad3ba0d",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg12",
-                  "x": 414,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "87e43acb-d3ad-4869-ba4d-b4ce1362ae02",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg13",
-                  "x": 429,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "67cd5519-7427-4ef7-9f26-9b58bbefb2cd",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg14",
-                  "x": 477,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
-                "id": "f48261bb-51f4-4f2f-8f96-99eb8971d39d",
-                "asset": "41",
-                "info": {
-                  "editorName": "BetEightBg15",
-                  "x": 492,
-                  "y": 803
-                }
-              },
-              {
-                "type": "image",
                 "id": "de7fd6fa-cfe0-4599-9a1d-11bb18a428f5",
-                "asset": "42",
+                "asset": "41",
                 "info": {
                   "editorName": "DoubleFrame",
                   "x": 233,
@@ -1401,7 +1260,7 @@
     "13": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "AutoBt",
+      "asset": "BA_AllAdd1",
       "sprite": "0"
     },
     "14": {
@@ -1553,11 +1412,6 @@
       "asset": "CreditEightBg"
     },
     "41": {
-      "file": "WebContent/assets/pack.json",
-      "section": "Game",
-      "asset": "BetEightBg"
-    },
-    "42": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
       "asset": "DoubleFrame"

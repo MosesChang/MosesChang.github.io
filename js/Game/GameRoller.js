@@ -10,17 +10,20 @@ var HitPayType = (function () {
 var GameRoller = (function () {
     function GameRoller(inLevel) {
         this.level = inLevel;
+        this.level.onUpdate.add(this.update, this);
+        gameData.onStateChange.add(this.stateChange, this);
+        this.gameState = GAMESTATE.INIT;
         this.ROLLER_TOTAL_TIME = 3;
         this.ROLLER_SPEED_MAX = 70;
         this.ROLLER_SPEED_START = 4;
         this.ROLLER_SPEED_ACC = 1.7;
         this.ROLLER_SPEED_END = 3;
         this.ROLLER_SPEED_DEC = 1.4;
-        this.ROLLER_SPEED_STOP_THRESHOLD = 10;
+        this.ROLLER_SPEED_STOP_THRESHOLD = 15;
         this.ROLLER_TAIL_SPEED = 25;
         this.ROLLER_TAIL_ADD = 10;
-        this.WIN_ON_DUR = 0.3;
-        this.WIN_OFF_DUR = 0.8;
+        this.WIN_ON_DUR = 0.2;
+        this.WIN_OFF_DUR = 0.5;
         this.rollerNowPos = 0;
         this.rollerStopPos = 0;
         this.rollerTotalTime = 0;
@@ -76,7 +79,7 @@ var GameRoller = (function () {
         this.addASlot("ORANGE", 416, 574, 403, 561, 8); // 8
     };
     GameRoller.prototype.update = function (deltaTime) {
-        if (gameData.gameState == GAMESTATE.ROLL) {
+        if (this.gameState == GAMESTATE.ROLL) {
             // Delta time
             this.rollerTotalTime += deltaTime;
             this.rollerStepTime += deltaTime;
@@ -164,7 +167,7 @@ var GameRoller = (function () {
                 }
             }
         }
-        else if (gameData.gameState == GAMESTATE.WIN) {
+        else if (this.gameState == GAMESTATE.WIN) {
             this.winDeltaTime += deltaTime;
             if (this.aSlot[this.rollerNowPos].checkVisible() == true) {
                 if (this.winDeltaTime >= this.WIN_ON_DUR) {
@@ -188,7 +191,7 @@ var GameRoller = (function () {
                 }
             }
         }
-        else if (gameData.gameState == GAMESTATE.DOUBLE_WIN) {
+        else if (this.gameState == GAMESTATE.DOUBLE_WIN) {
             this.winDeltaTime += deltaTime;
             // on -> off
             if (this.aSlot[this.rollerNowPos].checkVisible() == true) {
@@ -220,7 +223,7 @@ var GameRoller = (function () {
                 }
             }
         }
-        else if (gameData.gameState == GAMESTATE.JP_GLITTER) {
+        else if (this.gameState == GAMESTATE.JP_GLITTER) {
             this.glitterTotalDeltaTime += deltaTime;
             this.glitterDeltaTime += deltaTime;
             if (this.glitterTotalDeltaTime >= this.GLITTER_TOTAL_TIME) {
@@ -239,7 +242,7 @@ var GameRoller = (function () {
                 }
             }
         }
-        else if (gameData.gameState == GAMESTATE.JP_ROLL) {
+        else if (this.gameState == GAMESTATE.JP_ROLL) {
             // delta time
             this.jackpotRollDeltaTimeCountDown -= deltaTime;
             if (this.jackpotRollDeltaTimeCountDown > 0) {
@@ -288,11 +291,49 @@ var GameRoller = (function () {
                 this.level.game.sound.play("BS_BetBt01"); // Temp
             }
         }
-        else if (gameData.gameState == GAMESTATE.JP_NO_WIN) {
+        else if (this.gameState == GAMESTATE.JP_NO_WIN) {
             this.jackpotNoWinDeltaTime += deltaTime;
             if (this.jackpotNoWinDeltaTime >= this.JACKPOT_NO_WIN_TIME) {
                 var aJackpotRollHitSymbol = this.getJackpoyRollHitSymbol();
                 this.sceneGame.jackpotRollDone(aJackpotRollHitSymbol, this.getBigWinAnmPlayable());
+            }
+        }
+    };
+    GameRoller.prototype.stateChange = function (inPreState, inNowState, para1, para2) {
+        if (inNowState < GAMESTATE.TRIGGER_START) {
+            this.gameState = inNowState;
+        }
+        if (inNowState == GAMESTATE.JP_GLITTER) {
+            this.setJpGlitter();
+        }
+        else if (inNowState == GAMESTATE.JP_ROLL) {
+            if (para1 == null) {
+                console.log("Error para1 in GameRoller::stateChange()-GAMESTATE.JP_ROLL-1");
+                return;
+            }
+            if (para1.constructor !== Array) {
+                console.log("Error para1 in GameRoller::stateChange()-GAMESTATE.JP_ROLL-2");
+                return;
+            }
+            this.setJpRoll(para1);
+        }
+        else if (inNowState == GAMESTATE.JP_NO_WIN) {
+            this.setJpRollNoWin();
+        }
+        else if (inNowState == GAMESTATE.DOUBLE) {
+            if (para1 == null) {
+                console.log("Error para1 in GameRoller::stateChange()-GAMESTATE.DOUBLE-1");
+                return;
+            }
+            if (para1.constructor !== Boolean) {
+                console.log("Error para1 in GameRoller::stateChange()-GAMESTATE.DOUBLE-2");
+                return;
+            }
+            if (para1 == true) {
+                this.setDoubleRight();
+            }
+            else {
+                this.setDoubleLeft();
             }
         }
     };
@@ -321,40 +362,6 @@ var GameRoller = (function () {
         this.rollerStartDecendSlot = this.rollerStartDecendSlot % this.getSlotNumber();
         if (this.rollerStartDecendSlot < 0)
             this.rollerStartDecendSlot += this.getSlotNumber();
-    };
-    GameRoller.prototype.setJpGlitter = function () {
-        this.glitterTotalDeltaTime = 0.0;
-        this.glitterDeltaTime = 0.0;
-        this.jackpotSound = this.level.game.sound.play("BS_HitJP", 1, true);
-    };
-    GameRoller.prototype.setJpRoll = function (inJackpotRollHit) {
-        if (inJackpotRollHit == null) {
-            console.log("Error input in GameRoller::setJpRoll()");
-            return;
-        }
-        if (inJackpotRollHit.length == 0) {
-            gameData.gameState = GAMESTATE.JP_NO_WIN;
-            this.jackpotNoWinDeltaTime = 0;
-            this.level.game.sound.play("BS_BonusNoWin");
-        }
-        else {
-            gameData.gameState = GAMESTATE.JP_ROLL;
-            this.jackpotRollDeltaTimeCountDown = this.JACKPOT_ROLL_TIME;
-            this.aJackpotRollHitPos.length = 0;
-            this.jackpotRollWay = false; // true:clockwise    false:counter-clockwise
-            this.aJackpotRollHitPos.push(this.rollerNowPos);
-            for (var i = 0; i < inJackpotRollHit.length; i++)
-                this.aJackpotRollHitPos.push(inJackpotRollHit[i]);
-            this.aJackpotRollHitPosNowIndex = 1;
-        }
-    };
-    GameRoller.prototype.setDoubleRight = function () {
-        this.showIdle();
-        this.reciprocate.setDoubleRight();
-    };
-    GameRoller.prototype.setDoubleLeft = function () {
-        this.showIdle();
-        this.reciprocate.setDoubleLeft();
     };
     GameRoller.prototype.getSlotNumber = function () {
         return this.aSlot.length;
@@ -407,6 +414,36 @@ var GameRoller = (function () {
     };
     GameRoller.prototype.getNowPosSymbolID = function () {
         return this.aSlot[this.rollerNowPos].symbol.symbolID;
+    };
+    GameRoller.prototype.setJpGlitter = function () {
+        this.glitterTotalDeltaTime = 0.0;
+        this.glitterDeltaTime = 0.0;
+        this.jackpotSound = this.level.game.sound.play("BS_HitJP", 1, true);
+    };
+    GameRoller.prototype.setJpRoll = function (inJackpotRollHit) {
+        if (inJackpotRollHit == null) {
+            console.log("Error input in GameRoller::setJpRoll()");
+            return;
+        }
+        this.jackpotRollDeltaTimeCountDown = this.JACKPOT_ROLL_TIME;
+        this.aJackpotRollHitPos.length = 0;
+        this.jackpotRollWay = false; // true:clockwise    false:counter-clockwise
+        this.aJackpotRollHitPos.push(this.rollerNowPos);
+        for (var i = 0; i < inJackpotRollHit.length; i++)
+            this.aJackpotRollHitPos.push(inJackpotRollHit[i]);
+        this.aJackpotRollHitPosNowIndex = 1;
+    };
+    GameRoller.prototype.setJpRollNoWin = function () {
+        this.jackpotNoWinDeltaTime = 0;
+        this.level.game.sound.play("BS_BonusNoWin");
+    };
+    GameRoller.prototype.setDoubleRight = function () {
+        this.showIdle();
+        this.reciprocate.setDoubleRight();
+    };
+    GameRoller.prototype.setDoubleLeft = function () {
+        this.showIdle();
+        this.reciprocate.setDoubleLeft();
     };
     GameRoller.prototype.getBigWinAnmPlayable = function () {
         var threshold = 30; // Temp

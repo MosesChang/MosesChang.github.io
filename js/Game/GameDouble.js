@@ -1,6 +1,7 @@
 var GameDouble = (function () {
     function GameDouble(inLevel) {
         this.level = inLevel;
+        this.level.onUpdate.add(this.update, this);
         this.isDoubling = false;
         this.lastRandNum = -1;
         this.deltaTimeMinStep = 1.0 / 60.0;

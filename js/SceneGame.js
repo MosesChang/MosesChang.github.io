@@ -1,6 +1,7 @@
 var SceneGame = (function () {
     function SceneGame(inLevel, inputGameNumber, inGameRoller, inGameAnm, inGameHistory, inGameBt, inGameDouble) {
         this.level = inLevel;
+        gameData.onStateChange.add(this.stateChange, this);
         this.gameNumber = inputGameNumber;
         this.gameAnm = inGameAnm;
         this.gameHistory = inGameHistory;
@@ -11,14 +12,12 @@ var SceneGame = (function () {
     SceneGame.prototype.create = function () {
         this.gameNumber.setAllByGameData();
         this.gameAnm.playIdle(); // First play wthe start
-        this.gameBt.setStateIdle();
-        gameData.gameState = GAMESTATE.IDLE;
+        gameData.changeState(GAMESTATE.IDLE);
     };
-    SceneGame.prototype.update = function () {
-        //this.level.fGameBackground.position.x += 1 ;
-        var deltaTime = this.level.game.time.elapsed / 1000;
-        this.gameRoller.update(deltaTime);
-        this.gameDouble.update(deltaTime);
+    SceneGame.prototype.stateChange = function (inPreState, inNowState, para1, para2) {
+        if (inNowState < GAMESTATE.TRIGGER_START) {
+            this.gameState = inNowState;
+        }
     };
     SceneGame.prototype.backupBet = function () {
         for (var i = 0; i < gameData.symbolNum; i++) {
@@ -29,7 +28,7 @@ var SceneGame = (function () {
         // Error Chaek
         if (hitSymbolID < 0 || hitSymbolID >= gameData.symbolNum) {
             console.log("Error input in SceneGame::jackpotHit()");
-            gameData.gameState = GAMESTATE.IDLE;
+            gameData.changeState(GAMESTATE.IDLE);
             return;
         }
         // hit
@@ -40,28 +39,25 @@ var SceneGame = (function () {
         //this.winAudio = this.level.game.sound.play("BS_WinBG0"+
         //        (this.level.game.rnd.integerInRange(1, 8)).toString()) ;
         this.gameNumber.setAllByGameData();
-        this.gameBt.setStateWin();
         this.gameNumber.clearBitAtWin(hitSymbolID);
     };
     SceneGame.prototype.rollerDone = function (hitSymbolID, luckyTime, pay, bigWinAnm) {
         // Error Chaek
         if (luckyTime == 0 && (hitSymbolID < 0 || hitSymbolID >= gameData.symbolNum)) {
             console.log("Error input in SceneGame::rollerDone()");
-            gameData.gameState = GAMESTATE.IDLE;
+            gameData.changeState(GAMESTATE.IDLE);
             return;
         }
         // Init
         this.gameDouble.clearDouble();
         // Lucky time
         if (luckyTime != 0) {
-            this.gameRoller.setJpGlitter();
-            gameData.gameState = GAMESTATE.JP_GLITTER;
+            gameData.changeState(GAMESTATE.JP_GLITTER);
         }
         else if (gameData.symbolBet[hitSymbolID] == 0) {
             this.gameHistory.addSymbol(hitSymbolID);
             this.clearBet();
-            this.gameBt.setStateIdle();
-            gameData.gameState = GAMESTATE.IDLE;
+            gameData.changeState(GAMESTATE.IDLE);
         }
         else {
             this.gameHistory.addSymbol(hitSymbolID);
@@ -74,9 +70,8 @@ var SceneGame = (function () {
                 jackpotTemp = true;
             }
             if (jackpotTemp) {
-                this.gameRoller.setJpGlitter();
                 this.gameNumber.setAllByGameData();
-                gameData.gameState = GAMESTATE.JP_GLITTER;
+                gameData.changeState(GAMESTATE.JP_GLITTER);
             }
             else {
                 if (pay >= 30) {
@@ -85,9 +80,8 @@ var SceneGame = (function () {
                 this.winAudio = this.level.game.sound.play("BS_WinBG0" +
                     (this.level.game.rnd.integerInRange(1, 8)).toString());
                 this.gameNumber.setAllByGameData();
-                this.gameBt.setStateWin();
                 this.gameNumber.clearBitAtWin(hitSymbolID);
-                gameData.gameState = GAMESTATE.WIN;
+                gameData.changeState(GAMESTATE.WIN);
             }
         }
     };
@@ -97,16 +91,14 @@ var SceneGame = (function () {
             this.level.game.sound.play("BS_DoubleWin");
             gameData.win *= 2;
             this.gameNumber.setWin();
-            this.gameBt.setStateWin();
-            gameData.gameState = GAMESTATE.DOUBLE_WIN;
+            gameData.changeState(GAMESTATE.DOUBLE_WIN);
         }
         else {
             this.level.game.sound.play("BS_DoubleLose");
             gameData.win = 0;
             this.gameNumber.setAllByGameData();
             this.clearBet();
-            this.gameBt.setStateIdle();
-            gameData.gameState = GAMESTATE.IDLE; // Temp to do this, it will be accointing.
+            gameData.changeState(GAMESTATE.IDLE); // Temp to do this, it will be accointing.
         }
     };
     SceneGame.prototype.jackpotGlitterDone = function () {
@@ -129,14 +121,17 @@ var SceneGame = (function () {
         else {
             jpHitPosTemp = this.gameRoller.getRandJackpotPosTest(true, this.gameRoller.getNowPos());
         }
-        gameData.gameState = GAMESTATE.JP_ROLL;
-        this.gameRoller.setJpRoll(jpHitPosTemp);
+        if (jpHitPosTemp.length) {
+            gameData.changeState(GAMESTATE.JP_ROLL, jpHitPosTemp);
+        }
+        else {
+            gameData.changeState(GAMESTATE.JP_NO_WIN);
+        }
     };
     SceneGame.prototype.jackpotRollDone = function (aJackpotRollHitSymbol, bigWinAnm) {
         if (gameData.win == 0) {
             this.clearBet();
-            this.gameBt.setStateIdle();
-            gameData.gameState = GAMESTATE.IDLE;
+            gameData.changeState(GAMESTATE.IDLE);
         }
         else {
             if (bigWinAnm) {
@@ -145,25 +140,49 @@ var SceneGame = (function () {
             this.winAudio = this.level.game.sound.play("BS_WinBG0" +
                 (this.level.game.rnd.integerInRange(1, 8)).toString());
             this.gameNumber.setAllByGameData();
-            this.gameBt.setStateWin();
             this.gameNumber.clearBitAtJackpot(aJackpotRollHitSymbol);
-            gameData.gameState = GAMESTATE.WIN;
+            gameData.changeState(GAMESTATE.WIN);
+        }
+    };
+    SceneGame.prototype.winTakeStep = function (inWinStep) {
+        if (this.gameState != GAMESTATE.TAKE_WIN) {
+            console.log("ERROR inWinStep in SceneGame::winTakeStep()");
+            return;
+        }
+        if (inWinStep == -1) {
+            if (gameData.win > 0) {
+                gameData.credits += gameData.win;
+                gameData.win = 0;
+                this.gameNumber.setAllByGameData();
+            }
+            gameData.changeState(GAMESTATE.IDLE);
+            return;
+        }
+        if (gameData.win > 0) {
+            gameData.credits += inWinStep | 0;
+            gameData.win -= inWinStep | 0;
+            this.gameNumber.setAllByGameData();
         }
     };
     SceneGame.prototype.OnBtStart = function () {
         console.log("BtStart");
         //this..playNormalBt() ;
-        if (gameData.gameState == GAMESTATE.WIN || gameData.gameState == GAMESTATE.DOUBLE_WIN) {
+        if (this.gameState == GAMESTATE.WIN || this.gameState == GAMESTATE.DOUBLE_WIN) {
             this.winAudio.stop();
             this.gameAnm.stopWin();
-            gameData.credits += gameData.win;
-            gameData.win = 0;
             this.clearBet();
-            this.gameBt.setStateIdle(); // Temp
+            gameData.changeState(GAMESTATE.TAKE_WIN, gameData.win);
             this.gameRoller.showIdle();
-            gameData.gameState = GAMESTATE.IDLE; // Temp to do this, it will be accointing.
         }
-        else if (gameData.gameState == GAMESTATE.IDLE) {
+        else if (this.gameState == GAMESTATE.TAKE_WIN) {
+            if (gameData.win > 0) {
+                gameData.credits += gameData.win;
+                gameData.win = 0;
+                this.gameNumber.setAllByGameData();
+            }
+            gameData.changeState(GAMESTATE.IDLE);
+        }
+        else if (this.gameState == GAMESTATE.IDLE) {
             if (gameData.totalBet > 0) {
                 if (gameData.testerLuckyTime) {
                     if (this.level.game.rnd.integerInRange(0, 1) == 0) {
@@ -177,8 +196,7 @@ var SceneGame = (function () {
                     gameData.rollerStopPos = this.level.game.rnd.integerInRange(0, this.gameRoller.getSlotNumber() - 1); // temp pos
                 }
                 this.gameAnm.playIdle();
-                this.gameBt.setStateRollOrDouble();
-                gameData.gameState = GAMESTATE.ROLL;
+                gameData.changeState(GAMESTATE.ROLL);
                 this.gameRoller.roll(gameData.rollerStopPos);
             }
             else if (this.runPreBet()) {
@@ -194,40 +212,45 @@ var SceneGame = (function () {
                     gameData.rollerStopPos = this.level.game.rnd.integerInRange(0, this.gameRoller.getSlotNumber() - 1); // temp pos
                 }
                 this.gameAnm.playIdle();
-                this.gameBt.setStateRollOrDouble();
-                gameData.gameState = GAMESTATE.ROLL;
+                gameData.changeState(GAMESTATE.ROLL);
                 this.gameRoller.roll(gameData.rollerStopPos);
             }
         }
     };
-    SceneGame.prototype.OnBtAuto = function () {
-        console.log("BtAuto");
+    SceneGame.prototype.OnBtAllAdd1 = function () {
+        console.log("BtAllAdd1");
+        gameData.credits -= gameData.symbolNum;
+        for (var i = 0; i < gameData.symbolNum; i++) {
+            gameData.symbolBet[i]++;
+        }
+        gameData.totalBet += gameData.symbolNum;
+        this.gameBt.setStartBtLockadle(true);
+        this.backupBet();
+        this.gameNumber.setAllByGameData();
+        this.gameRoller.showIdle();
+        this.level.game.sound.play("BS_BetBt03");
     };
     SceneGame.prototype.OnBtDoubleL = function () {
         console.log("BtDoubleL");
         this.winAudio.stop();
         this.gameAnm.stopWin();
-        this.gameBt.setStateRollOrDouble();
-        this.gameRoller.setDoubleLeft();
         gameData.doubleBet = false; // false:Left(1-6)  true:Right(8-13)
         var distTemp = gameData.getDoubleRand(this.level.game, false, 0); // Temp
         //distTemp = 3// ------- moses test ----------
         gameData.doubleDist = distTemp;
         this.gameDouble.setDouble(gameData.doubleDist);
-        gameData.gameState = GAMESTATE.DOUBLE;
+        gameData.changeState(GAMESTATE.DOUBLE, false); // false is left
     };
     SceneGame.prototype.OnBtDoubleR = function () {
         console.log("BtDoubleR");
         this.winAudio.stop();
         this.gameAnm.stopWin();
-        this.gameBt.setStateRollOrDouble();
-        this.gameRoller.setDoubleRight();
         gameData.doubleBet = true; // false:Left(1-6)  true:Right(8-13)
         var distTemp = gameData.getDoubleRand(this.level.game, false, 0); // Temp
         //distTemp = 8// ------- moses test ----------
         gameData.doubleDist = distTemp;
         this.gameDouble.setDouble(gameData.doubleDist);
-        gameData.gameState = GAMESTATE.DOUBLE;
+        gameData.changeState(GAMESTATE.DOUBLE, true); // true is right
     };
     SceneGame.prototype.OnBtFunction = function () {
         console.log("BtFunction");
@@ -241,11 +264,12 @@ var SceneGame = (function () {
             return;
         }
         console.log("Symbol " + symID);
-        if (gameData.gameState == GAMESTATE.IDLE && gameData.credits > 0 &&
+        if (this.gameState == GAMESTATE.IDLE && gameData.credits > 0 &&
             gameData.symbolBet[symID] < gameData.symbolBetMax) {
             gameData.credits--;
             gameData.symbolBet[symID]++;
             gameData.totalBet++;
+            this.gameBt.setStartBtLockadle(true);
             this.backupBet();
             this.gameNumber.setAllByGameData();
             this.gameRoller.showIdle();

@@ -904,10 +904,20 @@
       "atlasURL": "assets/game/Number/BU_Number04.xml",
       "xSpacing": 0,
       "ySpacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "BA_AllAdd1",
+      "url": "assets/game/Button/BA_AllAdd1.png",
+      "frameWidth": 74,
+      "frameHeight": 67,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
     }
   ],
   "meta": {
-    "generated": "1504762959101",
+    "generated": "1505456772834",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
