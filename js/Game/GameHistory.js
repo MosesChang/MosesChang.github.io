@@ -35,10 +35,10 @@ var GameHistory = (function () {
             else
                 numStr = "0" + (this.aHistoryID[i] + 1).toString();
             if (i == 0) {
-                this.level.fGroupHistory.create(430 - (40 * i), 9, "Result" + numStr + "_1");
+                this.level.fGroupHistory.create(430 - (40 * i), 9, "GameImage1", "BU_Result" + numStr + "_1");
             }
             else {
-                this.level.fGroupHistory.create(430 - (40 * i), 9, "Result" + numStr + "_2");
+                this.level.fGroupHistory.create(430 - (40 * i), 9, "GameImage1", "BU_Result" + numStr + "_2");
             }
         }
         // --------------- moses test ----------------

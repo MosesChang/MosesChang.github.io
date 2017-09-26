@@ -32,7 +32,7 @@ var GameNumber = (function () {
         this.rate.anchor.set(1);
         this.rate.text = "0";
         this.level.fGroupNumber.add(this.rate);
-        this.totalBet = this.level.game.add.bitmapText(251, 104, 'Number06');
+        this.totalBet = this.level.game.add.bitmapText(251, 102, 'Number06');
         this.totalBet.anchor.set(1);
         this.totalBet.text = "0";
         this.level.fGroupNumber.add(this.totalBet);
@@ -49,10 +49,10 @@ var GameNumber = (function () {
         this.symbolNoHitCount[1] = this.level.game.add.bitmapText(92, 710, 'Number04');
         this.symbolNoHitCount[2] = this.level.game.add.bitmapText(136, 710, 'Number04');
         this.symbolNoHitCount[3] = this.level.game.add.bitmapText(179, 710, 'Number04');
-        this.symbolNoHitCount[4] = this.level.game.add.bitmapText(38, 738, 'Number04');
-        this.symbolNoHitCount[5] = this.level.game.add.bitmapText(83, 738, 'Number04');
-        this.symbolNoHitCount[6] = this.level.game.add.bitmapText(129, 738, 'Number04');
-        this.symbolNoHitCount[7] = this.level.game.add.bitmapText(174, 738, 'Number04');
+        this.symbolNoHitCount[4] = this.level.game.add.bitmapText(38, 740, 'Number04');
+        this.symbolNoHitCount[5] = this.level.game.add.bitmapText(83, 740, 'Number04');
+        this.symbolNoHitCount[6] = this.level.game.add.bitmapText(129, 740, 'Number04');
+        this.symbolNoHitCount[7] = this.level.game.add.bitmapText(174, 740, 'Number04');
         for (var i = 0; i < gameData.symbolNum; i++) {
             this.symbolNoHitCount[i].anchor.set(0.5);
             this.symbolNoHitCount[i].visible = true;

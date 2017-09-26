@@ -28,24 +28,24 @@ var SymbolElement = (function () {
     return SymbolElement;
 }());
 var FULLSYMBOL = [
-    new SymbolElement("BAR100", 100, "Symbol01", "", 0),
-    new SymbolElement("S77", -1, "Symbol03", "", 1),
-    new SymbolElement("STAR", -1, "Symbol05", "", 2),
-    new SymbolElement("WATERMELON", -1, "Symbol07", "", 3),
-    new SymbolElement("BELL", -1, "Symbol09", "", 4),
-    new SymbolElement("MANGO", -1, "Symbol11", "", 5),
-    new SymbolElement("ORANGE", -1, "Symbol13", "", 6),
-    new SymbolElement("APPLE", 5, "Symbol15", "", 7),
-    new SymbolElement("BAR50", 50, "Symbol02", "BAR100", 0),
-    new SymbolElement("S77x3", 3, "Symbol04", "S77", 1),
-    new SymbolElement("STARx3", 3, "Symbol06", "STAR", 2),
-    new SymbolElement("WATERMELONx3", 3, "Symbol08", "WATERMELON", 3),
-    new SymbolElement("BELLx3", 3, "Symbol10", "BELL", 4),
-    new SymbolElement("MANGOx3", 3, "Symbol12", "MANGO", 5),
-    new SymbolElement("ORANGEx3", 3, "Symbol14", "ORANGE", 6),
-    new SymbolElement("APPLEx3", 3, "Symbol16", "APPLE", 7),
-    new SymbolElement("LUCKYRIGHT", 0, "Symbol17", "SPECIAL", 99),
-    new SymbolElement("LUCKYLEFT", 0, "Symbol18", "SPECIAL", 99)
+    new SymbolElement("BAR100", 100, "BU_Symbol01", "", 0),
+    new SymbolElement("S77", -1, "BU_Symbol03", "", 1),
+    new SymbolElement("STAR", -1, "BU_Symbol05", "", 2),
+    new SymbolElement("WATERMELON", -1, "BU_Symbol07", "", 3),
+    new SymbolElement("BELL", -1, "BU_Symbol09", "", 4),
+    new SymbolElement("MANGO", -1, "BU_Symbol11", "", 5),
+    new SymbolElement("ORANGE", -1, "BU_Symbol13", "", 6),
+    new SymbolElement("APPLE", 5, "BU_Symbol15", "", 7),
+    new SymbolElement("BAR50", 50, "BU_Symbol02", "BAR100", 0),
+    new SymbolElement("S77x3", 3, "BU_Symbol04", "S77", 1),
+    new SymbolElement("STARx3", 3, "BU_Symbol06", "STAR", 2),
+    new SymbolElement("WATERMELONx3", 3, "BU_Symbol08", "WATERMELON", 3),
+    new SymbolElement("BELLx3", 3, "BU_Symbol10", "BELL", 4),
+    new SymbolElement("MANGOx3", 3, "BU_Symbol12", "MANGO", 5),
+    new SymbolElement("ORANGEx3", 3, "BU_Symbol14", "ORANGE", 6),
+    new SymbolElement("APPLEx3", 3, "BU_Symbol16", "APPLE", 7),
+    new SymbolElement("LUCKYRIGHT", 0, "BU_Symbol17", "SPECIAL", 99),
+    new SymbolElement("LUCKYLEFT", 0, "BU_Symbol18", "SPECIAL", 99)
 ];
 var GameData = (function () {
     function GameData() {
@@ -64,7 +64,7 @@ var GameData = (function () {
         this.rate = 20;
         this.totalBet = 0;
         this.rollerStopPos = 0;
-        this.symbolBetMax = 10;
+        this.symbolBetMax = 99;
         this.win = 0;
         this.doubleDist = 0;
         this.doubleBet = false; // false:Left(1-6)  true:Right(8-13)

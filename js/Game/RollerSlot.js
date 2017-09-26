@@ -1,10 +1,10 @@
 var RollerSlot = (function () {
     function RollerSlot(inSymbol, level, symbolX, symbolY, lightX, lightY) {
         this.symbol = inSymbol;
-        this.spriteSymbolNormal = level.fGroupSymbolNormal.create(symbolX, symbolY, this.symbol.keyName + "_1");
-        this.spriteSymbolLight = level.fGroupSymbolLight.create(symbolX, symbolY, this.symbol.keyName + "_2");
-        this.spriteLightNormal = level.fGroupLightNormal.create(lightX, lightY, "SlotLight01");
-        this.spriteLightLight = level.fGroupLightLight.create(lightX, lightY, "SlotLight02");
+        this.spriteSymbolNormal = level.fGroupSymbolNormal.create(symbolX, symbolY, "GameImage1", this.symbol.keyName + "_1");
+        this.spriteSymbolLight = level.fGroupSymbolLight.create(symbolX, symbolY, "GameImage1", this.symbol.keyName + "_2");
+        this.spriteLightNormal = level.fGroupLightNormal.create(lightX, lightY, "GameImage1", "BU_LT01");
+        this.spriteLightLight = level.fGroupLightLight.create(lightX, lightY, "GameImage1", "BU_LT02");
         this.lightOnOff(false);
     }
     RollerSlot.prototype.lightOnOff = function (bOnOff) {

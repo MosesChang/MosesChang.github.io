@@ -61,8 +61,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "9f8aee16-43cd-422a-a3c1-767fec9c2d5c",
+                "type": "atlas-sprite",
+                "id": "c8088fa0-c4aa-49d0-94db-d60a5cabbb3b",
                 "asset": "1",
                 "info": {
                   "editorName": "ValueFrame",
@@ -71,18 +71,18 @@
                 }
               },
               {
-                "type": "image",
-                "id": "7575e2f1-6304-40c8-994c-b9a70243cbe5",
+                "type": "atlas-sprite",
+                "id": "d3e3a68a-fd33-4ac5-b18f-178b227ae003",
                 "asset": "2",
                 "info": {
-                  "editorName": "TotalBetFrame",
+                  "editorName": "TotalbetFrame",
                   "x": 43,
                   "y": 66
                 }
               },
               {
-                "type": "image",
-                "id": "aa350f17-786d-4878-898f-d267963fea60",
+                "type": "atlas-sprite",
+                "id": "ea92bbeb-2c72-44ec-9550-fef9fd65827e",
                 "asset": "3",
                 "info": {
                   "editorName": "CreditFrame",
@@ -91,8 +91,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "33579fd3-d50c-485e-9e7a-c464ebf9f1e3",
+                "type": "atlas-sprite",
+                "id": "d37a17db-6236-4918-86c5-93c67ffbcba9",
                 "asset": "4",
                 "info": {
                   "editorName": "WinFrame",
@@ -122,7 +122,7 @@
             "children": [
               {
                 "type": "atlas-sprite",
-                "id": "36ca81d5-e587-463f-9a0c-2877190b82e0",
+                "id": "7d6cce62-2843-4250-873d-c2450c7ecc4d",
                 "asset": "5",
                 "info": {
                   "editorName": "centerSignIdle1",
@@ -170,7 +170,7 @@
               },
               {
                 "type": "atlas-sprite",
-                "id": "64e09d1d-3fed-47e6-9df1-344f90468ae4",
+                "id": "0db5beb1-c0db-4b0b-b7b7-4ae53414c9e5",
                 "asset": "6",
                 "info": {
                   "editorName": "centerSignIdle2",
@@ -218,7 +218,7 @@
               },
               {
                 "type": "atlas-sprite",
-                "id": "2f30b5b8-4d5a-45a9-9e30-9cbb62a8d83d",
+                "id": "28ad0734-d248-47aa-b98b-fd7b5482cf7e",
                 "asset": "7",
                 "info": {
                   "editorName": "centerSignIdle3",
@@ -266,7 +266,7 @@
               },
               {
                 "type": "atlas-sprite",
-                "id": "a4b0f71a-48cb-4e84-8d9a-62fe590b731c",
+                "id": "69aff8fc-0e89-46c1-aa0e-ca6736c20c0b",
                 "asset": "8",
                 "info": {
                   "editorName": "centerSignIdle4",
@@ -276,7 +276,6 @@
                   "animations": [{
                     "name": "play",
                     "frameRate": 30,
-                    "public": true,
                     "frames": [
                       "091",
                       "092",
@@ -314,7 +313,7 @@
               },
               {
                 "type": "atlas-sprite",
-                "id": "84ee8605-2760-4454-863c-08e5b24a3c40",
+                "id": "d12f82b6-2317-4172-9aa5-51173a7ab92b",
                 "asset": "9",
                 "info": {
                   "editorName": "centerSignWin1",
@@ -362,7 +361,7 @@
               },
               {
                 "type": "atlas-sprite",
-                "id": "106ef9d1-2350-434d-bb2f-c1fb52ca0f9d",
+                "id": "dbd24fe7-799b-4b15-a10c-8d77faa99653",
                 "asset": "10",
                 "info": {
                   "editorName": "centerSignWin2",
@@ -410,7 +409,7 @@
               },
               {
                 "type": "atlas-sprite",
-                "id": "1a9d77fb-4570-4262-97ea-7851be7fcefe",
+                "id": "c963bc50-6fd2-4a9a-bab9-474283b15a09",
                 "asset": "11",
                 "info": {
                   "editorName": "WinBoltLeft",
@@ -442,7 +441,7 @@
               },
               {
                 "type": "atlas-sprite",
-                "id": "d7c0b9e2-eb28-4f5b-9bc3-cd04b4ac5681",
+                "id": "2698049e-f151-42f5-b03e-1841a8ad522a",
                 "asset": "11",
                 "info": {
                   "editorName": "WinBoltRight",
@@ -715,8 +714,8 @@
             "setAll": [],
             "children": [
               {
-                "type": "image",
-                "id": "ee59520a-28e1-48e0-aad9-5c8821e9db23",
+                "type": "atlas-sprite",
+                "id": "6163509d-deeb-4bf2-9607-085054758499",
                 "asset": "26",
                 "info": {
                   "editorName": "Pay005x",
@@ -725,8 +724,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "db9a3b32-adf8-463f-a524-ec0a9e7c63ee",
+                "type": "atlas-sprite",
+                "id": "4086be83-ca18-4082-8f88-c04df844bf51",
                 "asset": "27",
                 "info": {
                   "editorName": "Pay100x",
@@ -735,8 +734,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "fbaafca4-d10c-4a29-8ec6-1d6c149ccced",
+                "type": "atlas-sprite",
+                "id": "ecba09d4-441a-4acb-b63e-ca3071eea254",
                 "asset": "28",
                 "info": {
                   "editorName": "Pay010x_2",
@@ -745,8 +744,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "fc7f7542-f04f-4f19-83bd-efd5ccfca89e",
+                "type": "atlas-sprite",
+                "id": "bf0e8a60-c631-41a8-aa23-43765ff65a8d",
                 "asset": "29",
                 "info": {
                   "editorName": "Pay015x_2",
@@ -755,8 +754,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "727a18e1-d260-4df8-8014-1fb01d1060ea",
+                "type": "atlas-sprite",
+                "id": "4514ffeb-6318-4a90-8156-15851cdea710",
                 "asset": "30",
                 "info": {
                   "editorName": "Pay020x_2",
@@ -765,8 +764,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "a249fcaf-ec67-43d3-8533-38ce80a3149e",
+                "type": "atlas-sprite",
+                "id": "196889bf-fc27-4127-bae2-1dfec84f1e53",
                 "asset": "30",
                 "info": {
                   "editorName": "Pay020x_2-2",
@@ -775,8 +774,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "cc38be95-9fed-4f38-bae2-8770a21ee739",
+                "type": "atlas-sprite",
+                "id": "15d2ccd6-4e70-4a43-8c38-9ba50b5755a3",
                 "asset": "31",
                 "info": {
                   "editorName": "Pay030x_2",
@@ -785,8 +784,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "7b80a7d6-ad62-41e8-9ee2-28320e588b4b",
+                "type": "atlas-sprite",
+                "id": "7c5e50f7-506e-4850-a6cf-95a090d92200",
                 "asset": "32",
                 "info": {
                   "editorName": "Pay040x_2",
@@ -795,8 +794,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "2d6100ba-60db-4c47-bad0-e39eaed1706b",
+                "type": "atlas-sprite",
+                "id": "f978bfea-8e14-4aec-8c1f-b0cdb1f29f06",
                 "asset": "33",
                 "info": {
                   "editorName": "PayFrameLightRight0",
@@ -806,8 +805,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "f2cf46e1-fd26-4293-9059-211069c33d4f",
+                "type": "atlas-sprite",
+                "id": "50ff4b9e-3d36-4db5-a447-47087fa7823a",
                 "asset": "33",
                 "info": {
                   "editorName": "PayFrameLightRight1",
@@ -817,8 +816,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "090b7dd8-4b29-4447-be3f-c046ce765867",
+                "type": "atlas-sprite",
+                "id": "df90e3e2-6187-405a-8ff9-32eb59b420fb",
                 "asset": "33",
                 "info": {
                   "editorName": "PayFrameLightRight2",
@@ -828,8 +827,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "ae9d5f78-80f3-4278-a9a2-1973fef36b66",
+                "type": "atlas-sprite",
+                "id": "e93b27a5-41f4-4c97-b6b2-d606a5c195f8",
                 "asset": "33",
                 "info": {
                   "editorName": "PayFrameLightLeft0",
@@ -839,8 +838,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "66c3eef7-c30f-447b-9686-5481314b9569",
+                "type": "atlas-sprite",
+                "id": "68b0ecd6-1eb3-47c8-adc3-02d97df1844f",
                 "asset": "33",
                 "info": {
                   "editorName": "PayFrameLightLeft1",
@@ -850,8 +849,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "e6afb14a-44cd-461a-b4fd-b164847453e8",
+                "type": "atlas-sprite",
+                "id": "11b46d49-8027-417d-a4e5-aae5b7c64435",
                 "asset": "33",
                 "info": {
                   "editorName": "PayFrameLightLeft2",
@@ -861,8 +860,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "b42ac580-ec9d-48a4-93b8-e6ca18ba350a",
+                "type": "atlas-sprite",
+                "id": "863ff577-63d8-46c4-9542-70ee3308bfb9",
                 "asset": "34",
                 "info": {
                   "editorName": "Pay010x_1Right0",
@@ -872,8 +871,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "153c277a-8c00-4986-bc32-7402002e2ec8",
+                "type": "atlas-sprite",
+                "id": "3832a2db-ef81-49ee-b46c-a39d4633b893",
                 "asset": "35",
                 "info": {
                   "editorName": "Pay015x_1Right1",
@@ -883,8 +882,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "90333bbe-fc26-452b-9a56-b856e0cd1e8e",
+                "type": "atlas-sprite",
+                "id": "892fbd2a-3541-4c40-9590-67603689c301",
                 "asset": "36",
                 "info": {
                   "editorName": "Pay020x_1Right2",
@@ -894,8 +893,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "2d3cea4d-08e3-422c-a325-296c6cabd465",
+                "type": "atlas-sprite",
+                "id": "cfb71422-3ad3-446f-8415-5ef24f44a02d",
                 "asset": "36",
                 "info": {
                   "editorName": "Pay020x_1Left0",
@@ -905,8 +904,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "c75dc7c1-145f-49bd-87e0-914dd7af1156",
+                "type": "atlas-sprite",
+                "id": "3aa6e9f6-0683-4412-b082-65cd822a622d",
                 "asset": "37",
                 "info": {
                   "editorName": "Pay030x_1Left1",
@@ -916,8 +915,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "b4f61fb5-56d2-44dc-a099-ef782ac773ee",
+                "type": "atlas-sprite",
+                "id": "55091140-74a1-4008-8a02-492439838bab",
                 "asset": "38",
                 "info": {
                   "editorName": "Pay040x_1Left2",
@@ -928,7 +927,7 @@
               },
               {
                 "type": "spritesheet",
-                "id": "a816db43-0953-4f91-8be7-0918805a2344",
+                "id": "9b3ad97d-d36f-4842-b327-b28a0fd074f5",
                 "asset": "39",
                 "info": {
                   "editorName": "JackpotLamp",
@@ -987,8 +986,8 @@
             "setAll": [],
             "children": [
               {
-                "type": "image",
-                "id": "97ab5df6-6ae0-4731-be15-4a5cdace1121",
+                "type": "atlas-sprite",
+                "id": "ac84e8f2-b05d-4d39-9525-46cba6907138",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg",
@@ -997,8 +996,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "e24793b4-9dd0-405b-b9cc-cd3811ea0961",
+                "type": "atlas-sprite",
+                "id": "7c014af8-2f33-4948-b5fd-fce850f898e5",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg1",
@@ -1007,8 +1006,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "39e44152-435f-4fd4-9b1a-7649f1a26192",
+                "type": "atlas-sprite",
+                "id": "31ce0950-ae26-4526-9c46-bb6d9f694d56",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg2",
@@ -1017,8 +1016,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "37b7e4a1-4653-4b7d-b48f-bf09c100b0e8",
+                "type": "atlas-sprite",
+                "id": "862c5718-0a38-4513-b263-f658904f7171",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg3",
@@ -1027,8 +1026,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "ed5ee99e-c9f7-45cd-9dc2-3581298a8565",
+                "type": "atlas-sprite",
+                "id": "bb256b26-39b1-4b9c-ad60-3bad352241aa",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg4",
@@ -1037,8 +1036,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "014ce04f-6403-4638-b015-af6ab26897a8",
+                "type": "atlas-sprite",
+                "id": "26b88c87-d60c-4fdb-a36c-7d3e9c139090",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg5",
@@ -1047,8 +1046,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "f9cacbc6-e48a-44d6-b736-565d85d719ec",
+                "type": "atlas-sprite",
+                "id": "7f8542b4-7230-487f-ab20-3112ba0fdbe8",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg6",
@@ -1057,8 +1056,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "8059f9f9-56dc-4626-aa40-d5b5b38c0d11",
+                "type": "atlas-sprite",
+                "id": "e51a3707-3dac-401d-a481-2f824a58199a",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg7",
@@ -1067,8 +1066,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "b643048e-4f8d-41f7-a5df-5a84c6876f68",
+                "type": "atlas-sprite",
+                "id": "07519a41-3e80-4ffd-8c3e-8939c4162a0d",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg8",
@@ -1077,8 +1076,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "6b64fe1a-79b5-4fb9-9b0b-d340ebb48d5b",
+                "type": "atlas-sprite",
+                "id": "af93282e-20dc-467f-a157-587cbe099690",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg9",
@@ -1087,8 +1086,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "ba08062a-70db-4068-a4ae-11fc5609effd",
+                "type": "atlas-sprite",
+                "id": "4a84d49e-661a-4086-b740-29d6208c0d3e",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg10",
@@ -1097,8 +1096,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "5340ce09-d18f-48f7-9123-13f2e83b34f0",
+                "type": "atlas-sprite",
+                "id": "51eebfeb-5ea7-4067-99f7-eceed415415e",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg11",
@@ -1107,8 +1106,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "33e71d4a-35f8-4953-bd06-e148784598e2",
+                "type": "atlas-sprite",
+                "id": "b5d68984-6aac-4c45-be57-ecf3089127c3",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg12",
@@ -1117,8 +1116,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "b2f9102a-471b-4963-8690-c1d62a930b92",
+                "type": "atlas-sprite",
+                "id": "8ed18f0d-5aa6-4949-a002-0cb0d1b59b5f",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg13",
@@ -1127,8 +1126,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "ab26ead4-c1e7-4db3-b369-527a30d088ec",
+                "type": "atlas-sprite",
+                "id": "dff11e8f-605a-4e87-b781-1be8d8fc83df",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg14",
@@ -1137,8 +1136,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "7712ba6a-cf63-4b4e-a912-6a708ca35237",
+                "type": "atlas-sprite",
+                "id": "9123ea65-7b35-404b-af58-00ec6c72a023",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg15",
@@ -1147,18 +1146,18 @@
                 }
               },
               {
-                "type": "image",
-                "id": "de7fd6fa-cfe0-4599-9a1d-11bb18a428f5",
+                "type": "atlas-sprite",
+                "id": "830fa97a-5222-4891-8d05-4377434748ba",
                 "asset": "41",
                 "info": {
-                  "editorName": "DoubleFrame",
+                  "editorName": "BU_DoubleFrame",
                   "x": 233,
                   "y": 517
                 }
               },
               {
-                "type": "image",
-                "id": "ae791a20-9afd-44df-a0ca-120308c1a58d",
+                "type": "atlas-sprite",
+                "id": "7549b184-813e-415a-9205-a1606e8f4423",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg16",
@@ -1167,8 +1166,8 @@
                 }
               },
               {
-                "type": "image",
-                "id": "ca9b8757-8862-4388-a79e-5430148c4dc7",
+                "type": "atlas-sprite",
+                "id": "f90fab5e-8db0-46b6-b3e9-b82498fd0cc2",
                 "asset": "40",
                 "info": {
                   "editorName": "CreditEightBg17",
@@ -1192,22 +1191,26 @@
     "1": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "ValueFrame"
+      "asset": "GameImage1",
+      "sprite": "BU_ValueFrame"
     },
     "2": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "TotalBetFrame"
+      "asset": "GameImage1",
+      "sprite": "BU_TotalbetFrame"
     },
     "3": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "CreditFrame"
+      "asset": "GameImage1",
+      "sprite": "BU_CreditFrame"
     },
     "4": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "WinFrame"
+      "asset": "GameImage1",
+      "sprite": "BU_WinFrame"
     },
     "5": {
       "file": "WebContent/assets/pack.json",
@@ -1219,7 +1222,7 @@
       "file": "WebContent/assets/pack.json",
       "section": "Game",
       "asset": "CenterSignIdle2",
-      "sprite": "032"
+      "sprite": "031"
     },
     "7": {
       "file": "WebContent/assets/pack.json",
@@ -1338,67 +1341,80 @@
     "26": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay005x"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay5x"
     },
     "27": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay100x"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay100x"
     },
     "28": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay010x_2"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay10x_2"
     },
     "29": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay015x_2"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay15x_2"
     },
     "30": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay020x_2"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay20x_2"
     },
     "31": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay030x_2"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay30x_2"
     },
     "32": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay040x_2"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay40x_2"
     },
     "33": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "PayFrameLight"
+      "asset": "GameImage1",
+      "sprite": "BU_PayFrameLt"
     },
     "34": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay010x_1"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay10x_1"
     },
     "35": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay015x_1"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay15x_1"
     },
     "36": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay020x_1"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay20x_1"
     },
     "37": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay030x_1"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay30x_1"
     },
     "38": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "Pay040x_1"
+      "asset": "GameImage1",
+      "sprite": "BU_Pay40x_1"
     },
     "39": {
       "file": "WebContent/assets/pack.json",
@@ -1409,12 +1425,14 @@
     "40": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "CreditEightBg"
+      "asset": "GameImage1",
+      "sprite": "BU_Eight"
     },
     "41": {
       "file": "WebContent/assets/pack.json",
       "section": "Game",
-      "asset": "DoubleFrame"
+      "asset": "GameImage1",
+      "sprite": "BU_DoubleFrame"
     }
   },
   "prefab-table": {}
