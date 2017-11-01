@@ -330,54 +330,6 @@
     },
     {
       "type": "audio",
-      "key": "BS_WinBG01",
-      "urls": ["assets/game/Audio/BS_WinBG01.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
-      "key": "BS_WinBG02",
-      "urls": ["assets/game/Audio/BS_WinBG02.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
-      "key": "BS_WinBG03",
-      "urls": ["assets/game/Audio/BS_WinBG03.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
-      "key": "BS_WinBG04",
-      "urls": ["assets/game/Audio/BS_WinBG04.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
-      "key": "BS_WinBG05",
-      "urls": ["assets/game/Audio/BS_WinBG05.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
-      "key": "BS_WinBG06",
-      "urls": ["assets/game/Audio/BS_WinBG06.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
-      "key": "BS_WinBG07",
-      "urls": ["assets/game/Audio/BS_WinBG07.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
-      "key": "BS_WinBG08",
-      "urls": ["assets/game/Audio/BS_WinBG08.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
       "key": "CS_PressBt",
       "urls": ["assets/game/Audio/CS_PressBt.wav"],
       "autoDecode": true
@@ -471,10 +423,58 @@
       "textureURL": "assets/game/Atlas/GameImage1.png",
       "atlasURL": "assets/game/Atlas/GameImage1.json",
       "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG01",
+      "urls": ["assets/game/Audio/BS_WinBG01 .mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG02",
+      "urls": ["assets/game/Audio/BS_WinBG02.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG03",
+      "urls": ["assets/game/Audio/BS_WinBG03.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG04",
+      "urls": ["assets/game/Audio/BS_WinBG04.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG05",
+      "urls": ["assets/game/Audio/BS_WinBG05.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG06",
+      "urls": ["assets/game/Audio/BS_WinBG06.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG07",
+      "urls": ["assets/game/Audio/BS_WinBG07.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinBG08",
+      "urls": ["assets/game/Audio/BS_WinBG08.mp3"],
+      "autoDecode": true
     }
   ],
   "meta": {
-    "generated": "1506396533833",
+    "generated": "1509531813315",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
