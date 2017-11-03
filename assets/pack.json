@@ -306,20 +306,8 @@
     },
     {
       "type": "audio",
-      "key": "BS_Normal01",
-      "urls": ["assets/game/Audio/BS_Normal01.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
       "key": "BS_Normal02",
       "urls": ["assets/game/Audio/BS_Normal02.wav"],
-      "autoDecode": true
-    },
-    {
-      "type": "audio",
-      "key": "BS_Normal03",
-      "urls": ["assets/game/Audio/BS_Normal03.wav"],
       "autoDecode": true
     },
     {
@@ -471,10 +459,130 @@
       "key": "BS_WinBG08",
       "urls": ["assets/game/Audio/BS_WinBG08.mp3"],
       "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_00",
+      "urls": ["assets/game/Audio/BS_Normal03_00.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_01",
+      "urls": ["assets/game/Audio/BS_Normal03_01.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_02",
+      "urls": ["assets/game/Audio/BS_Normal03_02.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_03",
+      "urls": ["assets/game/Audio/BS_Normal03_03.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_04",
+      "urls": ["assets/game/Audio/BS_Normal03_04.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_05",
+      "urls": ["assets/game/Audio/BS_Normal03_05.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_06",
+      "urls": ["assets/game/Audio/BS_Normal03_06.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_07",
+      "urls": ["assets/game/Audio/BS_Normal03_07.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_08",
+      "urls": ["assets/game/Audio/BS_Normal03_08.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal03_09",
+      "urls": ["assets/game/Audio/BS_Normal03_09.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_00",
+      "urls": ["assets/game/Audio/BS_Normal01_00.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_01",
+      "urls": ["assets/game/Audio/BS_Normal01_01.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_02",
+      "urls": ["assets/game/Audio/BS_Normal01_02.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_03",
+      "urls": ["assets/game/Audio/BS_Normal01_03.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_04",
+      "urls": ["assets/game/Audio/BS_Normal01_04.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_05",
+      "urls": ["assets/game/Audio/BS_Normal01_05.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_06",
+      "urls": ["assets/game/Audio/BS_Normal01_06.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_07",
+      "urls": ["assets/game/Audio/BS_Normal01_07.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_08",
+      "urls": ["assets/game/Audio/BS_Normal01_08.wav"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_Normal01_09",
+      "urls": ["assets/game/Audio/BS_Normal01_09.wav"],
+      "autoDecode": true
     }
   ],
   "meta": {
-    "generated": "1509531813315",
+    "generated": "1509689515767",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
