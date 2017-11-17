@@ -265,7 +265,7 @@
     {
       "type": "audio",
       "key": "BS_WinBG01",
-      "urls": ["assets/game/Audio/BS_WinBG01 .mp3"],
+      "urls": ["assets/game/Audio/BS_WinBG01.mp3"],
       "autoDecode": true
     },
     {
