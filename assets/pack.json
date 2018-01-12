@@ -579,16 +579,10 @@
       "key": "CS_Scoring",
       "urls": ["assets/game/Audio/CS_Scoring.mp3"],
       "autoDecode": true
-    },
-    {
-      "type": "image",
-      "key": "OU_LoadingBG",
-      "url": "assets/game/OU_LoadingBG.png",
-      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1515569981455",
+    "generated": "1510220016795",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
