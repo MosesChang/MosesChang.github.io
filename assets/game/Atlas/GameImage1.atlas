@@ -74,7 +74,19 @@
     "Design/game/Image/Result/BU_Result08_2.png",
     "Design/game/Image/BU_BetEightBg.png",
     "Design/game/Image/BU_DoubleFrame.png",
-    "Design/game/Image/BU_Eight.png"
+    "Design/game/Image/BU_Eight.png",
+    "Design/game/Image/BU_BlackBlock.png",
+    "Design/game/Image/AU_Bt.png",
+    "Design/game/Image/AU_Line.png",
+    "Design/game/Image/CU_Info_BG.png",
+    "Design/game/Image/CU_Info_frame.png",
+    "Design/game/Image/CU_Msg01.png",
+    "Design/game/Image/CU_Msg02.png",
+    "Design/game/Image/HU_PageBK.png",
+    "Design/game/Image/HU_PageLt.png",
+    "Design/game/Image/AU_Msg01.png",
+    "Design/game/Image/AU_Msg02.png",
+    "Design/game/Image/AU_Msg03.png"
   ],
   "settings": {
     "pot": true,

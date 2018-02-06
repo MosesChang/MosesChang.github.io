@@ -20,7 +20,7 @@
       "type": "spritesheet",
       "key": "AutoBt",
       "url": "assets/game/SpriteSheet/BA_AutoBt.png",
-      "frameWidth": 74,
+      "frameWidth": 96,
       "frameHeight": 67,
       "frameMax": -1,
       "margin": 0,
@@ -200,7 +200,7 @@
       "type": "spritesheet",
       "key": "BA_AllAdd1",
       "url": "assets/game/SpriteSheet/BA_AllAdd1.png",
-      "frameWidth": 74,
+      "frameWidth": 93,
       "frameHeight": 67,
       "frameMax": -1,
       "margin": 0,
@@ -579,10 +579,79 @@
       "key": "CS_Scoring",
       "urls": ["assets/game/Audio/CS_Scoring.mp3"],
       "autoDecode": true
+    },
+    {
+      "type": "image",
+      "key": "HelpBackground",
+      "url": "assets/game/HU_BG.png",
+      "overwrite": false
+    },
+    {
+      "type": "spritesheet",
+      "key": "FuncAudioBt",
+      "url": "assets/game/SpriteSheet/CU_Lt01Bt.png",
+      "frameWidth": 237,
+      "frameHeight": 57,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "FuncGameInfoBt",
+      "url": "assets/game/SpriteSheet/CU_Lt02Bt.png",
+      "frameWidth": 237,
+      "frameHeight": 57,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "FuncMenuExitBt",
+      "url": "assets/game/SpriteSheet/HU_ExitBt.png",
+      "frameWidth": 50,
+      "frameHeight": 50,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "FuncMenuGameInfoPageRight",
+      "url": "assets/game/SpriteSheet/HU_NextRightBt.png",
+      "frameWidth": 30,
+      "frameHeight": 72,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "spritesheet",
+      "key": "FuncMenuGameInfoPageLeft",
+      "url": "assets/game/SpriteSheet/HU_NextLeftBt.png",
+      "frameWidth": 30,
+      "frameHeight": 72,
+      "frameMax": -1,
+      "margin": 0,
+      "spacing": 0
+    },
+    {
+      "type": "atlas",
+      "key": "GameInfo",
+      "textureURL": "assets/game/Atlas/GameInfo.png",
+      "atlasURL": "assets/game/Atlas/GameInfo.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "image",
+      "key": "AudioBackground",
+      "url": "assets/game/AU_BG.png",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1510220016795",
+    "generated": "1517217905929",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",
