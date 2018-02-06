@@ -323,8 +323,8 @@ var GameData = function () {
         this.testerAudioMute = false;
         //    public testerNetDebugMsg: boolean = true ;
         this.testerNetDebugMsg = false;
-        this.testerBtDebug = true;
-        //    public testerBtDebug: boolean = false ;
+        //    public testerBtDebug: boolean = true ;
+        this.testerBtDebug = false;
         //    public testerCredits: boolean = true ;
         this.testerCredits = false;
         //    public testerSceneGameUpdate: boolean = true ;
@@ -70058,6 +70058,9 @@ var SceneGame = function () {
                     }
                     if (this.gameHistory != null) {
                         this.gameHistory.rebootClean();
+                    }
+                    if (this.winAudio != null) {
+                        this.winAudio.stop();
                     }
                 } else if (inNowState == Global.GAMESTATE.TR_NET_SPIN_RESULT) {
                     this.gameRoller.setRollStopPos(Global.g.rollResult.pos, Global.g.rollResult.reciprocatePos);
