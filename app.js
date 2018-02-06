@@ -71525,6 +71525,7 @@ var GameRoller = function () {
         this.ROLLER_TAIL_ADD = 10;
         this.WIN_ON_DUR = 0.2;
         this.WIN_OFF_DUR = 0.5;
+        this.DELTA_TIME_MAX = 1.0; // For prevent user leave web page for a long time
         this.rollerNowPos = 0;
         this.rollerStopPos = -1; // -1 is not setting yet(waiting for net)
         this.rollerTotalTime = 0;
@@ -71595,6 +71596,11 @@ var GameRoller = function () {
     }, {
         key: "update",
         value: function update(deltaTime) {
+            // For prevent user leave web page for a long time
+            if (deltaTime > this.DELTA_TIME_MAX) {
+                deltaTime = this.DELTA_TIME_MAX;
+            }
+            // State
             if (this.gameState == Global.GAMESTATE.ROLL) {
                 this.rollerTotalTime += deltaTime;
                 this.rollerStepTime += deltaTime;
