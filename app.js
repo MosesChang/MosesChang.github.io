@@ -71525,7 +71525,7 @@ var GameRoller = function () {
         this.ROLLER_TAIL_ADD = 10;
         this.WIN_ON_DUR = 0.2;
         this.WIN_OFF_DUR = 0.5;
-        this.DELTA_TIME_MAX = 1.0; // For prevent user leave web page for a long time
+        this.DELTA_TIME_MAX = 1.0; // For prevent user leave web page for a long time (in one step)
         this.rollerNowPos = 0;
         this.rollerStopPos = -1; // -1 is not setting yet(waiting for net)
         this.rollerTotalTime = 0;
@@ -71596,7 +71596,7 @@ var GameRoller = function () {
     }, {
         key: "update",
         value: function update(deltaTime) {
-            // For prevent user leave web page for a long time
+            // For prevent user leave web page for a long time (in one step)
             if (deltaTime > this.DELTA_TIME_MAX) {
                 deltaTime = this.DELTA_TIME_MAX;
             }
@@ -71606,6 +71606,15 @@ var GameRoller = function () {
                 this.rollerStepTime += deltaTime;
                 if (this.rollerStartToDecend) {
                     var posThroughNow = void 0;
+                    // Done for prevent user leave web page for a long time at last step
+                    if (this.rollerStepTime >= this.ROLLER_DEC_TIME) {
+                        console.log("User leave web page for a long time at last step and jump to dest");
+                        Global.g.mario.game.sound.play("BS_Normal03_00");
+                        this.rollerNowPos = this.rollerStopPos;
+                        this.rollerStopCount();
+                        this.winDeltaTime = 0;
+                        return;
+                    }
                     // Roller Speed
                     this.rollerSpeed = this.getDecendSpeed(this.rollerStepTime);
                     // No move
