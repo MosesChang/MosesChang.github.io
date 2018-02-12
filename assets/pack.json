@@ -648,10 +648,28 @@
       "key": "AudioBackground",
       "url": "assets/game/AU_BG.png",
       "overwrite": false
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinHit01",
+      "urls": ["assets/game/Audio/BS_WinHit01.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinHit02",
+      "urls": ["assets/game/Audio/BS_WinHit02.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "BS_WinHit03",
+      "urls": ["assets/game/Audio/BS_WinHit03.mp3"],
+      "autoDecode": true
     }
   ],
   "meta": {
-    "generated": "1517217905929",
+    "generated": "1518056953621",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

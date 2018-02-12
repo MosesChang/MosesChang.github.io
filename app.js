@@ -208,7 +208,7 @@ module.exports = !__webpack_require__(3)(function () {
 
 
 var anObject = __webpack_require__(1);
-var IE8_DOM_DEFINE = __webpack_require__(94);
+var IE8_DOM_DEFINE = __webpack_require__(95);
 var toPrimitive = __webpack_require__(24);
 var dP = Object.defineProperty;
 
@@ -270,28 +270,30 @@ var GAMESTATE;
     GAMESTATE[GAMESTATE["INIT"] = 1] = "INIT";
     GAMESTATE[GAMESTATE["IDLE"] = 2] = "IDLE";
     GAMESTATE[GAMESTATE["ROLL"] = 3] = "ROLL";
-    GAMESTATE[GAMESTATE["WIN"] = 4] = "WIN";
-    GAMESTATE[GAMESTATE["TAKE_WIN"] = 5] = "TAKE_WIN";
-    GAMESTATE[GAMESTATE["DOUBLE"] = 6] = "DOUBLE";
-    GAMESTATE[GAMESTATE["DOUBLE_WIN"] = 7] = "DOUBLE_WIN";
-    GAMESTATE[GAMESTATE["JP_GLITTER"] = 8] = "JP_GLITTER";
-    GAMESTATE[GAMESTATE["JP_ROLL"] = 9] = "JP_ROLL";
-    GAMESTATE[GAMESTATE["JP_NO_WIN"] = 10] = "JP_NO_WIN";
-    GAMESTATE[GAMESTATE["HELP"] = 11] = "HELP";
+    GAMESTATE[GAMESTATE["HIT"] = 4] = "HIT";
+    GAMESTATE[GAMESTATE["WIN"] = 5] = "WIN";
+    GAMESTATE[GAMESTATE["TAKE_WIN"] = 6] = "TAKE_WIN";
+    GAMESTATE[GAMESTATE["DOUBLE"] = 7] = "DOUBLE";
+    GAMESTATE[GAMESTATE["DOUBLE_WIN"] = 8] = "DOUBLE_WIN";
+    GAMESTATE[GAMESTATE["JP_START_GLITTER"] = 9] = "JP_START_GLITTER";
+    GAMESTATE[GAMESTATE["JP_NOW_POS_GLITTER"] = 10] = "JP_NOW_POS_GLITTER";
+    GAMESTATE[GAMESTATE["JP_ROLL"] = 11] = "JP_ROLL";
+    GAMESTATE[GAMESTATE["JP_NO_WIN"] = 12] = "JP_NO_WIN";
+    GAMESTATE[GAMESTATE["HELP"] = 13] = "HELP";
     // Trigger mark, after this no save just trigger only
-    GAMESTATE[GAMESTATE["TRIGGER_START"] = 12] = "TRIGGER_START";
-    GAMESTATE[GAMESTATE["TR_NET_INIT"] = 13] = "TR_NET_INIT";
-    GAMESTATE[GAMESTATE["TR_NET_SPIN_RESULT"] = 14] = "TR_NET_SPIN_RESULT";
-    GAMESTATE[GAMESTATE["TR_REBOOT_CLEAN"] = 15] = "TR_REBOOT_CLEAN";
-    GAMESTATE[GAMESTATE["TR_BET_ENOUGH_CHANGE"] = 16] = "TR_BET_ENOUGH_CHANGE";
-    GAMESTATE[GAMESTATE["TR_BT_START"] = 17] = "TR_BT_START";
-    GAMESTATE[GAMESTATE["TR_BT_DOUBLE_L"] = 18] = "TR_BT_DOUBLE_L";
-    GAMESTATE[GAMESTATE["TR_BT_DOUBLE_R"] = 19] = "TR_BT_DOUBLE_R";
-    GAMESTATE[GAMESTATE["TR_BT_FUNCTION"] = 20] = "TR_BT_FUNCTION";
-    GAMESTATE[GAMESTATE["TR_BT_HOME"] = 21] = "TR_BT_HOME";
-    GAMESTATE[GAMESTATE["TR_BT_TEST_01"] = 22] = "TR_BT_TEST_01";
-    GAMESTATE[GAMESTATE["TR_BT_TEST_02"] = 23] = "TR_BT_TEST_02";
-    GAMESTATE[GAMESTATE["TR_BT_TEST_03"] = 24] = "TR_BT_TEST_03";
+    GAMESTATE[GAMESTATE["TRIGGER_START"] = 14] = "TRIGGER_START";
+    GAMESTATE[GAMESTATE["TR_NET_INIT"] = 15] = "TR_NET_INIT";
+    GAMESTATE[GAMESTATE["TR_NET_SPIN_RESULT"] = 16] = "TR_NET_SPIN_RESULT";
+    GAMESTATE[GAMESTATE["TR_REBOOT_CLEAN"] = 17] = "TR_REBOOT_CLEAN";
+    GAMESTATE[GAMESTATE["TR_BET_ENOUGH_CHANGE"] = 18] = "TR_BET_ENOUGH_CHANGE";
+    GAMESTATE[GAMESTATE["TR_BT_START"] = 19] = "TR_BT_START";
+    GAMESTATE[GAMESTATE["TR_BT_DOUBLE_L"] = 20] = "TR_BT_DOUBLE_L";
+    GAMESTATE[GAMESTATE["TR_BT_DOUBLE_R"] = 21] = "TR_BT_DOUBLE_R";
+    GAMESTATE[GAMESTATE["TR_BT_FUNCTION"] = 22] = "TR_BT_FUNCTION";
+    GAMESTATE[GAMESTATE["TR_BT_HOME"] = 23] = "TR_BT_HOME";
+    GAMESTATE[GAMESTATE["TR_BT_TEST_01"] = 24] = "TR_BT_TEST_01";
+    GAMESTATE[GAMESTATE["TR_BT_TEST_02"] = 25] = "TR_BT_TEST_02";
+    GAMESTATE[GAMESTATE["TR_BT_TEST_03"] = 26] = "TR_BT_TEST_03";
 })(GAMESTATE = exports.GAMESTATE || (exports.GAMESTATE = {}));
 
 var SymbolElement = function SymbolElement(inName, inValue, inKeyName, inBelong, inSymbolID) {
@@ -317,16 +319,16 @@ var GameData = function () {
     function GameData() {
         _classCallCheck(this, GameData);
 
-        //  public testerAllBit1: boolean = true ;    
-        this.testerAllBit1 = false;
         //    public testerAudioMute: boolean = true ;
         this.testerAudioMute = false;
         //    public testerNetDebugMsg: boolean = true ;
         this.testerNetDebugMsg = false;
-        this.testerBtDebug = true;
-        //    public testerBtDebug: boolean = false ;
+        //    public testerBtDebug: boolean = true ;
+        this.testerBtDebug = false;
         //    public testerCredits: boolean = true ;
         this.testerCredits = false;
+        //    public testerDebugBonusWin: boolean = true ;
+        this.testerDebugBonusWin = false;
         //    public testerSceneGameUpdate: boolean = true ;
         this.testerSceneGameUpdate = false;
         this.testerFullScreenOff = true;
@@ -344,13 +346,8 @@ var GameData = function () {
         this.symbolNoHitCount = new Array(this.symbolNum);
         for (var i = 0; i < this.symbolNum; i++) {
             this.symbolNoHitCount[i] = 0;
-            if (this.testerAllBit1 == true) {
-                this.symbolBet[i] = 1;
-                this.symbolPerBet[i] = 1;
-            } else {
-                this.symbolBet[i] = 0;
-                this.symbolPerBet[i] = 0;
-            }
+            this.symbolBet[i] = 0;
+            this.symbolPerBet[i] = 0;
         }
         this.rollResult = new RollResult();
         this.jackpotResult = new Array(64);
@@ -387,13 +384,8 @@ var GameData = function () {
             this.resetNumbers();
             for (var i = 0; i < this.symbolNum; i++) {
                 this.symbolNoHitCount[i] = 0;
-                if (this.testerAllBit1 == true) {
-                    this.symbolBet[i] = 1;
-                    this.symbolPerBet[i] = 1;
-                } else {
-                    this.symbolBet[i] = 0;
-                    this.symbolPerBet[i] = 0;
-                }
+                this.symbolBet[i] = 0;
+                this.symbolPerBet[i] = 0;
             }
             this.onStateChange.removeAll();
         }
@@ -651,7 +643,7 @@ var createDesc = __webpack_require__(33);
 var toIObject = __webpack_require__(16);
 var toPrimitive = __webpack_require__(24);
 var has = __webpack_require__(12);
-var IE8_DOM_DEFINE = __webpack_require__(94);
+var IE8_DOM_DEFINE = __webpack_require__(95);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(6) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -673,7 +665,7 @@ exports.f = __webpack_require__(6) ? gOPD : function getOwnPropertyDescriptor(O,
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(12);
 var toObject = __webpack_require__(9);
-var IE_PROTO = __webpack_require__(68)('IE_PROTO');
+var IE_PROTO = __webpack_require__(69)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -869,7 +861,7 @@ var ctx = __webpack_require__(20);
 var IObject = __webpack_require__(48);
 var toObject = __webpack_require__(9);
 var toLength = __webpack_require__(8);
-var asc = __webpack_require__(85);
+var asc = __webpack_require__(86);
 module.exports = function (TYPE, $create) {
   var IS_MAP = TYPE == 1;
   var IS_FILTER = TYPE == 2;
@@ -923,7 +915,7 @@ if (__webpack_require__(6)) {
   var fails = __webpack_require__(3);
   var $export = __webpack_require__(0);
   var $typed = __webpack_require__(61);
-  var $buffer = __webpack_require__(91);
+  var $buffer = __webpack_require__(92);
   var ctx = __webpack_require__(20);
   var anInstance = __webpack_require__(41);
   var propertyDesc = __webpack_require__(33);
@@ -931,29 +923,29 @@ if (__webpack_require__(6)) {
   var redefineAll = __webpack_require__(43);
   var toInteger = __webpack_require__(26);
   var toLength = __webpack_require__(8);
-  var toIndex = __webpack_require__(120);
+  var toIndex = __webpack_require__(121);
   var toAbsoluteIndex = __webpack_require__(37);
   var toPrimitive = __webpack_require__(24);
   var has = __webpack_require__(12);
   var classof = __webpack_require__(50);
   var isObject = __webpack_require__(4);
   var toObject = __webpack_require__(9);
-  var isArrayIter = __webpack_require__(82);
+  var isArrayIter = __webpack_require__(83);
   var create = __webpack_require__(38);
   var getPrototypeOf = __webpack_require__(18);
   var gOPN = __webpack_require__(39).f;
-  var getIterFn = __webpack_require__(84);
+  var getIterFn = __webpack_require__(85);
   var uid = __webpack_require__(34);
   var wks = __webpack_require__(5);
   var createArrayMethod = __webpack_require__(28);
   var createArrayIncludes = __webpack_require__(52);
   var speciesConstructor = __webpack_require__(59);
-  var ArrayIterators = __webpack_require__(87);
+  var ArrayIterators = __webpack_require__(88);
   var Iterators = __webpack_require__(46);
   var $iterDetect = __webpack_require__(56);
   var setSpecies = __webpack_require__(40);
-  var arrayFill = __webpack_require__(86);
-  var arrayCopyWithin = __webpack_require__(110);
+  var arrayFill = __webpack_require__(87);
+  var arrayCopyWithin = __webpack_require__(111);
   var $DP = __webpack_require__(7);
   var $GOPD = __webpack_require__(17);
   var dP = $DP.f;
@@ -1406,10 +1398,10 @@ if (__webpack_require__(6)) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var Map = __webpack_require__(115);
+var Map = __webpack_require__(116);
 var $export = __webpack_require__(0);
 var shared = __webpack_require__(51)('metadata');
-var store = shared.store || (shared.store = new (__webpack_require__(118))());
+var store = shared.store || (shared.store = new (__webpack_require__(119))());
 
 var getOrCreateMetadataMap = function getOrCreateMetadataMap(target, targetKey, create) {
   var targetMetadata = store.get(target);
@@ -1584,8 +1576,8 @@ module.exports = false;
 
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(96);
-var enumBugKeys = __webpack_require__(69);
+var $keys = __webpack_require__(97);
+var enumBugKeys = __webpack_require__(70);
 
 module.exports = Object.keys || function keys(O) {
   return $keys(O, enumBugKeys);
@@ -1615,22 +1607,22 @@ module.exports = function (index, length) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(1);
-var dPs = __webpack_require__(97);
-var enumBugKeys = __webpack_require__(69);
-var IE_PROTO = __webpack_require__(68)('IE_PROTO');
+var dPs = __webpack_require__(98);
+var enumBugKeys = __webpack_require__(70);
+var IE_PROTO = __webpack_require__(69)('IE_PROTO');
 var Empty = function Empty() {/* empty */};
 var PROTOTYPE = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var _createDict = function createDict() {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(66)('iframe');
+  var iframe = __webpack_require__(67)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
   var iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(70).appendChild(iframe);
+  __webpack_require__(71).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -1664,8 +1656,8 @@ module.exports = Object.create || function create(O, Properties) {
 
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(96);
-var hiddenKeys = __webpack_require__(69).concat('length', 'prototype');
+var $keys = __webpack_require__(97);
+var hiddenKeys = __webpack_require__(70).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
@@ -1714,11 +1706,11 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 
 
 var ctx = __webpack_require__(20);
-var call = __webpack_require__(108);
-var isArrayIter = __webpack_require__(82);
+var call = __webpack_require__(109);
+var isArrayIter = __webpack_require__(83);
 var anObject = __webpack_require__(1);
 var toLength = __webpack_require__(8);
-var getIterFn = __webpack_require__(84);
+var getIterFn = __webpack_require__(85);
 var BREAK = {};
 var RETURN = {};
 var _exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
@@ -1780,7 +1772,7 @@ module.exports = function (it, tag, stat) {
 var $export = __webpack_require__(0);
 var defined = __webpack_require__(25);
 var fails = __webpack_require__(3);
-var spaces = __webpack_require__(72);
+var spaces = __webpack_require__(73);
 var space = '[' + spaces + ']';
 var non = '\u200B\x85';
 var ltrim = RegExp('^' + space + space + '*');
@@ -2104,7 +2096,7 @@ var isObject = __webpack_require__(4);
 var fails = __webpack_require__(3);
 var $iterDetect = __webpack_require__(56);
 var setToStringTag = __webpack_require__(44);
-var inheritIfRequired = __webpack_require__(73);
+var inheritIfRequired = __webpack_require__(74);
 
 module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
   var Base = global[NAME];
@@ -37446,6 +37438,106 @@ PIXI.canUseNewCanvasBlendModes=function(){return Phaser.Device.canUseMultiply;};
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 過一段時間後會fulfilled的promise
+ * @param ms 要延遲的時間，單位為毫秒
+ */
+function Delay(ms) {
+    if (ms > 0) {
+        return new Promise(function (resolve) {
+            return setTimeout(resolve, ms);
+        });
+    } else {
+        // I observed that performance of "bind" is slightly better than anonymous function
+        return new Promise(function (resolve) {
+            return requestAnimationFrame(resolveRequestAnimationFrame.bind(resolve));
+        });
+    }
+}
+exports.Delay = Delay;
+/**
+ * Why using requestAnimationFrame for delay 0 ms??
+ *
+ * Because there are so many timer fired between frames which are not needed to be that frequent
+ *
+ * @internal
+ */
+function resolveRequestAnimationFrame(time) {
+    this();
+}
+/**
+ * 過一段時間後會fulfilled並回傳一個值的promise
+ * @param ms 要延遲的時間，單位為毫秒
+ * @param value 要回傳的值
+ */
+function DelayValue(ms, value) {
+    return new Promise(function (resolve) {
+        return setTimeout(function () {
+            return resolve(value);
+        }, ms);
+    });
+}
+exports.DelayValue = DelayValue;
+/**
+ * 過一段時間後會rejected的promise
+ * @param ms 要延遲的時間，單位為毫秒
+ * @param reason 要回傳錯誤
+ */
+function DelayReject(ms, reason) {
+    return new Promise(function (resolve, reject) {
+        return setTimeout(function () {
+            return reject(reason);
+        }, ms);
+    });
+}
+exports.DelayReject = DelayReject;
+/**
+ * 可以把any型態的陣列轉成指定型態的陣列
+ * @param datas 要轉的資料
+ * @param dataType 要轉的型態
+ */
+function DataArrayToTypeArray(datas, dataType) {
+    var array = [];
+    try {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = datas[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var itr = _step.value;
+
+                array.push(new dataType(itr));
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator.return) {
+                    _iterator.return();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
+    return array;
+}
+exports.DataArrayToTypeArray = DataArrayToTypeArray;
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var isObject = __webpack_require__(4);
 var document = __webpack_require__(2).document;
 // typeof document.createElement is 'object' in old IE
@@ -37455,7 +37547,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37464,7 +37556,7 @@ module.exports = function (it) {
 var global = __webpack_require__(2);
 var core = __webpack_require__(23);
 var LIBRARY = __webpack_require__(35);
-var wksExt = __webpack_require__(95);
+var wksExt = __webpack_require__(96);
 var defineProperty = __webpack_require__(7).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -37472,7 +37564,7 @@ module.exports = function (name) {
 };
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37485,7 +37577,7 @@ module.exports = function (key) {
 };
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37495,7 +37587,7 @@ module.exports = function (key) {
 module.exports = 'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'.split(',');
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37505,7 +37597,7 @@ var document = __webpack_require__(2).document;
 module.exports = document && document.documentElement;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37539,7 +37631,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37548,14 +37640,14 @@ module.exports = {
 module.exports = '\t\n\x0B\f\r \xA0\u1680\u180E\u2000\u2001\u2002\u2003' + '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var isObject = __webpack_require__(4);
-var setPrototypeOf = __webpack_require__(71).set;
+var setPrototypeOf = __webpack_require__(72).set;
 module.exports = function (that, target, C) {
   var S = target.constructor;
   var P;
@@ -37565,7 +37657,7 @@ module.exports = function (that, target, C) {
 };
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37585,7 +37677,7 @@ module.exports = function repeat(count) {
 };
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37598,7 +37690,7 @@ module.exports = Math.sign || function sign(x) {
 };
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37615,7 +37707,7 @@ module.exports = !$expm1
 } : $expm1;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37638,7 +37730,7 @@ module.exports = function (TO_STRING) {
 };
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37650,7 +37742,7 @@ var redefine = __webpack_require__(14);
 var hide = __webpack_require__(13);
 var has = __webpack_require__(12);
 var Iterators = __webpack_require__(46);
-var $iterCreate = __webpack_require__(79);
+var $iterCreate = __webpack_require__(80);
 var setToStringTag = __webpack_require__(44);
 var getPrototypeOf = __webpack_require__(18);
 var ITERATOR = __webpack_require__(5)('iterator');
@@ -37727,7 +37819,7 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 };
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37749,7 +37841,7 @@ module.exports = function (Constructor, NAME, next) {
 };
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37765,7 +37857,7 @@ module.exports = function (that, searchString, NAME) {
 };
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37785,7 +37877,7 @@ module.exports = function (KEY) {
 };
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37801,7 +37893,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37815,7 +37907,7 @@ module.exports = function (object, index, value) {
 };
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37829,7 +37921,7 @@ module.exports = __webpack_require__(23).getIteratorMethod = function (it) {
 };
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37843,7 +37935,7 @@ module.exports = function (original, length) {
 };
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37866,14 +37958,14 @@ module.exports = function fill(value /* , start = 0, end = @length */) {
 };
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var addToUnscopables = __webpack_require__(32);
-var step = __webpack_require__(111);
+var step = __webpack_require__(112);
 var Iterators = __webpack_require__(46);
 var toIObject = __webpack_require__(16);
 
@@ -37881,7 +37973,7 @@ var toIObject = __webpack_require__(16);
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(78)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(79)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0; // next index
   this._k = kind; // kind
@@ -37907,16 +37999,16 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var ctx = __webpack_require__(20);
-var invoke = __webpack_require__(101);
-var html = __webpack_require__(70);
-var cel = __webpack_require__(66);
+var invoke = __webpack_require__(102);
+var html = __webpack_require__(71);
+var cel = __webpack_require__(67);
 var global = __webpack_require__(2);
 var process = global.process;
 var setTask = global.setImmediate;
@@ -38000,14 +38092,14 @@ module.exports = {
 };
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var global = __webpack_require__(2);
-var macrotask = __webpack_require__(88).set;
+var macrotask = __webpack_require__(89).set;
 var Observer = global.MutationObserver || global.WebKitMutationObserver;
 var process = global.process;
 var Promise = global.Promise;
@@ -38075,7 +38167,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38100,7 +38192,7 @@ module.exports.f = function (C) {
 };
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38116,10 +38208,10 @@ var fails = __webpack_require__(3);
 var anInstance = __webpack_require__(41);
 var toInteger = __webpack_require__(26);
 var toLength = __webpack_require__(8);
-var toIndex = __webpack_require__(120);
+var toIndex = __webpack_require__(121);
 var gOPN = __webpack_require__(39).f;
 var dP = __webpack_require__(7).f;
-var arrayFill = __webpack_require__(86);
+var arrayFill = __webpack_require__(87);
 var setToStringTag = __webpack_require__(44);
 var ARRAY_BUFFER = 'ArrayBuffer';
 var DATA_VIEW = 'DataView';
@@ -38387,7 +38479,7 @@ exports[ARRAY_BUFFER] = $ArrayBuffer;
 exports[DATA_VIEW] = $DataView;
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38399,117 +38491,94 @@ var navigator = global.navigator;
 module.exports = navigator && navigator.userAgent || '';
 
 /***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * 過一段時間後會fulfilled的promise
- * @param ms 要延遲的時間，單位為毫秒
- */
-function Delay(ms) {
-    if (ms > 0) {
-        return new Promise(function (resolve) {
-            return setTimeout(resolve, ms);
-        });
-    } else {
-        // I observed that performance of "bind" is slightly better than anonymous function
-        return new Promise(function (resolve) {
-            return requestAnimationFrame(resolveRequestAnimationFrame.bind(resolve));
-        });
-    }
-}
-exports.Delay = Delay;
-/**
- * Why using requestAnimationFrame for delay 0 ms??
- *
- * Because there are so many timer fired between frames which are not needed to be that frequent
- *
- * @internal
- */
-function resolveRequestAnimationFrame(time) {
-    this();
-}
-/**
- * 過一段時間後會fulfilled並回傳一個值的promise
- * @param ms 要延遲的時間，單位為毫秒
- * @param value 要回傳的值
- */
-function DelayValue(ms, value) {
-    return new Promise(function (resolve) {
-        return setTimeout(function () {
-            return resolve(value);
-        }, ms);
-    });
-}
-exports.DelayValue = DelayValue;
-/**
- * 過一段時間後會rejected的promise
- * @param ms 要延遲的時間，單位為毫秒
- * @param reason 要回傳錯誤
- */
-function DelayReject(ms, reason) {
-    return new Promise(function (resolve, reject) {
-        return setTimeout(function () {
-            return reject(reason);
-        }, ms);
-    });
-}
-exports.DelayReject = DelayReject;
-/**
- * 可以把any型態的陣列轉成指定型態的陣列
- * @param datas 要轉的資料
- * @param dataType 要轉的型態
- */
-function DataArrayToTypeArray(datas, dataType) {
-    var array = [];
-    try {
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-            for (var _iterator = datas[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                var itr = _step.value;
-
-                array.push(new dataType(itr));
-            }
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally {
-            try {
-                if (!_iteratorNormalCompletion && _iterator.return) {
-                    _iterator.return();
-                }
-            } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
-    } catch (error) {
-        console.error(error);
-    }
-    return array;
-}
-exports.DataArrayToTypeArray = DataArrayToTypeArray;
-
-/***/ }),
 /* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = !__webpack_require__(6) && !__webpack_require__(3)(function () {
-  return Object.defineProperty(__webpack_require__(66)('div'), 'a', { get: function get() {
-      return 7;
-    } }).a != 7;
-});
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var MarioDebugMode;
+(function (MarioDebugMode) {
+    MarioDebugMode["None"] = "None";
+    MarioDebugMode["NoWin"] = "NoWin";
+    MarioDebugMode["AnyWin"] = "AnyWin";
+    MarioDebugMode["SmallWin"] = "SmallWin";
+    MarioDebugMode["BigWin"] = "BigWin";
+    MarioDebugMode["Bonus"] = "Bonus";
+    MarioDebugMode["BonusNoWin"] = "BonusNoWin";
+    MarioDebugMode["BonusBigWin"] = "BonusBigWin";
+    MarioDebugMode["BonusBonusWin"] = "BonusBonusWin";
+    MarioDebugMode["Extra"] = "Extra";
+    MarioDebugMode["Whole"] = "Whole";
+    // 上一次的結果（不一定有實作）
+    MarioDebugMode[MarioDebugMode["LastResult"] = 2147483647] = "LastResult";
+})(MarioDebugMode = exports.MarioDebugMode || (exports.MarioDebugMode = {}));
+
+var MarioBetArgs = function () {
+    function MarioBetArgs(bets, denom) {
+        var debugMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : MarioDebugMode.None;
+
+        _classCallCheck(this, MarioBetArgs);
+
+        /** 押注代幣 */
+        this.bets = [];
+        /** 押注代幣幣值 */
+        this.denom = 0;
+        if (typeof bets !== "undefined" && bets && bets.constructor === Array && typeof denom === "number") {
+            this.bets = bets;
+            this.denom = denom;
+            this.debugMode = debugMode;
+        } else if (bets) {
+            this.denom = bets.Denom;
+            this.bets = bets.Bets;
+            this.debugMode = bets.DebugMode;
+        }
+    }
+    // /** 總押注代幣 */
+    // public get TotalBet(): Meter {
+    //     return this.TotalBetValue.ToMeter(this.denom);
+    // }
+    /** 總押注價值 */
+    // public get totalBetValue(): number {
+    //     return this.bet * this.denom;
+    // }
+    // public Clone(): SlotBetArgs {
+    //     return new SlotBetArgs(this.line, this.bet, this.denom);
+    // }
+    // public Equals(other: SlotBetArgs): boolean {
+    //     return this.line === other.line && this.bet === other.bet && this.denom === other.denom;
+    // }
+
+
+    _createClass(MarioBetArgs, [{
+        key: "toString",
+        value: function toString() {
+            return "{{Bet=" + this.bets + ", Denom=" + this.denom + "}}";
+        }
+    }, {
+        key: "toJSON",
+        value: function toJSON() {
+            var data = {
+                Bets: this.bets,
+                Denom: this.denom
+            };
+            if (this.debugMode !== MarioDebugMode.None) {
+                data.DebugMode = this.debugMode;
+            }
+            return data;
+        }
+    }]);
+
+    return MarioBetArgs;
+}();
+
+MarioBetArgs.MarioDebugMode = MarioDebugMode;
+exports.default = MarioBetArgs;
 
 /***/ }),
 /* 95 */
@@ -38518,7 +38587,11 @@ module.exports = !__webpack_require__(6) && !__webpack_require__(3)(function () 
 "use strict";
 
 
-exports.f = __webpack_require__(5);
+module.exports = !__webpack_require__(6) && !__webpack_require__(3)(function () {
+  return Object.defineProperty(__webpack_require__(67)('div'), 'a', { get: function get() {
+      return 7;
+    } }).a != 7;
+});
 
 /***/ }),
 /* 96 */
@@ -38527,10 +38600,19 @@ exports.f = __webpack_require__(5);
 "use strict";
 
 
+exports.f = __webpack_require__(5);
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var has = __webpack_require__(12);
 var toIObject = __webpack_require__(16);
 var arrayIndexOf = __webpack_require__(52)(false);
-var IE_PROTO = __webpack_require__(68)('IE_PROTO');
+var IE_PROTO = __webpack_require__(69)('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -38548,7 +38630,7 @@ module.exports = function (object, names) {
 };
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38570,7 +38652,7 @@ module.exports = __webpack_require__(6) ? Object.defineProperties : function def
 };
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38598,7 +38680,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 };
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38644,7 +38726,7 @@ module.exports = !$assign || __webpack_require__(3)(function () {
 } : $assign;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38652,7 +38734,7 @@ module.exports = !$assign || __webpack_require__(3)(function () {
 
 var aFunction = __webpack_require__(11);
 var isObject = __webpack_require__(4);
-var invoke = __webpack_require__(101);
+var invoke = __webpack_require__(102);
 var arraySlice = [].slice;
 var factories = {};
 
@@ -38677,7 +38759,7 @@ module.exports = Function.bind || function bind(that /* , ...args */) {
 };
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38701,7 +38783,7 @@ module.exports = function (fn, args, that) {
 };
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38709,7 +38791,7 @@ module.exports = function (fn, args, that) {
 
 var $parseInt = __webpack_require__(2).parseInt;
 var $trim = __webpack_require__(45).trim;
-var ws = __webpack_require__(72);
+var ws = __webpack_require__(73);
 var hex = /^[-+]?0[xX]/;
 
 module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? function parseInt(str, radix) {
@@ -38718,7 +38800,7 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
 } : $parseInt;
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38727,14 +38809,14 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
 var $parseFloat = __webpack_require__(2).parseFloat;
 var $trim = __webpack_require__(45).trim;
 
-module.exports = 1 / $parseFloat(__webpack_require__(72) + '-0') !== -Infinity ? function parseFloat(str) {
+module.exports = 1 / $parseFloat(__webpack_require__(73) + '-0') !== -Infinity ? function parseFloat(str) {
   var string = $trim(String(str), 3);
   var result = $parseFloat(string);
   return result === 0 && string.charAt(0) == '-' ? -0 : result;
 } : $parseFloat;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38747,7 +38829,7 @@ module.exports = function (it, msg) {
 };
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38761,7 +38843,7 @@ module.exports = function isInteger(it) {
 };
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38773,14 +38855,14 @@ module.exports = Math.log1p || function log1p(x) {
 };
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // 20.2.2.16 Math.fround(x)
-var sign = __webpack_require__(75);
+var sign = __webpack_require__(76);
 var pow = Math.pow;
 var EPSILON = pow(2, -52);
 var EPSILON32 = pow(2, -23);
@@ -38804,7 +38886,7 @@ module.exports = Math.fround || function fround(x) {
 };
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38824,7 +38906,7 @@ module.exports = function (iterator, fn, value, entries) {
 };
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38861,7 +38943,7 @@ module.exports = function (that, callbackfn, aLen, memo, isRight) {
 };
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38893,7 +38975,7 @@ module.exports = [].copyWithin || function copyWithin(target /* = 0 */, start /*
 };
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38904,7 +38986,7 @@ module.exports = function (done, value) {
 };
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38917,7 +38999,7 @@ if (__webpack_require__(6) && /./g.flags != 'g') __webpack_require__(7).f(RegExp
 });
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38932,7 +39014,7 @@ module.exports = function (exec) {
 };
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38940,7 +39022,7 @@ module.exports = function (exec) {
 
 var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(4);
-var newPromiseCapability = __webpack_require__(90);
+var newPromiseCapability = __webpack_require__(91);
 
 module.exports = function (C, x) {
   anObject(C);
@@ -38952,13 +39034,13 @@ module.exports = function (C, x) {
 };
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var strong = __webpack_require__(116);
+var strong = __webpack_require__(117);
 var validate = __webpack_require__(47);
 var MAP = 'Map';
 
@@ -38980,7 +39062,7 @@ module.exports = __webpack_require__(60)(MAP, function (get) {
 }, strong, true);
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38992,8 +39074,8 @@ var redefineAll = __webpack_require__(43);
 var ctx = __webpack_require__(20);
 var anInstance = __webpack_require__(41);
 var forOf = __webpack_require__(42);
-var $iterDefine = __webpack_require__(78);
-var step = __webpack_require__(111);
+var $iterDefine = __webpack_require__(79);
+var step = __webpack_require__(112);
 var setSpecies = __webpack_require__(40);
 var DESCRIPTORS = __webpack_require__(6);
 var fastKey = __webpack_require__(31).fastKey;
@@ -39134,13 +39216,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var strong = __webpack_require__(116);
+var strong = __webpack_require__(117);
 var validate = __webpack_require__(47);
 var SET = 'Set';
 
@@ -39157,7 +39239,7 @@ module.exports = __webpack_require__(60)(SET, function (get) {
 }, strong);
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39166,8 +39248,8 @@ module.exports = __webpack_require__(60)(SET, function (get) {
 var each = __webpack_require__(28)(0);
 var redefine = __webpack_require__(14);
 var meta = __webpack_require__(31);
-var assign = __webpack_require__(99);
-var weak = __webpack_require__(119);
+var assign = __webpack_require__(100);
+var weak = __webpack_require__(120);
 var isObject = __webpack_require__(4);
 var fails = __webpack_require__(3);
 var validate = __webpack_require__(47);
@@ -39225,7 +39307,7 @@ if (fails(function () {
 }
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39315,7 +39397,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39333,7 +39415,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39351,7 +39433,7 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
 };
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39397,7 +39479,7 @@ function flattenIntoArray(target, original, source, sourceLen, start, depth, map
 module.exports = flattenIntoArray;
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39405,7 +39487,7 @@ module.exports = flattenIntoArray;
 
 // https://github.com/tc39/proposal-string-pad-start-end
 var toLength = __webpack_require__(8);
-var repeat = __webpack_require__(74);
+var repeat = __webpack_require__(75);
 var defined = __webpack_require__(25);
 
 module.exports = function (that, maxLength, fillString, left) {
@@ -39421,7 +39503,7 @@ module.exports = function (that, maxLength, fillString, left) {
 };
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39447,7 +39529,7 @@ module.exports = function (isEntries) {
 };
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39455,7 +39537,7 @@ module.exports = function (isEntries) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var classof = __webpack_require__(50);
-var from = __webpack_require__(126);
+var from = __webpack_require__(127);
 module.exports = function (NAME) {
   return function toJSON() {
     if (classof(this) != NAME) throw TypeError(NAME + "#toJSON isn't generic");
@@ -39464,7 +39546,7 @@ module.exports = function (NAME) {
 };
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39479,7 +39561,7 @@ module.exports = function (iter, ITERATOR) {
 };
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39503,7 +39585,7 @@ module.exports = Math.scale || function scale(x, inLow, inHigh, outLow, outHigh)
 };
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39533,7 +39615,7 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39544,7 +39626,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var ValueSelector_1 = __webpack_require__(130);
+var ValueSelector_1 = __webpack_require__(131);
 // Dollar(decimal) * AccUint(int32) = Credit(int64) * Denom(int32) = Value(int64)
 
 var Account = function () {
@@ -39708,7 +39790,7 @@ Account.METER_TO_ACCOUNT = Account.CreditToAccount;
 exports.default = Account;
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39827,96 +39909,6 @@ var ValueSelector = function () {
 }();
 
 exports.default = ValueSelector;
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var MarioDebugMode;
-(function (MarioDebugMode) {
-    MarioDebugMode["None"] = "None";
-    MarioDebugMode["NoWin"] = "NoWin";
-    MarioDebugMode["AnyWin"] = "AnyWin";
-    MarioDebugMode["SmallWin"] = "SmallWin";
-    MarioDebugMode["BigWin"] = "BigWin";
-    MarioDebugMode["Bonus"] = "Bonus";
-    MarioDebugMode["BonusNoWin"] = "BonusNoWin";
-    MarioDebugMode["BonusBigWin"] = "BonusBigWin";
-    MarioDebugMode["BonusBonusWin"] = "BonusBonusWin";
-    MarioDebugMode["Extra"] = "Extra";
-    MarioDebugMode["Whole"] = "Whole";
-    // 上一次的結果（不一定有實作）
-    MarioDebugMode[MarioDebugMode["LastResult"] = 2147483647] = "LastResult";
-})(MarioDebugMode = exports.MarioDebugMode || (exports.MarioDebugMode = {}));
-
-var MarioBetArgs = function () {
-    function MarioBetArgs(bets, denom) {
-        var debugMode = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : MarioDebugMode.None;
-
-        _classCallCheck(this, MarioBetArgs);
-
-        /** 押注代幣 */
-        this.bets = [];
-        /** 押注代幣幣值 */
-        this.denom = 0;
-        if (typeof bets !== "undefined" && bets && bets.constructor === Array && typeof denom === "number") {
-            this.bets = bets;
-            this.denom = denom;
-            this.debugMode = debugMode;
-        } else if (bets) {
-            this.denom = bets.Denom;
-            this.bets = bets.Bets;
-            this.debugMode = bets.DebugMode;
-        }
-    }
-    // /** 總押注代幣 */
-    // public get TotalBet(): Meter {
-    //     return this.TotalBetValue.ToMeter(this.denom);
-    // }
-    /** 總押注價值 */
-    // public get totalBetValue(): number {
-    //     return this.bet * this.denom;
-    // }
-    // public Clone(): SlotBetArgs {
-    //     return new SlotBetArgs(this.line, this.bet, this.denom);
-    // }
-    // public Equals(other: SlotBetArgs): boolean {
-    //     return this.line === other.line && this.bet === other.bet && this.denom === other.denom;
-    // }
-
-
-    _createClass(MarioBetArgs, [{
-        key: "toString",
-        value: function toString() {
-            return "{{Bet=" + this.bets + ", Denom=" + this.denom + "}}";
-        }
-    }, {
-        key: "toJSON",
-        value: function toJSON() {
-            var data = {
-                Bets: this.bets,
-                Denom: this.denom
-            };
-            if (this.debugMode !== MarioDebugMode.None) {
-                data.DebugMode = this.debugMode;
-            }
-            return data;
-        }
-    }]);
-
-    return MarioBetArgs;
-}();
-
-MarioBetArgs.MarioDebugMode = MarioDebugMode;
-exports.default = MarioBetArgs;
 
 /***/ }),
 /* 132 */
@@ -40067,18 +40059,18 @@ __webpack_require__(235);
 __webpack_require__(236);
 __webpack_require__(237);
 __webpack_require__(238);
-__webpack_require__(87);
+__webpack_require__(88);
 __webpack_require__(239);
 __webpack_require__(240);
-__webpack_require__(112);
+__webpack_require__(113);
 __webpack_require__(241);
 __webpack_require__(242);
 __webpack_require__(243);
 __webpack_require__(244);
 __webpack_require__(245);
-__webpack_require__(115);
-__webpack_require__(117);
+__webpack_require__(116);
 __webpack_require__(118);
+__webpack_require__(119);
 __webpack_require__(246);
 __webpack_require__(247);
 __webpack_require__(248);
@@ -40187,8 +40179,8 @@ var shared = __webpack_require__(51);
 var setToStringTag = __webpack_require__(44);
 var uid = __webpack_require__(34);
 var wks = __webpack_require__(5);
-var wksExt = __webpack_require__(95);
-var wksDefine = __webpack_require__(67);
+var wksExt = __webpack_require__(96);
+var wksDefine = __webpack_require__(68);
 var enumKeys = __webpack_require__(136);
 var isArray = __webpack_require__(54);
 var anObject = __webpack_require__(1);
@@ -40197,7 +40189,7 @@ var toIObject = __webpack_require__(16);
 var toPrimitive = __webpack_require__(24);
 var createDesc = __webpack_require__(33);
 var _create = __webpack_require__(38);
-var gOPNExt = __webpack_require__(98);
+var gOPNExt = __webpack_require__(99);
 var $GOPD = __webpack_require__(17);
 var $DP = __webpack_require__(7);
 var $keys = __webpack_require__(36);
@@ -40472,7 +40464,7 @@ $export($export.S + $export.F * !__webpack_require__(6), 'Object', { definePrope
 
 var $export = __webpack_require__(0);
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !__webpack_require__(6), 'Object', { defineProperties: __webpack_require__(97) });
+$export($export.S + $export.F * !__webpack_require__(6), 'Object', { defineProperties: __webpack_require__(98) });
 
 /***/ }),
 /* 140 */
@@ -40534,7 +40526,7 @@ __webpack_require__(27)('keys', function () {
 
 // 19.1.2.7 Object.getOwnPropertyNames(O)
 __webpack_require__(27)('getOwnPropertyNames', function () {
-  return __webpack_require__(98).f;
+  return __webpack_require__(99).f;
 });
 
 /***/ }),
@@ -40646,7 +40638,7 @@ __webpack_require__(27)('isExtensible', function ($isExtensible) {
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(0);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(99) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(100) });
 
 /***/ }),
 /* 151 */
@@ -40681,7 +40673,7 @@ module.exports = Object.is || function is(x, y) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(0);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(71).set });
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(72).set });
 
 /***/ }),
 /* 154 */
@@ -40710,7 +40702,7 @@ if (test + '' != '[object z]') {
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Function', { bind: __webpack_require__(100) });
+$export($export.P, 'Function', { bind: __webpack_require__(101) });
 
 /***/ }),
 /* 156 */
@@ -40765,7 +40757,7 @@ if (!(HAS_INSTANCE in FunctionProto)) __webpack_require__(7).f(FunctionProto, HA
 
 
 var $export = __webpack_require__(0);
-var $parseInt = __webpack_require__(102);
+var $parseInt = __webpack_require__(103);
 // 18.2.5 parseInt(string, radix)
 $export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt });
 
@@ -40777,7 +40769,7 @@ $export($export.G + $export.F * (parseInt != $parseInt), { parseInt: $parseInt }
 
 
 var $export = __webpack_require__(0);
-var $parseFloat = __webpack_require__(103);
+var $parseFloat = __webpack_require__(104);
 // 18.2.4 parseFloat(string)
 $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $parseFloat });
 
@@ -40791,7 +40783,7 @@ $export($export.G + $export.F * (parseFloat != $parseFloat), { parseFloat: $pars
 var global = __webpack_require__(2);
 var has = __webpack_require__(12);
 var cof = __webpack_require__(21);
-var inheritIfRequired = __webpack_require__(73);
+var inheritIfRequired = __webpack_require__(74);
 var toPrimitive = __webpack_require__(24);
 var fails = __webpack_require__(3);
 var gOPN = __webpack_require__(39).f;
@@ -40868,8 +40860,8 @@ if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
 
 var $export = __webpack_require__(0);
 var toInteger = __webpack_require__(26);
-var aNumberValue = __webpack_require__(104);
-var repeat = __webpack_require__(74);
+var aNumberValue = __webpack_require__(105);
+var repeat = __webpack_require__(75);
 var $toFixed = 1.0.toFixed;
 var floor = Math.floor;
 var data = [0, 0, 0, 0, 0, 0];
@@ -40984,7 +40976,7 @@ $export($export.P + $export.F * (!!$toFixed && (0.00008.toFixed(3) !== '0.000' |
 
 var $export = __webpack_require__(0);
 var $fails = __webpack_require__(3);
-var aNumberValue = __webpack_require__(104);
+var aNumberValue = __webpack_require__(105);
 var $toPrecision = 1.0.toPrecision;
 
 $export($export.P + $export.F * ($fails(function () {
@@ -41039,7 +41031,7 @@ $export($export.S, 'Number', {
 // 20.1.2.3 Number.isInteger(number)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Number', { isInteger: __webpack_require__(105) });
+$export($export.S, 'Number', { isInteger: __webpack_require__(106) });
 
 /***/ }),
 /* 166 */
@@ -41067,7 +41059,7 @@ $export($export.S, 'Number', {
 
 // 20.1.2.5 Number.isSafeInteger(number)
 var $export = __webpack_require__(0);
-var isInteger = __webpack_require__(105);
+var isInteger = __webpack_require__(106);
 var abs = Math.abs;
 
 $export($export.S, 'Number', {
@@ -41108,7 +41100,7 @@ $export($export.S, 'Number', { MIN_SAFE_INTEGER: -0x1fffffffffffff });
 
 
 var $export = __webpack_require__(0);
-var $parseFloat = __webpack_require__(103);
+var $parseFloat = __webpack_require__(104);
 // 20.1.2.12 Number.parseFloat(string)
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { parseFloat: $parseFloat });
 
@@ -41120,7 +41112,7 @@ $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', { 
 
 
 var $export = __webpack_require__(0);
-var $parseInt = __webpack_require__(102);
+var $parseInt = __webpack_require__(103);
 // 20.1.2.13 Number.parseInt(string, radix)
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { parseInt: $parseInt });
 
@@ -41133,7 +41125,7 @@ $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', { pars
 
 // 20.2.2.3 Math.acosh(x)
 var $export = __webpack_require__(0);
-var log1p = __webpack_require__(106);
+var log1p = __webpack_require__(107);
 var sqrt = Math.sqrt;
 var $acosh = Math.acosh;
 
@@ -41192,7 +41184,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 
 // 20.2.2.9 Math.cbrt(x)
 var $export = __webpack_require__(0);
-var sign = __webpack_require__(75);
+var sign = __webpack_require__(76);
 
 $export($export.S, 'Math', {
   cbrt: function cbrt(x) {
@@ -41242,7 +41234,7 @@ $export($export.S, 'Math', {
 
 // 20.2.2.14 Math.expm1(x)
 var $export = __webpack_require__(0);
-var $expm1 = __webpack_require__(76);
+var $expm1 = __webpack_require__(77);
 
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 });
 
@@ -41256,7 +41248,7 @@ $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', { expm1: $expm1 
 // 20.2.2.16 Math.fround(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { fround: __webpack_require__(107) });
+$export($export.S, 'Math', { fround: __webpack_require__(108) });
 
 /***/ }),
 /* 180 */
@@ -41343,7 +41335,7 @@ $export($export.S, 'Math', {
 // 20.2.2.20 Math.log1p(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { log1p: __webpack_require__(106) });
+$export($export.S, 'Math', { log1p: __webpack_require__(107) });
 
 /***/ }),
 /* 184 */
@@ -41371,7 +41363,7 @@ $export($export.S, 'Math', {
 // 20.2.2.28 Math.sign(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { sign: __webpack_require__(75) });
+$export($export.S, 'Math', { sign: __webpack_require__(76) });
 
 /***/ }),
 /* 186 */
@@ -41382,7 +41374,7 @@ $export($export.S, 'Math', { sign: __webpack_require__(75) });
 
 // 20.2.2.30 Math.sinh(x)
 var $export = __webpack_require__(0);
-var expm1 = __webpack_require__(76);
+var expm1 = __webpack_require__(77);
 var exp = Math.exp;
 
 // V8 near Chromium 38 has a problem with very small numbers
@@ -41403,7 +41395,7 @@ $export($export.S + $export.F * __webpack_require__(3)(function () {
 
 // 20.2.2.33 Math.tanh(x)
 var $export = __webpack_require__(0);
-var expm1 = __webpack_require__(76);
+var expm1 = __webpack_require__(77);
 var exp = Math.exp;
 
 $export($export.S, 'Math', {
@@ -41506,10 +41498,10 @@ __webpack_require__(45)('trim', function ($trim) {
 "use strict";
 
 
-var $at = __webpack_require__(77)(true);
+var $at = __webpack_require__(78)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(78)(String, 'String', function (iterated) {
+__webpack_require__(79)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0; // next index
   // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -41531,7 +41523,7 @@ __webpack_require__(78)(String, 'String', function (iterated) {
 
 
 var $export = __webpack_require__(0);
-var $at = __webpack_require__(77)(false);
+var $at = __webpack_require__(78)(false);
 $export($export.P, 'String', {
   // 21.1.3.3 String.prototype.codePointAt(pos)
   codePointAt: function codePointAt(pos) {
@@ -41549,11 +41541,11 @@ $export($export.P, 'String', {
 
 var $export = __webpack_require__(0);
 var toLength = __webpack_require__(8);
-var context = __webpack_require__(80);
+var context = __webpack_require__(81);
 var ENDS_WITH = 'endsWith';
 var $endsWith = ''[ENDS_WITH];
 
-$export($export.P + $export.F * __webpack_require__(81)(ENDS_WITH), 'String', {
+$export($export.P + $export.F * __webpack_require__(82)(ENDS_WITH), 'String', {
   endsWith: function endsWith(searchString /* , endPosition = @length */) {
     var that = context(this, searchString, ENDS_WITH);
     var endPosition = arguments.length > 1 ? arguments[1] : undefined;
@@ -41573,10 +41565,10 @@ $export($export.P + $export.F * __webpack_require__(81)(ENDS_WITH), 'String', {
 
 
 var $export = __webpack_require__(0);
-var context = __webpack_require__(80);
+var context = __webpack_require__(81);
 var INCLUDES = 'includes';
 
-$export($export.P + $export.F * __webpack_require__(81)(INCLUDES), 'String', {
+$export($export.P + $export.F * __webpack_require__(82)(INCLUDES), 'String', {
   includes: function includes(searchString /* , position = 0 */) {
     return !!~context(this, searchString, INCLUDES).indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
   }
@@ -41593,7 +41585,7 @@ var $export = __webpack_require__(0);
 
 $export($export.P, 'String', {
   // 21.1.3.13 String.prototype.repeat(count)
-  repeat: __webpack_require__(74)
+  repeat: __webpack_require__(75)
 });
 
 /***/ }),
@@ -41606,11 +41598,11 @@ $export($export.P, 'String', {
 
 var $export = __webpack_require__(0);
 var toLength = __webpack_require__(8);
-var context = __webpack_require__(80);
+var context = __webpack_require__(81);
 var STARTS_WITH = 'startsWith';
 var $startsWith = ''[STARTS_WITH];
 
-$export($export.P + $export.F * __webpack_require__(81)(STARTS_WITH), 'String', {
+$export($export.P + $export.F * __webpack_require__(82)(STARTS_WITH), 'String', {
   startsWith: function startsWith(searchString /* , position = 0 */) {
     var that = context(this, searchString, STARTS_WITH);
     var index = toLength(Math.min(arguments.length > 1 ? arguments[1] : undefined, that.length));
@@ -41955,11 +41947,11 @@ $export($export.S, 'Array', { isArray: __webpack_require__(54) });
 var ctx = __webpack_require__(20);
 var $export = __webpack_require__(0);
 var toObject = __webpack_require__(9);
-var call = __webpack_require__(108);
-var isArrayIter = __webpack_require__(82);
+var call = __webpack_require__(109);
+var isArrayIter = __webpack_require__(83);
 var toLength = __webpack_require__(8);
-var createProperty = __webpack_require__(83);
-var getIterFn = __webpack_require__(84);
+var createProperty = __webpack_require__(84);
+var getIterFn = __webpack_require__(85);
 
 $export($export.S + $export.F * !__webpack_require__(56)(function (iter) {
   Array.from(iter);
@@ -41999,7 +41991,7 @@ $export($export.S + $export.F * !__webpack_require__(56)(function (iter) {
 
 
 var $export = __webpack_require__(0);
-var createProperty = __webpack_require__(83);
+var createProperty = __webpack_require__(84);
 
 // WebKit Array.of isn't generic
 $export($export.S + $export.F * __webpack_require__(3)(function () {
@@ -42045,7 +42037,7 @@ $export($export.P + $export.F * (__webpack_require__(48) != Object || !__webpack
 
 
 var $export = __webpack_require__(0);
-var html = __webpack_require__(70);
+var html = __webpack_require__(71);
 var cof = __webpack_require__(21);
 var toAbsoluteIndex = __webpack_require__(37);
 var toLength = __webpack_require__(8);
@@ -42217,7 +42209,7 @@ $export($export.P + $export.F * !__webpack_require__(22)([].every, true), 'Array
 
 
 var $export = __webpack_require__(0);
-var $reduce = __webpack_require__(109);
+var $reduce = __webpack_require__(110);
 
 $export($export.P + $export.F * !__webpack_require__(22)([].reduce, true), 'Array', {
   // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
@@ -42234,7 +42226,7 @@ $export($export.P + $export.F * !__webpack_require__(22)([].reduce, true), 'Arra
 
 
 var $export = __webpack_require__(0);
-var $reduce = __webpack_require__(109);
+var $reduce = __webpack_require__(110);
 
 $export($export.P + $export.F * !__webpack_require__(22)([].reduceRight, true), 'Array', {
   // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
@@ -42304,7 +42296,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(22)($nati
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Array', { copyWithin: __webpack_require__(110) });
+$export($export.P, 'Array', { copyWithin: __webpack_require__(111) });
 
 __webpack_require__(32)('copyWithin');
 
@@ -42318,7 +42310,7 @@ __webpack_require__(32)('copyWithin');
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Array', { fill: __webpack_require__(86) });
+$export($export.P, 'Array', { fill: __webpack_require__(87) });
 
 __webpack_require__(32)('fill');
 
@@ -42385,7 +42377,7 @@ __webpack_require__(40)('Array');
 
 
 var global = __webpack_require__(2);
-var inheritIfRequired = __webpack_require__(73);
+var inheritIfRequired = __webpack_require__(74);
 var dP = __webpack_require__(7).f;
 var gOPN = __webpack_require__(39).f;
 var isRegExp = __webpack_require__(55);
@@ -42436,7 +42428,7 @@ __webpack_require__(40)('RegExp');
 "use strict";
 
 
-__webpack_require__(112);
+__webpack_require__(113);
 var anObject = __webpack_require__(1);
 var $flags = __webpack_require__(57);
 var DESCRIPTORS = __webpack_require__(6);
@@ -42608,11 +42600,11 @@ var aFunction = __webpack_require__(11);
 var anInstance = __webpack_require__(41);
 var forOf = __webpack_require__(42);
 var speciesConstructor = __webpack_require__(59);
-var task = __webpack_require__(88).set;
-var microtask = __webpack_require__(89)();
-var newPromiseCapabilityModule = __webpack_require__(90);
-var perform = __webpack_require__(113);
-var promiseResolve = __webpack_require__(114);
+var task = __webpack_require__(89).set;
+var microtask = __webpack_require__(90)();
+var newPromiseCapabilityModule = __webpack_require__(91);
+var perform = __webpack_require__(114);
+var promiseResolve = __webpack_require__(115);
 var PROMISE = 'Promise';
 var TypeError = global.TypeError;
 var process = global.process;
@@ -42877,7 +42869,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(56)(function
 "use strict";
 
 
-var weak = __webpack_require__(119);
+var weak = __webpack_require__(120);
 var validate = __webpack_require__(47);
 var WEAK_SET = 'WeakSet';
 
@@ -42902,7 +42894,7 @@ __webpack_require__(60)(WEAK_SET, function (get) {
 
 var $export = __webpack_require__(0);
 var $typed = __webpack_require__(61);
-var buffer = __webpack_require__(91);
+var buffer = __webpack_require__(92);
 var anObject = __webpack_require__(1);
 var toAbsoluteIndex = __webpack_require__(37);
 var toLength = __webpack_require__(8);
@@ -42955,7 +42947,7 @@ __webpack_require__(40)(ARRAY_BUFFER);
 
 var $export = __webpack_require__(0);
 $export($export.G + $export.W + $export.F * !__webpack_require__(61).ABV, {
-  DataView: __webpack_require__(91).DataView
+  DataView: __webpack_require__(92).DataView
 });
 
 /***/ }),
@@ -43113,7 +43105,7 @@ var aFunction = __webpack_require__(11);
 var anObject = __webpack_require__(1);
 var isObject = __webpack_require__(4);
 var fails = __webpack_require__(3);
-var bind = __webpack_require__(100);
+var bind = __webpack_require__(101);
 var rConstruct = (__webpack_require__(2).Reflect || {}).construct;
 
 // MS Edge supports only 2 arguments and argumentsList argument is optional
@@ -43228,7 +43220,7 @@ var Enumerate = function Enumerate(iterated) {
     keys.push(key);
   }
 };
-__webpack_require__(79)(Enumerate, 'Object', function () {
+__webpack_require__(80)(Enumerate, 'Object', function () {
   var that = this;
   var keys = that._k;
   var key;
@@ -43350,7 +43342,7 @@ $export($export.S, 'Reflect', {
 // 26.1.11 Reflect.ownKeys(target)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Reflect', { ownKeys: __webpack_require__(121) });
+$export($export.S, 'Reflect', { ownKeys: __webpack_require__(122) });
 
 /***/ }),
 /* 269 */
@@ -43424,7 +43416,7 @@ $export($export.S, 'Reflect', { set: set });
 
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
 var $export = __webpack_require__(0);
-var setProto = __webpack_require__(71);
+var setProto = __webpack_require__(72);
 
 if (setProto) $export($export.S, 'Reflect', {
   setPrototypeOf: function setPrototypeOf(target, proto) {
@@ -43466,11 +43458,11 @@ __webpack_require__(32)('includes');
 // https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatMap
 
 var $export = __webpack_require__(0);
-var flattenIntoArray = __webpack_require__(122);
+var flattenIntoArray = __webpack_require__(123);
 var toObject = __webpack_require__(9);
 var toLength = __webpack_require__(8);
 var aFunction = __webpack_require__(11);
-var arraySpeciesCreate = __webpack_require__(85);
+var arraySpeciesCreate = __webpack_require__(86);
 
 $export($export.P, 'Array', {
   flatMap: function flatMap(callbackfn /* , thisArg */) {
@@ -43495,11 +43487,11 @@ __webpack_require__(32)('flatMap');
 // https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatten
 
 var $export = __webpack_require__(0);
-var flattenIntoArray = __webpack_require__(122);
+var flattenIntoArray = __webpack_require__(123);
 var toObject = __webpack_require__(9);
 var toLength = __webpack_require__(8);
 var toInteger = __webpack_require__(26);
-var arraySpeciesCreate = __webpack_require__(85);
+var arraySpeciesCreate = __webpack_require__(86);
 
 $export($export.P, 'Array', {
   flatten: function flatten() /* depthArg = 1 */{
@@ -43523,7 +43515,7 @@ __webpack_require__(32)('flatten');
 // https://github.com/mathiasbynens/String.prototype.at
 
 var $export = __webpack_require__(0);
-var $at = __webpack_require__(77)(true);
+var $at = __webpack_require__(78)(true);
 
 $export($export.P, 'String', {
   at: function at(pos) {
@@ -43540,8 +43532,8 @@ $export($export.P, 'String', {
 // https://github.com/tc39/proposal-string-pad-start-end
 
 var $export = __webpack_require__(0);
-var $pad = __webpack_require__(123);
-var userAgent = __webpack_require__(92);
+var $pad = __webpack_require__(124);
+var userAgent = __webpack_require__(93);
 
 // https://github.com/zloirock/core-js/issues/280
 $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAgent), 'String', {
@@ -43559,8 +43551,8 @@ $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAge
 // https://github.com/tc39/proposal-string-pad-start-end
 
 var $export = __webpack_require__(0);
-var $pad = __webpack_require__(123);
-var userAgent = __webpack_require__(92);
+var $pad = __webpack_require__(124);
+var userAgent = __webpack_require__(93);
 
 // https://github.com/zloirock/core-js/issues/280
 $export($export.P + $export.F * /Version\/10\.\d+(\.\d+)? Safari\//.test(userAgent), 'String', {
@@ -43617,7 +43609,7 @@ var $RegExpStringIterator = function $RegExpStringIterator(regexp, string) {
   this._s = string;
 };
 
-__webpack_require__(79)($RegExpStringIterator, 'RegExp String', function next() {
+__webpack_require__(80)($RegExpStringIterator, 'RegExp String', function next() {
   var match = this._r.exec(this._s);
   return { value: match, done: match === null };
 });
@@ -43641,7 +43633,7 @@ $export($export.P, 'String', {
 "use strict";
 
 
-__webpack_require__(67)('asyncIterator');
+__webpack_require__(68)('asyncIterator');
 
 /***/ }),
 /* 282 */
@@ -43650,7 +43642,7 @@ __webpack_require__(67)('asyncIterator');
 "use strict";
 
 
-__webpack_require__(67)('observable');
+__webpack_require__(68)('observable');
 
 /***/ }),
 /* 283 */
@@ -43661,10 +43653,10 @@ __webpack_require__(67)('observable');
 
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
 var $export = __webpack_require__(0);
-var ownKeys = __webpack_require__(121);
+var ownKeys = __webpack_require__(122);
 var toIObject = __webpack_require__(16);
 var gOPD = __webpack_require__(17);
-var createProperty = __webpack_require__(83);
+var createProperty = __webpack_require__(84);
 
 $export($export.S, 'Object', {
   getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
@@ -43691,7 +43683,7 @@ $export($export.S, 'Object', {
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(0);
-var $values = __webpack_require__(124)(false);
+var $values = __webpack_require__(125)(false);
 
 $export($export.S, 'Object', {
   values: function values(it) {
@@ -43708,7 +43700,7 @@ $export($export.S, 'Object', {
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(0);
-var $entries = __webpack_require__(124)(true);
+var $entries = __webpack_require__(125)(true);
 
 $export($export.S, 'Object', {
   entries: function entries(it) {
@@ -43814,7 +43806,7 @@ __webpack_require__(6) && $export($export.P + __webpack_require__(62), 'Object',
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(0);
 
-$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(125)('Map') });
+$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(126)('Map') });
 
 /***/ }),
 /* 291 */
@@ -43826,7 +43818,7 @@ $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(125)('Map') 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(0);
 
-$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(125)('Set') });
+$export($export.P + $export.R, 'Set', { toJSON: __webpack_require__(126)('Set') });
 
 /***/ }),
 /* 292 */
@@ -44003,8 +43995,8 @@ $export($export.S, 'Math', {
 
 // https://rwaldron.github.io/proposal-math-extensions/
 var $export = __webpack_require__(0);
-var scale = __webpack_require__(127);
-var fround = __webpack_require__(107);
+var scale = __webpack_require__(128);
+var fround = __webpack_require__(108);
 
 $export($export.S, 'Math', {
   fscale: function fscale(x, inLow, inHigh, outLow, outHigh) {
@@ -44113,7 +44105,7 @@ $export($export.S, 'Math', {
 // https://rwaldron.github.io/proposal-math-extensions/
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', { scale: __webpack_require__(127) });
+$export($export.S, 'Math', { scale: __webpack_require__(128) });
 
 /***/ }),
 /* 313 */
@@ -44166,7 +44158,7 @@ var $export = __webpack_require__(0);
 var core = __webpack_require__(23);
 var global = __webpack_require__(2);
 var speciesConstructor = __webpack_require__(59);
-var promiseResolve = __webpack_require__(114);
+var promiseResolve = __webpack_require__(115);
 
 $export($export.P + $export.R, 'Promise', { 'finally': function _finally(onFinally) {
     var C = speciesConstructor(this, core.Promise || global.Promise);
@@ -44191,8 +44183,8 @@ $export($export.P + $export.R, 'Promise', { 'finally': function _finally(onFinal
 // https://github.com/tc39/proposal-promise-try
 
 var $export = __webpack_require__(0);
-var newPromiseCapability = __webpack_require__(90);
-var perform = __webpack_require__(113);
+var newPromiseCapability = __webpack_require__(91);
+var perform = __webpack_require__(114);
 
 $export($export.S, 'Promise', { 'try': function _try(callbackfn) {
     var promiseCapability = newPromiseCapability.f(this);
@@ -44272,8 +44264,8 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
 "use strict";
 
 
-var Set = __webpack_require__(117);
-var from = __webpack_require__(126);
+var Set = __webpack_require__(118);
+var from = __webpack_require__(127);
 var metadata = __webpack_require__(30);
 var anObject = __webpack_require__(1);
 var getPrototypeOf = __webpack_require__(18);
@@ -44392,7 +44384,7 @@ $metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {
 
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
 var $export = __webpack_require__(0);
-var microtask = __webpack_require__(89)();
+var microtask = __webpack_require__(90)();
 var process = __webpack_require__(2).process;
 var isNode = __webpack_require__(21)(process) == 'process';
 
@@ -44414,7 +44406,7 @@ $export($export.G, {
 var $export = __webpack_require__(0);
 var global = __webpack_require__(2);
 var core = __webpack_require__(23);
-var microtask = __webpack_require__(89)();
+var microtask = __webpack_require__(90)();
 var OBSERVABLE = __webpack_require__(5)('observable');
 var aFunction = __webpack_require__(11);
 var anObject = __webpack_require__(1);
@@ -44629,7 +44621,7 @@ __webpack_require__(40)('Observable');
 // ie9- setTimeout & setInterval additional parameters fix
 var global = __webpack_require__(2);
 var $export = __webpack_require__(0);
-var userAgent = __webpack_require__(92);
+var userAgent = __webpack_require__(93);
 var slice = [].slice;
 var MSIE = /MSIE .\./.test(userAgent); // <- dirty ie9- check
 var wrap = function wrap(set) {
@@ -44655,7 +44647,7 @@ $export($export.G + $export.B + $export.F * MSIE, {
 
 
 var $export = __webpack_require__(0);
-var $task = __webpack_require__(88);
+var $task = __webpack_require__(89);
 $export($export.G + $export.B, {
   setImmediate: $task.set,
   clearImmediate: $task.clear
@@ -44668,7 +44660,7 @@ $export($export.G + $export.B, {
 "use strict";
 
 
-var $iterators = __webpack_require__(87);
+var $iterators = __webpack_require__(88);
 var getKeys = __webpack_require__(36);
 var redefine = __webpack_require__(14);
 var global = __webpack_require__(2);
@@ -45440,7 +45432,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 // object, this seems to be the most reliable technique that does not
 // use indirect eval (which violates Content Security Policy).
 (typeof global === "undefined" ? "undefined" : _typeof(global)) === "object" ? global : (typeof window === "undefined" ? "undefined" : _typeof(window)) === "object" ? window : (typeof self === "undefined" ? "undefined" : _typeof(self)) === "object" ? self : undefined);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19), __webpack_require__(128)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19), __webpack_require__(129)(module)))
 
 /***/ }),
 /* 332 */
@@ -66131,9 +66123,6 @@ var Level = function (_Phaser$State) {
             this.add.sprite(99, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
             this.add.sprite(74, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
             this.add.sprite(49, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(233, 517, 'GameImage1', 'BU_DoubleFrame', _groupNumberBackground);
-            this.add.sprite(270, 525, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(245, 525, 'GameImage1', 'BU_Eight', _groupNumberBackground);
             var _groupNumber = this.add.group();
             var _groupFunctionMenu = this.add.group();
             var _FuncMenuDarkBg = this.add.sprite(0, 0, 'GameImage1', 'BU_BlackBlock', _groupFunctionMenu);
@@ -66372,8 +66361,9 @@ var __awaiter = undefined && undefined.__awaiter || function (thisArg, _argument
 Object.defineProperty(exports, "__esModule", { value: true });
 var GameClientMario_1 = __webpack_require__(347);
 var ErrorHandler_1 = __webpack_require__(357);
-var MarioBetArgs_1 = __webpack_require__(131);
-var System = __webpack_require__(93);
+var MarioBetArgs_1 = __webpack_require__(94);
+var MarioBetArgs_2 = __webpack_require__(94);
+var System = __webpack_require__(66);
 var Global = __webpack_require__(10);
 
 var GameNet = function () {
@@ -66405,7 +66395,7 @@ var GameNet = function () {
                             case 0:
                                 //console.log("GameNet::Connect") ;
                                 // New
-                                this.client = new GameClientMario_1.default("https://dev.pk16888.cc/", "luckymario", "dev", "dev1");
+                                this.client = new GameClientMario_1.default("https://dev.pk16888.cc/", "luckymario2", "dev", "dev1");
                                 // 設定網路出錯時重新連線
                                 reConnecting = false;
 
@@ -66482,12 +66472,27 @@ var GameNet = function () {
                                 }
 
                             case 10:
-                                _context2.next = 12;
+                                if (!(Global.g.testerDebugBonusWin == true)) {
+                                    _context2.next = 16;
+                                    break;
+                                }
+
+                                _context2.next = 13;
+                                return this.client.Spin(new MarioBetArgs_1.default(bets, Global.g.denom, MarioBetArgs_2.MarioDebugMode.Bonus));
+
+                            case 13:
+                                this.spinResult = _context2.sent;
+                                _context2.next = 19;
+                                break;
+
+                            case 16:
+                                _context2.next = 18;
                                 return this.client.Spin(new MarioBetArgs_1.default(bets, Global.g.denom));
 
-                            case 12:
+                            case 18:
                                 this.spinResult = _context2.sent;
-                                // MarioDebugMode.Bonus
+
+                            case 19:
                                 this.takeWinNeed = true;
                                 // Test lagging        
                                 //setTimeout(()=>{
@@ -66498,7 +66503,7 @@ var GameNet = function () {
                                 Global.g.changeState(Global.GAMESTATE.TR_NET_SPIN_RESULT);
                                 //},5000) ;
 
-                            case 17:
+                            case 23:
                             case "end":
                                 return _context2.stop();
                         }
@@ -66747,8 +66752,8 @@ var SpinResult_1 = __webpack_require__(351);
 var PayData_1 = __webpack_require__(353);
 var SymbolStripeCollection_1 = __webpack_require__(354);
 var MarioBetConstraint_1 = __webpack_require__(356);
-var Account_1 = __webpack_require__(129);
-var ValueSelector_1 = __webpack_require__(130);
+var Account_1 = __webpack_require__(130);
+var ValueSelector_1 = __webpack_require__(131);
 
 var GameClientMario = function (_GameClient_1$default) {
     _inherits(GameClientMario, _GameClient_1$default);
@@ -66884,7 +66889,7 @@ var __awaiter = undefined && undefined.__awaiter || function (thisArg, _argument
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var System = __webpack_require__(93);
+var System = __webpack_require__(66);
 var NetRequest_1 = __webpack_require__(349);
 var UserData_1 = __webpack_require__(350);
 
@@ -67460,7 +67465,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var System_1 = __webpack_require__(93);
+var System_1 = __webpack_require__(66);
 var Global = __webpack_require__(10);
 
 var NetRequest = function () {
@@ -67772,7 +67777,7 @@ function ResponseNumToMsg(key) {
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Account_1 = __webpack_require__(129);
+var Account_1 = __webpack_require__(130);
 
 var UserData = function UserData(data) {
     _classCallCheck(this, UserData);
@@ -68140,7 +68145,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var MarioBetArgs_1 = __webpack_require__(131);
+var MarioBetArgs_1 = __webpack_require__(94);
 
 var MarioBetConstraint = function () {
     function MarioBetConstraint(data) {
@@ -69890,7 +69895,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     A.exports = "data:video/mp4;base64,AAAAIGZ0eXBtcDQyAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAACKBtZGF0AAAC8wYF///v3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE0MiByMjQ3OSBkZDc5YTYxIC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxNCAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTEgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MToweDExMSBtZT1oZXggc3VibWU9MiBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0wIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MCA4eDhkY3Q9MCBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0wIHRocmVhZHM9NiBsb29rYWhlYWRfdGhyZWFkcz0xIHNsaWNlZF90aHJlYWRzPTAgbnI9MCBkZWNpbWF0ZT0xIGludGVybGFjZWQ9MCBibHVyYXlfY29tcGF0PTAgY29uc3RyYWluZWRfaW50cmE9MCBiZnJhbWVzPTMgYl9weXJhbWlkPTIgYl9hZGFwdD0xIGJfYmlhcz0wIGRpcmVjdD0xIHdlaWdodGI9MSBvcGVuX2dvcD0wIHdlaWdodHA9MSBrZXlpbnQ9MzAwIGtleWludF9taW49MzAgc2NlbmVjdXQ9NDAgaW50cmFfcmVmcmVzaD0wIHJjX2xvb2thaGVhZD0xMCByYz1jcmYgbWJ0cmVlPTEgY3JmPTIwLjAgcWNvbXA9MC42MCBxcG1pbj0wIHFwbWF4PTY5IHFwc3RlcD00IHZidl9tYXhyYXRlPTIwMDAwIHZidl9idWZzaXplPTI1MDAwIGNyZl9tYXg9MC4wIG5hbF9ocmQ9bm9uZSBmaWxsZXI9MCBpcF9yYXRpbz0xLjQwIGFxPTE6MS4wMACAAAAAOWWIhAA3//p+C7v8tDDSTjf97w55i3SbRPO4ZY+hkjD5hbkAkL3zpJ6h/LR1CAABzgB1kqqzUorlhQAAAAxBmiQYhn/+qZYADLgAAAAJQZ5CQhX/AAj5IQADQGgcIQADQGgcAAAACQGeYUQn/wALKCEAA0BoHAAAAAkBnmNEJ/8ACykhAANAaBwhAANAaBwAAAANQZpoNExDP/6plgAMuSEAA0BoHAAAAAtBnoZFESwr/wAI+SEAA0BoHCEAA0BoHAAAAAkBnqVEJ/8ACykhAANAaBwAAAAJAZ6nRCf/AAsoIQADQGgcIQADQGgcAAAADUGarDRMQz/+qZYADLghAANAaBwAAAALQZ7KRRUsK/8ACPkhAANAaBwAAAAJAZ7pRCf/AAsoIQADQGgcIQADQGgcAAAACQGe60Qn/wALKCEAA0BoHAAAAA1BmvA0TEM//qmWAAy5IQADQGgcIQADQGgcAAAAC0GfDkUVLCv/AAj5IQADQGgcAAAACQGfLUQn/wALKSEAA0BoHCEAA0BoHAAAAAkBny9EJ/8ACyghAANAaBwAAAANQZs0NExDP/6plgAMuCEAA0BoHAAAAAtBn1JFFSwr/wAI+SEAA0BoHCEAA0BoHAAAAAkBn3FEJ/8ACyghAANAaBwAAAAJAZ9zRCf/AAsoIQADQGgcIQADQGgcAAAADUGbeDRMQz/+qZYADLkhAANAaBwAAAALQZ+WRRUsK/8ACPghAANAaBwhAANAaBwAAAAJAZ+1RCf/AAspIQADQGgcAAAACQGft0Qn/wALKSEAA0BoHCEAA0BoHAAAAA1Bm7w0TEM//qmWAAy4IQADQGgcAAAAC0Gf2kUVLCv/AAj5IQADQGgcAAAACQGf+UQn/wALKCEAA0BoHCEAA0BoHAAAAAkBn/tEJ/8ACykhAANAaBwAAAANQZvgNExDP/6plgAMuSEAA0BoHCEAA0BoHAAAAAtBnh5FFSwr/wAI+CEAA0BoHAAAAAkBnj1EJ/8ACyghAANAaBwhAANAaBwAAAAJAZ4/RCf/AAspIQADQGgcAAAADUGaJDRMQz/+qZYADLghAANAaBwAAAALQZ5CRRUsK/8ACPkhAANAaBwhAANAaBwAAAAJAZ5hRCf/AAsoIQADQGgcAAAACQGeY0Qn/wALKSEAA0BoHCEAA0BoHAAAAA1Bmmg0TEM//qmWAAy5IQADQGgcAAAAC0GehkUVLCv/AAj5IQADQGgcIQADQGgcAAAACQGepUQn/wALKSEAA0BoHAAAAAkBnqdEJ/8ACyghAANAaBwAAAANQZqsNExDP/6plgAMuCEAA0BoHCEAA0BoHAAAAAtBnspFFSwr/wAI+SEAA0BoHAAAAAkBnulEJ/8ACyghAANAaBwhAANAaBwAAAAJAZ7rRCf/AAsoIQADQGgcAAAADUGa8DRMQz/+qZYADLkhAANAaBwhAANAaBwAAAALQZ8ORRUsK/8ACPkhAANAaBwAAAAJAZ8tRCf/AAspIQADQGgcIQADQGgcAAAACQGfL0Qn/wALKCEAA0BoHAAAAA1BmzQ0TEM//qmWAAy4IQADQGgcAAAAC0GfUkUVLCv/AAj5IQADQGgcIQADQGgcAAAACQGfcUQn/wALKCEAA0BoHAAAAAkBn3NEJ/8ACyghAANAaBwhAANAaBwAAAANQZt4NExC//6plgAMuSEAA0BoHAAAAAtBn5ZFFSwr/wAI+CEAA0BoHCEAA0BoHAAAAAkBn7VEJ/8ACykhAANAaBwAAAAJAZ+3RCf/AAspIQADQGgcAAAADUGbuzRMQn/+nhAAYsAhAANAaBwhAANAaBwAAAAJQZ/aQhP/AAspIQADQGgcAAAACQGf+UQn/wALKCEAA0BoHCEAA0BoHCEAA0BoHCEAA0BoHCEAA0BoHCEAA0BoHAAACiFtb292AAAAbG12aGQAAAAA1YCCX9WAgl8AAAPoAAAH/AABAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAGGlvZHMAAAAAEICAgAcAT////v7/AAAF+XRyYWsAAABcdGtoZAAAAAPVgIJf1YCCXwAAAAEAAAAAAAAH0AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAygAAAMoAAAAAACRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAB9AAABdwAAEAAAAABXFtZGlhAAAAIG1kaGQAAAAA1YCCX9WAgl8AAV+QAAK/IFXEAAAAAAAtaGRscgAAAAAAAAAAdmlkZQAAAAAAAAAAAAAAAFZpZGVvSGFuZGxlcgAAAAUcbWluZgAAABR2bWhkAAAAAQAAAAAAAAAAAAAAJGRpbmYAAAAcZHJlZgAAAAAAAAABAAAADHVybCAAAAABAAAE3HN0YmwAAACYc3RzZAAAAAAAAAABAAAAiGF2YzEAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAygDKAEgAAABIAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY//8AAAAyYXZjQwFNQCj/4QAbZ01AKOyho3ySTUBAQFAAAAMAEAAr8gDxgxlgAQAEaO+G8gAAABhzdHRzAAAAAAAAAAEAAAA8AAALuAAAABRzdHNzAAAAAAAAAAEAAAABAAAB8GN0dHMAAAAAAAAAPAAAAAEAABdwAAAAAQAAOpgAAAABAAAXcAAAAAEAAAAAAAAAAQAAC7gAAAABAAA6mAAAAAEAABdwAAAAAQAAAAAAAAABAAALuAAAAAEAADqYAAAAAQAAF3AAAAABAAAAAAAAAAEAAAu4AAAAAQAAOpgAAAABAAAXcAAAAAEAAAAAAAAAAQAAC7gAAAABAAA6mAAAAAEAABdwAAAAAQAAAAAAAAABAAALuAAAAAEAADqYAAAAAQAAF3AAAAABAAAAAAAAAAEAAAu4AAAAAQAAOpgAAAABAAAXcAAAAAEAAAAAAAAAAQAAC7gAAAABAAA6mAAAAAEAABdwAAAAAQAAAAAAAAABAAALuAAAAAEAADqYAAAAAQAAF3AAAAABAAAAAAAAAAEAAAu4AAAAAQAAOpgAAAABAAAXcAAAAAEAAAAAAAAAAQAAC7gAAAABAAA6mAAAAAEAABdwAAAAAQAAAAAAAAABAAALuAAAAAEAADqYAAAAAQAAF3AAAAABAAAAAAAAAAEAAAu4AAAAAQAAOpgAAAABAAAXcAAAAAEAAAAAAAAAAQAAC7gAAAABAAA6mAAAAAEAABdwAAAAAQAAAAAAAAABAAALuAAAAAEAAC7gAAAAAQAAF3AAAAABAAAAAAAAABxzdHNjAAAAAAAAAAEAAAABAAAAAQAAAAEAAAEEc3RzegAAAAAAAAAAAAAAPAAAAzQAAAAQAAAADQAAAA0AAAANAAAAEQAAAA8AAAANAAAADQAAABEAAAAPAAAADQAAAA0AAAARAAAADwAAAA0AAAANAAAAEQAAAA8AAAANAAAADQAAABEAAAAPAAAADQAAAA0AAAARAAAADwAAAA0AAAANAAAAEQAAAA8AAAANAAAADQAAABEAAAAPAAAADQAAAA0AAAARAAAADwAAAA0AAAANAAAAEQAAAA8AAAANAAAADQAAABEAAAAPAAAADQAAAA0AAAARAAAADwAAAA0AAAANAAAAEQAAAA8AAAANAAAADQAAABEAAAANAAAADQAAAQBzdGNvAAAAAAAAADwAAAAwAAADZAAAA3QAAAONAAADoAAAA7kAAAPQAAAD6wAAA/4AAAQXAAAELgAABEMAAARcAAAEbwAABIwAAAShAAAEugAABM0AAATkAAAE/wAABRIAAAUrAAAFQgAABV0AAAVwAAAFiQAABaAAAAW1AAAFzgAABeEAAAX+AAAGEwAABiwAAAY/AAAGVgAABnEAAAaEAAAGnQAABrQAAAbPAAAG4gAABvUAAAcSAAAHJwAAB0AAAAdTAAAHcAAAB4UAAAeeAAAHsQAAB8gAAAfjAAAH9gAACA8AAAgmAAAIQQAACFQAAAhnAAAIhAAACJcAAAMsdHJhawAAAFx0a2hkAAAAA9WAgl/VgIJfAAAAAgAAAAAAAAf8AAAAAAAAAAAAAAABAQAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAACsm1kaWEAAAAgbWRoZAAAAADVgIJf1YCCXwAArEQAAWAAVcQAAAAAACdoZGxyAAAAAAAAAABzb3VuAAAAAAAAAAAAAAAAU3RlcmVvAAAAAmNtaW5mAAAAEHNtaGQAAAAAAAAAAAAAACRkaW5mAAAAHGRyZWYAAAAAAAAAAQAAAAx1cmwgAAAAAQAAAidzdGJsAAAAZ3N0c2QAAAAAAAAAAQAAAFdtcDRhAAAAAAAAAAEAAAAAAAAAAAACABAAAAAArEQAAAAAADNlc2RzAAAAAAOAgIAiAAIABICAgBRAFQAAAAADDUAAAAAABYCAgAISEAaAgIABAgAAABhzdHRzAAAAAAAAAAEAAABYAAAEAAAAABxzdHNjAAAAAAAAAAEAAAABAAAAAQAAAAEAAAAUc3RzegAAAAAAAAAGAAAAWAAAAXBzdGNvAAAAAAAAAFgAAAOBAAADhwAAA5oAAAOtAAADswAAA8oAAAPfAAAD5QAAA/gAAAQLAAAEEQAABCgAAAQ9AAAEUAAABFYAAARpAAAEgAAABIYAAASbAAAErgAABLQAAATHAAAE3gAABPMAAAT5AAAFDAAABR8AAAUlAAAFPAAABVEAAAVXAAAFagAABX0AAAWDAAAFmgAABa8AAAXCAAAFyAAABdsAAAXyAAAF+AAABg0AAAYgAAAGJgAABjkAAAZQAAAGZQAABmsAAAZ+AAAGkQAABpcAAAauAAAGwwAABskAAAbcAAAG7wAABwYAAAcMAAAHIQAABzQAAAc6AAAHTQAAB2QAAAdqAAAHfwAAB5IAAAeYAAAHqwAAB8IAAAfXAAAH3QAAB/AAAAgDAAAICQAACCAAAAg1AAAIOwAACE4AAAhhAAAIeAAACH4AAAiRAAAIpAAACKoAAAiwAAAItgAACLwAAAjCAAAAFnVkdGEAAAAObmFtZVN0ZXJlbwAAAHB1ZHRhAAAAaG1ldGEAAAAAAAAAIWhkbHIAAAAAAAAAAG1kaXJhcHBsAAAAAAAAAAAAAAAAO2lsc3QAAAAzqXRvbwAAACtkYXRhAAAAAQAAAABIYW5kQnJha2UgMC4xMC4yIDIwMTUwNjExMDA=";
   }]);
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(128)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(129)(module)))
 
 /***/ }),
 /* 368 */
@@ -70005,8 +70010,33 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) {
+            try {
+                step(generator.next(value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function rejected(value) {
+            try {
+                step(generator["throw"](value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function step(result) {
+            result.done ? resolve(result.value) : new P(function (resolve) {
+                resolve(result.value);
+            }).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var Global = __webpack_require__(10);
+var System = __webpack_require__(66);
 
 var SceneGame = function () {
     function SceneGame(inputGameNumber, inGameRoller, inGameAnm, inGameHistory, inGameBt, inGameDouble, inFunctionMenu) {
@@ -70125,39 +70155,105 @@ var SceneGame = function () {
     }, {
         key: "rollerDone",
         value: function rollerDone(hitSymbolID, luckyTime, pay, bigWinAnm) {
-            // Error Check
-            if (luckyTime == 0 && (hitSymbolID < 0 || hitSymbolID >= Global.g.symbolNum)) {
-                console.log("!!! Error input in SceneGame::rollerDone()");
-                Global.g.changeState(Global.GAMESTATE.IDLE);
-                return;
-            }
-            // Init
-            this.gameDouble.clearDouble();
-            // Lucky time
-            if (luckyTime != 0) {
-                Global.g.changeState(Global.GAMESTATE.JP_GLITTER);
-            } else if (Global.g.symbolBet[hitSymbolID] == 0) {
-                this.gameHistory.addSymbol(hitSymbolID);
-                this.clearBetToMinConstraint();
-                Global.g.diffCredits = 0;
-                Global.g.gameNet.takeWin();
-                Global.g.changeState(Global.GAMESTATE.IDLE);
-            } else {
-                this.gameHistory.addSymbol(hitSymbolID);
-                Global.g.win = Global.g.symbolBet[hitSymbolID] * pay;
-                if (Global.g.jackpotResultNum != 0) {
-                    this.gameNumber.setAllByGameData();
-                    Global.g.changeState(Global.GAMESTATE.JP_GLITTER);
-                } else {
-                    if (pay >= 30) {
-                        this.gameAnm.playWin();
+            return __awaiter(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+                var hitLevel, winHitSound, soundDone;
+                return regeneratorRuntime.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                if (!(luckyTime == 0 && (hitSymbolID < 0 || hitSymbolID >= Global.g.symbolNum))) {
+                                    _context.next = 4;
+                                    break;
+                                }
+
+                                console.log("!!! Error input in SceneGame::rollerDone()");
+                                Global.g.changeState(Global.GAMESTATE.IDLE);
+                                return _context.abrupt("return");
+
+                            case 4:
+                                // Init
+                                this.gameDouble.clearDouble();
+                                // Lucky time
+
+                                if (!(luckyTime != 0)) {
+                                    _context.next = 9;
+                                    break;
+                                }
+
+                                Global.g.changeState(Global.GAMESTATE.JP_START_GLITTER, Global.g.getAllJpPos());
+                                _context.next = 39;
+                                break;
+
+                            case 9:
+                                if (!(Global.g.symbolBet[hitSymbolID] == 0)) {
+                                    _context.next = 17;
+                                    break;
+                                }
+
+                                this.gameHistory.addSymbol(hitSymbolID);
+                                this.clearBetToMinConstraint();
+                                Global.g.diffCredits = 0;
+                                Global.g.gameNet.takeWin();
+                                Global.g.changeState(Global.GAMESTATE.IDLE);
+                                _context.next = 39;
+                                break;
+
+                            case 17:
+                                this.gameHistory.addSymbol(hitSymbolID);
+                                Global.g.win = Global.g.symbolBet[hitSymbolID] * pay;
+
+                                if (!(Global.g.jackpotResultNum != 0)) {
+                                    _context.next = 24;
+                                    break;
+                                }
+
+                                this.gameNumber.setAllByGameData();
+                                Global.g.changeState(Global.GAMESTATE.JP_START_GLITTER, Global.g.getAllJpPos());
+                                _context.next = 39;
+                                break;
+
+                            case 24:
+                                this.gameNumber.setAllByGameData();
+                                this.gameNumber.clearBitAtWin(hitSymbolID);
+                                // satat HIT, play sound and stay
+
+                                if (pay <= 3) hitLevel = 1;else if (pay < 20) hitLevel = 2;else hitLevel = 3;
+                                winHitSound = Global.g.mario.game.sound.play("BS_WinHit0" + hitLevel.toString());
+                                soundDone = false;
+
+                                winHitSound.onStop.addOnce(function () {
+                                    soundDone = true;
+                                });
+                                Global.g.changeState(Global.GAMESTATE.HIT);
+
+                            case 31:
+                                if (soundDone) {
+                                    _context.next = 36;
+                                    break;
+                                }
+
+                                _context.next = 34;
+                                return System.Delay(0);
+
+                            case 34:
+                                _context.next = 31;
+                                break;
+
+                            case 36:
+                                // State WIN
+                                if (pay >= 30) {
+                                    this.gameAnm.playWin();
+                                }
+                                this.winAudio = Global.g.mario.game.sound.play("BS_WinBG0" + Global.g.mario.game.rnd.integerInRange(1, 8).toString());
+                                Global.g.changeState(Global.GAMESTATE.WIN);
+
+                            case 39:
+                            case "end":
+                                return _context.stop();
+                        }
                     }
-                    this.winAudio = Global.g.mario.game.sound.play("BS_WinBG0" + Global.g.mario.game.rnd.integerInRange(1, 8).toString());
-                    this.gameNumber.setAllByGameData();
-                    this.gameNumber.clearBitAtWin(hitSymbolID);
-                    Global.g.changeState(Global.GAMESTATE.WIN);
-                }
-            }
+                }, _callee, this);
+            }));
         }
     }, {
         key: "doubleDone",
@@ -70177,30 +70273,93 @@ var SceneGame = function () {
             }
         }
     }, {
-        key: "jackpotGlitterDone",
-        value: function jackpotGlitterDone() {
+        key: "jackpotStartGlitterDone",
+        value: function jackpotStartGlitterDone() {
             if (Global.g.jackpotResultNum == 0) {
                 Global.g.gameNet.takeWin();
                 Global.g.changeState(Global.GAMESTATE.JP_NO_WIN);
             } else {
-                Global.g.changeState(Global.GAMESTATE.JP_ROLL, Global.g.getAllJpPos());
+                Global.g.changeState(Global.GAMESTATE.JP_NOW_POS_GLITTER);
             }
         }
     }, {
+        key: "jackpotNowPosGlitterDone",
+        value: function jackpotNowPosGlitterDone() {
+            Global.g.changeState(Global.GAMESTATE.JP_ROLL);
+        }
+    }, {
         key: "jackpotRollDone",
-        value: function jackpotRollDone(aJackpotRollHitSymbol, bigWinAnm) {
-            if (Global.g.win == 0) {
-                this.clearBetToMinConstraint();
-                Global.g.changeState(Global.GAMESTATE.IDLE);
-            } else {
-                if (bigWinAnm) {
-                    this.gameAnm.playWin();
-                }
-                this.winAudio = Global.g.mario.game.sound.play("BS_WinBG0" + Global.g.mario.game.rnd.integerInRange(1, 8).toString());
-                this.gameNumber.setAllByGameData();
-                this.gameNumber.clearBitAtJackpot(aJackpotRollHitSymbol);
-                Global.g.changeState(Global.GAMESTATE.WIN);
-            }
+        value: function jackpotRollDone(isEnding, aJackpotRollHitSymbol, bigWinAnm) {
+            return __awaiter(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                var winHitSound, soundDone;
+                return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                    while (1) {
+                        switch (_context2.prev = _context2.next) {
+                            case 0:
+                                if (isEnding) {
+                                    _context2.next = 3;
+                                    break;
+                                }
+
+                                Global.g.changeState(Global.GAMESTATE.JP_NOW_POS_GLITTER);
+                                return _context2.abrupt("return");
+
+                            case 3:
+                                if (!(Global.g.win == 0)) {
+                                    _context2.next = 8;
+                                    break;
+                                }
+
+                                this.clearBetToMinConstraint();
+                                Global.g.changeState(Global.GAMESTATE.IDLE);
+                                _context2.next = 22;
+                                break;
+
+                            case 8:
+                                this.gameNumber.setAllByGameData();
+                                this.gameNumber.clearBitAtJackpot(aJackpotRollHitSymbol);
+                                // state WinHit, play sound and stay
+
+                                if (bigWinAnm) {
+                                    winHitSound = Global.g.mario.game.sound.play("BS_WinHit03");
+                                } else {
+                                    winHitSound = Global.g.mario.game.sound.play("BS_WinHit02");
+                                }
+                                soundDone = false;
+
+                                winHitSound.onStop.addOnce(function () {
+                                    soundDone = true;
+                                });
+                                Global.g.changeState(Global.GAMESTATE.HIT);
+
+                            case 14:
+                                if (soundDone) {
+                                    _context2.next = 19;
+                                    break;
+                                }
+
+                                _context2.next = 17;
+                                return System.Delay(0);
+
+                            case 17:
+                                _context2.next = 14;
+                                break;
+
+                            case 19:
+                                // state WIN
+                                if (bigWinAnm) {
+                                    this.gameAnm.playWin();
+                                }
+                                this.winAudio = Global.g.mario.game.sound.play("BS_WinBG0" + Global.g.mario.game.rnd.integerInRange(1, 8).toString());
+                                Global.g.changeState(Global.GAMESTATE.WIN);
+
+                            case 22:
+                            case "end":
+                                return _context2.stop();
+                        }
+                    }
+                }, _callee2, this);
+            }));
         }
     }, {
         key: "winTakeStep",
@@ -70572,6 +70731,7 @@ var GameNumber = function () {
             this.double.anchor.set(1);
             this.double.text = "0";
             Global.g.level.fGroupNumber.add(this.double);
+            this.double.visible = false; // No double function temporary for this monent 180207
             this.rate = Global.g.level.game.add.bitmapText(492, 104, 'Number05');
             this.rate.anchor.set(1);
             this.rate.text = "0";
@@ -70679,6 +70839,9 @@ var GameNumber = function () {
                 for (var i = 0; i < Global.g.symbolNum; i++) {
                     this.bet[i].destroy();
                     this.symbolNoHitCount[i].destroy();
+                }
+                if (this.takeWinSound != null) {
+                    this.takeWinSound.stop();
                 }
                 //console.log("After TR_REBOOT_CLEAN fGroupNumber:"+Global.g.level.fGroupNumber.children.length) ;
             }
@@ -71000,7 +71163,7 @@ var GameBt = function () {
         key: "update",
         value: function update(deltaTime) {
             if (!this.autoSinkBt.isSinking) return;
-            if (this.gameState == Global.GAMESTATE.INIT || this.gameState == Global.GAMESTATE.ROLL || this.gameState == Global.GAMESTATE.DOUBLE || this.gameState == Global.GAMESTATE.JP_GLITTER || this.gameState == Global.GAMESTATE.JP_ROLL || this.gameState == Global.GAMESTATE.HELP || !this.startLockBt.isInputEnabled && !this.autoSinkBt.isSinking) {
+            if (this.gameState == Global.GAMESTATE.INIT || this.gameState == Global.GAMESTATE.ROLL || this.gameState == Global.GAMESTATE.HIT || this.gameState == Global.GAMESTATE.DOUBLE || this.gameState == Global.GAMESTATE.JP_START_GLITTER || this.gameState == Global.GAMESTATE.JP_NOW_POS_GLITTER || this.gameState == Global.GAMESTATE.JP_ROLL || this.gameState == Global.GAMESTATE.HELP || !this.startLockBt.isInputEnabled && !this.autoSinkBt.isSinking) {
                 return;
             }
             if (!Global.g.enoughToBet) {
@@ -71161,7 +71324,7 @@ var GameBt = function () {
         value: function checkAllAdd1Able(stateCheck) {
             // State
             if (stateCheck) {
-                if (this.gameState == Global.GAMESTATE.INIT || this.gameState == Global.GAMESTATE.ROLL || this.gameState == Global.GAMESTATE.DOUBLE || this.gameState == Global.GAMESTATE.JP_GLITTER || this.gameState == Global.GAMESTATE.JP_ROLL || this.gameState == Global.GAMESTATE.HELP) {
+                if (this.gameState == Global.GAMESTATE.INIT || this.gameState == Global.GAMESTATE.ROLL || this.gameState == Global.GAMESTATE.DOUBLE || this.gameState == Global.GAMESTATE.JP_START_GLITTER || this.gameState == Global.GAMESTATE.JP_ROLL || this.gameState == Global.GAMESTATE.HELP) {
                     return false;
                 }
             }
@@ -71513,7 +71676,7 @@ var GameRoller = function () {
         Global.g.mario.onUpdate.add(this.update, this);
         Global.g.onStateChange.add(this.stateChange, this);
         this.gameState = Global.GAMESTATE.INIT;
-        this.ROLLER_STRAT_DEC_TIME = 2.0;
+        this.ROLLER_START_DEC_TIME = 2.0;
         this.ROLLER_SPEED_MAX = 80;
         this.ROLLER_SPEED_START = 4;
         this.ROLLER_SPEED_ACC = 1.5;
@@ -71523,9 +71686,9 @@ var GameRoller = function () {
         this.ROLLER_SPEED_STOP_THRESHOLD = 15;
         this.ROLLER_TAIL_SPEED = 25;
         this.ROLLER_TAIL_ADD = 10;
-        this.WIN_ON_DUR = 0.2;
-        this.WIN_OFF_DUR = 0.5;
         this.DELTA_TIME_MAX = 1.0; // For prevent user leave web page for a long time (in one step)
+        this.winOnDur = this.getRandWinGlitterDur(true);
+        this.winOffDur = this.getRandWinGlitterDur(false);
         this.rollerNowPos = 0;
         this.rollerStopPos = -1; // -1 is not setting yet(waiting for net)
         this.rollerTotalTime = 0;
@@ -71542,17 +71705,24 @@ var GameRoller = function () {
             this.getDecendSlotThrough(this.ROLLER_DEC_TIME/2) + "  " + this.getDecendSlotThrough(this.ROLLER_DEC_TIME) ) ;
         */
         this.winDeltaTime = 0;
-        this.GLITTER_TOTAL_TIME = 1.3;
-        this.GLITTER_TIME = 0.05;
-        this.glitterTotalDeltaTime = 0.0;
-        this.glitterDeltaTime = 0.0;
-        this.JACKPOT_ROLL_TIME = 0.05;
-        this.JACKPOT_ROLL_HIT_TIME = 1;
-        this.jackpotRollDeltaTimeCountDown = this.JACKPOT_ROLL_TIME;
-        this.aJackpotRollHitPos = new Array();
-        this.aJackpotRollHitPosNowIndex = 0;
-        this.JACKPOT_NO_WIN_TIME = 1.3;
-        this.jackpotNoWinDeltaTime = 0;
+        this.jpLampSprite = Global.g.level.fJackpotLamp;
+        this.JP_START_GLITTER_TOTAL_TIME = 1.3;
+        this.JP_START_GLITTER_TIME = 0.05;
+        this.jpStartGlitterTotalDeltaTime = 0.0;
+        this.jpStartGlitterDeltaTime = 0.0;
+        this.JP_NOW_POS_GLITTER_TOTAL_TIME = 1.8;
+        this.JP_NOW_POS_GLITTER_STEP_TIME = 0.067;
+        this.jpNowPosGlitterTotalDeltaTime = 0;
+        this.jpNowPosGlitterStepDeltaTime = 0;
+        this.JP_ROLL_TIME = 0.05;
+        this.JP_ROLL_HIT_TIME = 1;
+        this.JP_ROLL_GLITTER_TIME = 0.05;
+        this.jpRollDeltaTimeCountDown = this.JP_ROLL_TIME;
+        this.jpRollGlitterDeltaTime = 0;
+        this.aJpRollHitPos = new Array();
+        this.aJpRollHitPosNowIndex = 0;
+        this.JP_NO_WIN_TIME = 1.3;
+        this.jpNoWinDeltaTime = 0;
         this.cruiseSoundIng = false;
     }
 
@@ -71604,6 +71774,18 @@ var GameRoller = function () {
             if (this.gameState == Global.GAMESTATE.ROLL) {
                 this.rollerTotalTime += deltaTime;
                 this.rollerStepTime += deltaTime;
+                this.jpStartGlitterDeltaTime += deltaTime;
+                // Jp lamp glitter
+                if (this.jpStartGlitterDeltaTime >= this.jpStartGlitterStepTime) {
+                    this.jpStartGlitterDeltaTime = 0;
+                    this.jpStartGlitterStepTime = this.getRandJpLampRollingGlitterDur();
+                    if (this.jpLampSprite.frame == 0) {
+                        this.jpLampSprite.frame = 1;
+                    } else {
+                        this.jpLampSprite.frame = 0;
+                    }
+                }
+                // Roll
                 if (this.rollerStartToDecend) {
                     var posThroughNow = void 0;
                     // Done for prevent user leave web page for a long time at last step
@@ -71611,8 +71793,7 @@ var GameRoller = function () {
                         console.log("User leave web page for a long time at last step and jump to dest");
                         Global.g.mario.game.sound.play("BS_Normal03_00");
                         this.rollerNowPos = this.rollerStopPos;
-                        this.rollerStopCount();
-                        this.winDeltaTime = 0;
+                        this.rollStop();
                         return;
                     }
                     // Roller Speed
@@ -71632,17 +71813,16 @@ var GameRoller = function () {
                     if (this.rollerDecendPosThroughTotal - posThroughNow <= 9) {
                         if (this.cruiseSoundIng) {
                             this.cruiseSoundIng = false;
-                            this.audioCruis.stop();
+                            this.cruiseSound.stop();
                         }
                         Global.g.mario.game.sound.play("BS_Normal03_0" + (this.rollerDecendPosThroughTotal - posThroughNow).toString());
                     }
                     // Show light
                     this.showLight();
                     // Done
-                    if (this.rollerSpeed <= this.ROLLER_SPEED_END * 2 && this.rollerTotalTime >= this.ROLLER_STRAT_DEC_TIME && this.rollerNowPos == this.rollerStopPos) {
+                    if (this.rollerSpeed <= this.ROLLER_SPEED_END * 2 && this.rollerTotalTime >= this.ROLLER_START_DEC_TIME && this.rollerNowPos == this.rollerStopPos) {
                         //this.reciprocate.setToStopPosNow() ;    // Temp to do this
-                        this.rollerStopCount();
-                        this.winDeltaTime = 0;
+                        this.rollStop();
                         //console.log("Speed "+this.rollerSpeed) ; // ------------- moses test -----------
                         //console.log("Stop: "+this.rollerStopPos) ; // ------------- moses test -----------
                         return;
@@ -71652,7 +71832,7 @@ var GameRoller = function () {
                     if (this.rollerStepTime >= 1.0 / this.rollerSpeed) {
                         var leap = 0;
                         // Speed
-                        if (this.rollerTotalTime < this.ROLLER_STRAT_DEC_TIME) {
+                        if (this.rollerTotalTime < this.ROLLER_START_DEC_TIME) {
                             if (this.rollerSpeed < this.ROLLER_SPEED_MAX) {
                                 this.rollerSpeed += this.ROLLER_SPEED_ACC;
                                 //console.log("Speed+ "+this.rollerSpeed) ;// ----------- moses test -----------
@@ -71700,7 +71880,7 @@ var GameRoller = function () {
                         } else {
                             if (!this.cruiseSoundIng) {
                                 this.cruiseSoundIng = true;
-                                this.audioCruis = Global.g.mario.game.sound.play("BS_Normal02", 1, true);
+                                this.cruiseSound = Global.g.mario.game.sound.play("BS_Normal02", 1, true);
                             }
                         }
                         // Show light
@@ -71712,18 +71892,24 @@ var GameRoller = function () {
             } else if (this.gameState == Global.GAMESTATE.WIN) {
                 this.winDeltaTime += deltaTime;
                 if (this.aSlot[this.rollerNowPos].checkVisible() == true) {
-                    if (this.winDeltaTime >= this.WIN_ON_DUR) {
+                    if (this.winDeltaTime >= this.winOnDur) {
+                        this.winOnDur = this.getRandWinGlitterDur(true);
+                        this.winOffDur = this.getRandWinGlitterDur(false);
                         this.winDeltaTime = 0;
                         this.allSymbolOff();
+                        this.jpLampSprite.frame = 0;
                         this.reciprocate.showWin(false);
                     }
                 } else if (this.aSlot[this.rollerNowPos].checkVisible() == false) {
-                    if (this.winDeltaTime >= this.WIN_OFF_DUR) {
+                    if (this.winDeltaTime >= this.winOffDur) {
+                        this.winOnDur = this.getRandWinGlitterDur(true);
+                        this.winOffDur = this.getRandWinGlitterDur(false);
                         this.winDeltaTime = 0;
                         this.reciprocate.showWin(true);
-                        if (this.aJackpotRollHitPos.length) {
-                            for (var i = 0; i < this.aJackpotRollHitPos.length; i++) {
-                                this.aSlot[this.aJackpotRollHitPos[i]].lightOnOff(true);
+                        if (this.aJpRollHitPos.length) {
+                            this.jpLampSprite.frame = 1;
+                            for (var i = 0; i < this.aJpRollHitPos.length; i++) {
+                                this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
                             }
                         } else {
                             this.aSlot[this.rollerNowPos].lightOnOff(true);
@@ -71734,14 +71920,14 @@ var GameRoller = function () {
                 this.winDeltaTime += deltaTime;
                 // on -> off
                 if (this.aSlot[this.rollerNowPos].checkVisible() == true) {
-                    if (this.winDeltaTime >= this.WIN_ON_DUR) {
+                    if (this.winDeltaTime >= this.winOnDur) {
                         this.winDeltaTime = 0;
                         //this.aSlot[this.rollerNowPos].lightOnOff(false) ;
                         this.allSymbolOff();
                         this.reciprocate.offAll();
                     }
                 } else if (this.aSlot[this.rollerNowPos].checkVisible() == false) {
-                    if (this.winDeltaTime >= this.WIN_OFF_DUR) {
+                    if (this.winDeltaTime >= this.winOffDur) {
                         this.winDeltaTime = 0;
                         //this.aSlot[this.rollerNowPos].lightOnOff(true) ;
                         if (Global.g.doubleBet == true) {
@@ -71749,40 +71935,86 @@ var GameRoller = function () {
                         } else {
                             this.reciprocate.setDoubleLeft();
                         }
-                        if (this.aJackpotRollHitPos.length) {
-                            for (var i = 0; i < this.aJackpotRollHitPos.length; i++) {
-                                this.aSlot[this.aJackpotRollHitPos[i]].lightOnOff(true);
+                        if (this.aJpRollHitPos.length) {
+                            for (var i = 0; i < this.aJpRollHitPos.length; i++) {
+                                this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
                             }
                         } else {
                             this.aSlot[this.rollerNowPos].lightOnOff(true);
                         }
                     }
                 }
-            } else if (this.gameState == Global.GAMESTATE.JP_GLITTER) {
-                this.glitterTotalDeltaTime += deltaTime;
-                this.glitterDeltaTime += deltaTime;
-                if (this.glitterTotalDeltaTime >= this.GLITTER_TOTAL_TIME) {
-                    Global.g.level.fJackpotLamp.frame = 0;
-                    this.glitterTotalDeltaTime = 0;
-                    this.jackpotSound.stop();
-                    this.sceneGame.jackpotGlitterDone();
-                } else if (this.glitterDeltaTime >= this.GLITTER_TIME) {
-                    this.glitterDeltaTime = 0;
-                    if (Global.g.level.fJackpotLamp.frame == 0) {
-                        Global.g.level.fJackpotLamp.frame = 1;
+            } else if (this.gameState == Global.GAMESTATE.JP_START_GLITTER) {
+                this.jpStartGlitterTotalDeltaTime += deltaTime;
+                this.jpStartGlitterDeltaTime += deltaTime;
+                if (this.jpStartGlitterTotalDeltaTime >= this.JP_START_GLITTER_TOTAL_TIME) {
+                    this.jpLampSprite.frame = 0;
+                    this.jpStartGlitterTotalDeltaTime = 0;
+                    if (this.jpStartGlitterSound != null) {
+                        this.jpStartGlitterSound.stop();
+                    }
+                    this.sceneGame.jackpotStartGlitterDone();
+                } else if (this.jpStartGlitterDeltaTime >= this.JP_START_GLITTER_TIME) {
+                    this.jpStartGlitterDeltaTime = 0;
+                    if (this.jpLampSprite.frame == 0) {
+                        this.jpLampSprite.frame = 1;
                     } else {
-                        Global.g.level.fJackpotLamp.frame = 0;
+                        this.jpLampSprite.frame = 0;
+                    }
+                }
+            } else if (this.gameState == Global.GAMESTATE.JP_NOW_POS_GLITTER) {
+                this.jpNowPosGlitterTotalDeltaTime += deltaTime;
+                this.jpNowPosGlitterStepDeltaTime += deltaTime;
+                if (this.jpNowPosGlitterTotalDeltaTime >= this.JP_NOW_POS_GLITTER_TOTAL_TIME) {
+                    this.jpNowPosGlitterTotalDeltaTime = 0;
+                    if (this.jpNowPosGlitterSound != null) {
+                        this.jpNowPosGlitterSound.stop();
+                    }
+                    this.jpLampSprite.frame = 1;
+                    for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                        this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
+                    }
+                    this.sceneGame.jackpotNowPosGlitterDone();
+                } else if (this.jpNowPosGlitterStepDeltaTime >= this.JP_NOW_POS_GLITTER_STEP_TIME) {
+                    this.jpNowPosGlitterStepDeltaTime = 0;
+                    if (this.jpLampSprite.frame == 0) {
+                        this.jpLampSprite.frame = 1;
+                        for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                            this.aSlot[this.aJpRollHitPos[i]].lightOnOff(false);
+                        }
+                    } else {
+                        this.jpLampSprite.frame = 0;
+                        for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                            this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
+                        }
                     }
                 }
             } else if (this.gameState == Global.GAMESTATE.JP_ROLL) {
                 // delta time
-                this.jackpotRollDeltaTimeCountDown -= deltaTime;
-                if (this.jackpotRollDeltaTimeCountDown > 0) {
+                this.jpRollDeltaTimeCountDown -= deltaTime;
+                this.jpRollGlitterDeltaTime += deltaTime;
+                // Jp lamp glitter
+                if (this.jpRollGlitterDeltaTime >= this.JP_ROLL_GLITTER_TIME) {
+                    this.jpRollGlitterDeltaTime = 0;
+                    if (this.jpLampSprite.frame == 0) {
+                        this.jpLampSprite.frame = 1;
+                        //for( var i=0 ; i<this.aJpRollHitPosNowIndex ; i++ ){
+                        //    this.aSlot[this.aJpRollHitPos[i]].lightOnOff(false) ;
+                        //}
+                    } else {
+                        this.jpLampSprite.frame = 0;
+                        //for( var i=0 ; i<this.aJpRollHitPosNowIndex ; i++ ){
+                        //    this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true) ;
+                        //}
+                    }
+                }
+                // Roll vext step
+                if (this.jpRollDeltaTimeCountDown > 0) {
                     return;
                 }
-                this.jackpotRollDeltaTimeCountDown = this.JACKPOT_ROLL_TIME;
+                this.jpRollDeltaTimeCountDown = this.JP_ROLL_TIME;
                 // step
-                if (this.jackpotRollWay) {
+                if (this.jpRollWay) {
                     this.rollerNowPos++;
                     if (this.rollerNowPos >= this.aSlot.length) {
                         this.rollerNowPos -= this.aSlot.length;
@@ -71793,37 +72025,47 @@ var GameRoller = function () {
                         this.rollerNowPos += this.aSlot.length;
                     }
                 }
-                // lights on off 
+                // Symbols on off 
                 this.allSymbolOff();
-                for (var i = 0; i < this.aJackpotRollHitPosNowIndex; i++) {
-                    this.aSlot[this.aJackpotRollHitPos[i]].lightOnOff(true);
+                for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                    this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
                 }
                 this.aSlot[this.rollerNowPos].lightOnOff(true);
                 // Hit & next one & Done
-                if (this.rollerNowPos == this.aJackpotRollHitPos[this.aJackpotRollHitPosNowIndex]) {
-                    this.jackpotRollDeltaTimeCountDown = this.JACKPOT_ROLL_HIT_TIME;
-                    Global.g.mario.game.sound.play("BS_BonusWin02");
+                if (this.rollerNowPos == this.aJpRollHitPos[this.aJpRollHitPosNowIndex]) {
+                    this.jpRollDeltaTimeCountDown = this.JP_ROLL_HIT_TIME;
+                    Global.g.mario.game.sound.play("BS_BonusWin0" + Global.g.mario.game.rnd.integerInRange(1, 3).toString());
                     var returnHitPay = this.getHitPay(this.rollerNowPos);
                     if (returnHitPay.isLuckyTime) {
                         console.log("ERROR returnHitPay in GameRoller::update()");
                     } else {
                         this.sceneGame.jackpotHit(returnHitPay.hitSymbolID, returnHitPay.payNumber);
                     }
-                    this.jackpotRollWay = !this.jackpotRollWay;
-                    this.aJackpotRollHitPosNowIndex++;
-                    if (this.aJackpotRollHitPosNowIndex >= this.aJackpotRollHitPos.length) {
+                    this.aJpRollHitPosNowIndex++;
+                    var aJackpotRollHitSymbol = this.getJackpoyRollHitSymbol();
+                    if (this.aJpRollHitPosNowIndex >= this.aJpRollHitPos.length) {
+                        this.jpRollWay = false;
                         this.rollerNowPos = this.rollerStopPos;
-                        var aJackpotRollHitSymbol = this.getJackpoyRollHitSymbol();
-                        this.sceneGame.jackpotRollDone(aJackpotRollHitSymbol, this.getBigWinAnmPlayable());
+                        if (this.jpRollSound != null) {
+                            this.jpRollSound.stop();
+                        }
+                        this.jpLampSprite.frame = 1;
+                        this.sceneGame.jackpotRollDone(true, aJackpotRollHitSymbol, this.getBigWinAnmPlayable());
+                    } else {
+                        this.jpRollWay = this.countRollWay(this.rollerNowPos, this.aJpRollHitPos[this.aJpRollHitPosNowIndex]);
+                        if (this.jpRollSound != null) {
+                            this.jpRollSound.stop();
+                        }
+                        this.jpLampSprite.frame = 1;
+                        this.sceneGame.jackpotRollDone(false, aJackpotRollHitSymbol, this.getBigWinAnmPlayable());
                     }
-                } else {
-                    Global.g.mario.game.sound.play("BS_BetBt01"); // Temp
                 }
             } else if (this.gameState == Global.GAMESTATE.JP_NO_WIN) {
-                this.jackpotNoWinDeltaTime += deltaTime;
-                if (this.jackpotNoWinDeltaTime >= this.JACKPOT_NO_WIN_TIME) {
+                this.jpNoWinDeltaTime += deltaTime;
+                if (this.jpNoWinDeltaTime >= this.JP_NO_WIN_TIME) {
                     var _aJackpotRollHitSymbol = this.getJackpoyRollHitSymbol();
-                    this.sceneGame.jackpotRollDone(_aJackpotRollHitSymbol, this.getBigWinAnmPlayable());
+                    this.jpLampSprite.frame = 0;
+                    this.sceneGame.jackpotRollDone(true, _aJackpotRollHitSymbol, this.getBigWinAnmPlayable());
                 }
             }
         }
@@ -71833,9 +72075,7 @@ var GameRoller = function () {
             if (inNowState < Global.GAMESTATE.TRIGGER_START) {
                 this.gameState = inNowState;
             }
-            if (inNowState == Global.GAMESTATE.JP_GLITTER) {
-                this.setJpGlitter();
-            } else if (inNowState == Global.GAMESTATE.JP_ROLL) {
+            if (inNowState == Global.GAMESTATE.JP_START_GLITTER) {
                 if (para1 == null) {
                     console.log("Error para1 in GameRoller::stateChange()-GAMESTATE.JP_ROLL-1");
                     return;
@@ -71844,8 +72084,20 @@ var GameRoller = function () {
                     console.log("Error para1 in GameRoller::stateChange()-GAMESTATE.JP_ROLL-2");
                     return;
                 }
-                this.setJpRoll(para1);
-            } else if (4 == Global.GAMESTATE.JP_NO_WIN) {
+                this.setJpRollHits(para1);
+                this.setJpGlitter();
+                //console.log(" ") ;          // ---------- moses test ---------
+            } else if (inNowState == Global.GAMESTATE.JP_NOW_POS_GLITTER) {
+                this.jpNowPosGlitterTotalDeltaTime = 0;
+                this.jpNowPosGlitterStepDeltaTime = 0;
+                this.jpNowPosGlitterSound = Global.g.mario.game.sound.play("BS_HitLuckyTime0" + Global.g.mario.game.rnd.integerInRange(1, 2).toString());
+                //console.log("NowPosGlitter") ;          // ---------- moses test ---------
+            } else if (inNowState == Global.GAMESTATE.JP_ROLL) {
+                this.jpRollDeltaTimeCountDown = this.JP_ROLL_TIME;
+                this.jpRollSound = Global.g.mario.game.sound.play("BS_BonusRun0" + Global.g.mario.game.rnd.integerInRange(1, 3).toString());
+                this.jpRollGlitterDeltaTime = 0;
+                //console.log("Roller") ;     // --------------- moses test ------------
+            } else if (inNowState == Global.GAMESTATE.JP_NO_WIN) {
                 this.setJpRollNoWin();
             } else if (inNowState == Global.GAMESTATE.DOUBLE) {
                 if (para1 == null) {
@@ -71865,6 +72117,19 @@ var GameRoller = function () {
                 for (var i = 0; i < this.aSlot.length; i++) {
                     this.aSlot[i].rebootClean();
                 }
+                if (this.cruiseSoundIng == true) {
+                    if (this.cruiseSound != null) {
+                        this.cruiseSound.stop();
+                    }
+                }
+                if (this.jpStartGlitterSound != null) {
+                    this.jpStartGlitterSound.stop();
+                }
+                if (this.jpNowPosGlitterSound != null) {
+                    this.jpNowPosGlitterSound.stop();
+                }
+            } else if (inNowState == Global.GAMESTATE.TAKE_WIN) {
+                this.jpLampSprite.frame = 0;
             }
         }
     }, {
@@ -71872,9 +72137,9 @@ var GameRoller = function () {
         value: function showIdle() {
             this.winDeltaTime = 0;
             this.allSymbolOff();
-            if (this.aJackpotRollHitPos.length) {
-                for (var i = 0; i < this.aJackpotRollHitPos.length; i++) {
-                    this.aSlot[this.aJackpotRollHitPos[i]].lightOnOff(true);
+            if (this.aJpRollHitPos.length) {
+                for (var i = 0; i < this.aJpRollHitPos.length; i++) {
+                    this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
                 }
             } else {
                 this.aSlot[this.rollerNowPos].lightOnOff(true);
@@ -71889,10 +72154,12 @@ var GameRoller = function () {
             this.rollerStepTime = 0;
             this.rollerSpeed = this.ROLLER_SPEED_START;
             this.rollerStartToDecend = false;
-            this.aJackpotRollHitPos.length = 0;
-            this.aJackpotRollHitPosNowIndex = 0;
+            this.aJpRollHitPos.length = 0;
+            this.aJpRollHitPosNowIndex = 0;
             this.rollerRaisePosThrough = 0;
             this.cruiseSoundIng = false;
+            this.jpStartGlitterStepTime = this.getRandJpLampRollingGlitterDur();
+            this.jpStartGlitterDeltaTime = 0;
         }
     }, {
         key: "setRollStopPos",
@@ -71972,29 +72239,33 @@ var GameRoller = function () {
     }, {
         key: "setJpGlitter",
         value: function setJpGlitter() {
-            this.glitterTotalDeltaTime = 0.0;
-            this.glitterDeltaTime = 0.0;
-            this.jackpotSound = Global.g.mario.game.sound.play("BS_HitJP", 1, true);
+            this.jpStartGlitterTotalDeltaTime = 0.0;
+            this.jpStartGlitterDeltaTime = 0.0;
+            this.jpStartGlitterSound = Global.g.mario.game.sound.play("BS_HitJP");
         }
     }, {
-        key: "setJpRoll",
-        value: function setJpRoll(inJackpotRollHit) {
+        key: "setJpRollHits",
+        value: function setJpRollHits(inJackpotRollHit) {
             if (inJackpotRollHit == null) {
                 console.log("!!! Error input in GameRoller::setJpRoll()");
                 return;
             }
-            this.jackpotRollDeltaTimeCountDown = this.JACKPOT_ROLL_TIME;
-            this.aJackpotRollHitPos.length = 0;
-            this.jackpotRollWay = false; // true:clockwise    false:counter-clockwise
-            this.aJackpotRollHitPos.push(this.rollerNowPos);
+            this.aJpRollHitPos.length = 0;
+            if (inJackpotRollHit.length == 0) {
+                this.jpRollWay = false;
+            } else {
+                this.jpRollWay = this.countRollWay(this.rollerNowPos, inJackpotRollHit[0]); //true:clockwise false:counter-clockwise
+            }
+            this.aJpRollHitPos.push(this.rollerNowPos);
             for (var i = 0; i < inJackpotRollHit.length; i++) {
-                this.aJackpotRollHitPos.push(inJackpotRollHit[i]);
-            }this.aJackpotRollHitPosNowIndex = 1;
+                this.aJpRollHitPos.push(inJackpotRollHit[i]);
+            }this.aJpRollHitPosNowIndex = 1; // First element will be this.rollerNowPos
         }
     }, {
         key: "setJpRollNoWin",
         value: function setJpRollNoWin() {
-            this.jackpotNoWinDeltaTime = 0;
+            this.jpNoWinDeltaTime = 0;
+            this.jpLampSprite.frame = 0;
             Global.g.mario.game.sound.play("BS_BonusNoWin");
         }
     }, {
@@ -72013,15 +72284,20 @@ var GameRoller = function () {
         key: "getBigWinAnmPlayable",
         value: function getBigWinAnmPlayable() {
             var threshold = 30; // Temp
+            var hitNumber = 0;
             var hitPay = void 0;
-            if (this.aJackpotRollHitPos.length) {
-                for (var i = 0; i < this.aJackpotRollHitPos.length; i++) {
-                    hitPay = this.getHitPay(this.aJackpotRollHitPos[i]);
+            if (this.aJpRollHitPos.length) {
+                for (var i = 0; i < this.aJpRollHitPos.length; i++) {
+                    hitPay = this.getHitPay(this.aJpRollHitPos[i]);
                     if (hitPay.payNumber >= threshold) return true;
+                    hitNumber++;
                 }
             } else {
                 hitPay = this.getHitPay(this.rollerNowPos);
                 if (hitPay.payNumber >= threshold) return true;
+            }
+            if (hitNumber >= 4) {
+                return true;
             }
             return false;
         }
@@ -72030,9 +72306,9 @@ var GameRoller = function () {
         value: function getJackpoyRollHitSymbol() {
             var aJackpotRollHitSymbol = void 0;
             aJackpotRollHitSymbol = new Array();
-            for (var i = 0; i < this.aJackpotRollHitPos.length; i++) {
-                if (this.aSlot[this.aJackpotRollHitPos[i]].symbol.symbolID != 99) {
-                    aJackpotRollHitSymbol.push(this.aSlot[this.aJackpotRollHitPos[i]].symbol.symbolID);
+            for (var i = 0; i < this.aJpRollHitPos.length; i++) {
+                if (this.aSlot[this.aJpRollHitPos[i]].symbol.symbolID != 99) {
+                    aJackpotRollHitSymbol.push(this.aSlot[this.aJpRollHitPos[i]].symbol.symbolID);
                 }
             }
             return aJackpotRollHitSymbol;
@@ -72113,8 +72389,12 @@ var GameRoller = function () {
             return returnHitPay;
         }
     }, {
-        key: "rollerStopCount",
-        value: function rollerStopCount() {
+        key: "rollStop",
+        value: function rollStop() {
+            this.winDeltaTime = 0;
+            this.jpStartGlitterDeltaTime = 0;
+            this.jpStartGlitterStepTime = this.getRandJpLampRollingGlitterDur();
+            this.jpLampSprite.frame = 0;
             var returnHitPay = this.getHitPay(this.rollerNowPos);
             if (returnHitPay.isLuckyTime) {
                 this.sceneGame.rollerDone(99, returnHitPay.luckTimeSide, 0, this.getBigWinAnmPlayable());
@@ -72201,6 +72481,66 @@ var GameRoller = function () {
                 }
             } else {
                 this.aSlot[this.rollerNowPos].lightOnOff(true);
+            }
+        }
+    }, {
+        key: "getRandWinGlitterDur",
+        value: function getRandWinGlitterDur(OnOff) {
+            if (OnOff) {
+                return Global.g.mario.game.rnd.realInRange(0.03, 0.4);
+            } else {
+                return Global.g.mario.game.rnd.realInRange(0, 0.2);
+            }
+        }
+    }, {
+        key: "getRandJpLampRollingGlitterDur",
+        value: function getRandJpLampRollingGlitterDur() {
+            return 0.03 + Global.g.mario.rnd.realInRange(0, 0.08); // On and Off are the same frequency
+        }
+    }, {
+        key: "countRollWay",
+        value: function countRollWay(nowPos, destPos) {
+            if (nowPos == destPos || nowPos < 0 || destPos < 0 || nowPos >= this.aSlot.length || destPos >= this.aSlot.length) {
+                console.log("!!! Error input in GameRoller::countRollWay()");
+                return false;
+            }
+            var numTemp;
+            var clockwiseNum = -1;
+            var counterClockwiseNum = -1;
+            // Clockwise
+            for (var i = 1; i <= this.aSlot.length; i++) {
+                numTemp = nowPos + i;
+                if (numTemp >= this.aSlot.length) {
+                    numTemp -= this.aSlot.length;
+                }
+                if (numTemp == destPos) {
+                    clockwiseNum = i;
+                    break;
+                }
+            }
+            if (clockwiseNum == -1) {
+                console.log("!!! Inner code error in GameRoller::countRollWay()-1");
+                return false;
+            }
+            // Counter-Clockwise
+            for (var i = 1; i <= this.aSlot.length; i++) {
+                numTemp = nowPos - i;
+                if (numTemp < 0) {
+                    numTemp += this.aSlot.length;
+                }
+                if (numTemp == destPos) {
+                    counterClockwiseNum = i;
+                    break;
+                }
+            }
+            if (counterClockwiseNum == -1) {
+                console.log("!!! Inner code error in GameRoller::countRollWay()-2");
+                return false;
+            }
+            if (counterClockwiseNum >= clockwiseNum) {
+                return false; // true:clockwise   false:counter-clockwise
+            } else {
+                return true; // true:clockwise   false:counter-clockwise
             }
         }
     }]);
