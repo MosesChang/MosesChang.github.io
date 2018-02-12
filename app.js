@@ -331,8 +331,8 @@ var GameData = function () {
         this.testerDebugBonusWin = false;
         //    public testerSceneGameUpdate: boolean = true ;
         this.testerSceneGameUpdate = false;
-        this.testerFullScreenOff = true;
-        //    public testerFullScreenOff: boolean = false ;
+        //    public testerFullScreenOff: boolean = true ;
+        this.testerFullScreenOff = false;
         this.testerFpsShow = true;
         this.onStateChange = new Phaser.Signal();
         this.resetNumbers();
