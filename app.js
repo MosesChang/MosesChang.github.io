@@ -327,12 +327,12 @@ var GameData = function () {
         this.testerBtDebug = false;
         //    public testerCredits: boolean = true ;
         this.testerCredits = false;
-        this.testerDebugBonusWin = true;
-        //    public testerDebugBonusWin: boolean = false ;
+        //    public testerDebugBonusWin: boolean = true ;
+        this.testerDebugBonusWin = false;
         //    public testerSceneGameUpdate: boolean = true ;
         this.testerSceneGameUpdate = false;
-        //    public testerFullScreenOff: boolean = true ;
-        this.testerFullScreenOff = false;
+        this.testerFullScreenOff = true;
+        //    public testerFullScreenOff: boolean = false ;
         this.testerFpsShow = true;
         this.onStateChange = new Phaser.Signal();
         this.resetNumbers();
@@ -372,7 +372,9 @@ var GameData = function () {
             this.doubleBet = false; // false:Left(1-6)  true:Right(8-13)
             this.denom = 1000; // 100 is tmpe now
             this.doubleFuncAble = false;
-            this.version = "0.1.8";
+            this.musicVolume = 1.0;
+            this.soundVolume = 1.0;
+            this.version = "0.1.9";
             this.centerDebug = " ";
             this.creditsInitDebug = 8;
             this.serverCreditsChangeDebug = 10;
@@ -66152,8 +66154,10 @@ var Level = function (_Phaser$State) {
             this.add.sprite(121, 226, 'GameImage1', 'AU_Msg01', _groupFuncMenuAudio);
             this.add.sprite(60, 307, 'GameImage1', 'AU_Msg02', _groupFuncMenuAudio);
             this.add.sprite(60, 461, 'GameImage1', 'AU_Msg03', _groupFuncMenuAudio);
-            this.add.sprite(132, 392, 'GameImage1', 'AU_Line', _groupFuncMenuAudio);
-            this.add.sprite(132, 547, 'GameImage1', 'AU_Line', _groupFuncMenuAudio);
+            var _AU_LineSound = this.add.sprite(132, 547, 'GameImage1', 'AU_Line', _groupFuncMenuAudio);
+            var _AU_LineMusic = this.add.sprite(132, 392, 'GameImage1', 'AU_Line', _groupFuncMenuAudio);
+            var _AU_BtSound = this.add.sprite(130, 536, 'GameImage1', 'AU_Bt', _groupFuncMenuAudio);
+            var _AU_BtMusic = this.add.sprite(130, 381, 'GameImage1', 'AU_Bt', _groupFuncMenuAudio);
             var _FuncMenuAudioExitBt = this.add.button(487, 186, 'FuncMenuExitBt', undefined, this, 0, 0, 1, 0, _groupFuncMenuAudio);
             // public fields
             this.fGameBackground = _GameBackground;
@@ -66224,6 +66228,10 @@ var Level = function (_Phaser$State) {
             this.fHU_PageLt_03 = _HU_PageLt_03;
             this.fGroupFuncMenuAudio = _groupFuncMenuAudio;
             this.fFuncMenuAudioBg = _FuncMenuAudioBg;
+            this.fAU_LineSound = _AU_LineSound;
+            this.fAU_LineMusic = _AU_LineMusic;
+            this.fAU_BtSound = _AU_BtSound;
+            this.fAU_BtMusic = _AU_BtMusic;
             this.fFuncMenuAudioExitBt = _FuncMenuAudioExitBt;
             this.afterCreate();
         }
@@ -70095,28 +70103,28 @@ var SceneGame = function () {
                 } else if (inNowState == Global.GAMESTATE.TR_NET_SPIN_RESULT) {
                     this.gameRoller.setRollStopPos(Global.g.rollResult.pos, Global.g.rollResult.reciprocatePos);
                 } else if (inNowState == Global.GAMESTATE.TR_BT_START) {
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                     this.OnBtStart();
                 } else if (inNowState == Global.GAMESTATE.TR_BT_DOUBLE_L) {
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                     this.OnBtDoubleL();
                 } else if (inNowState == Global.GAMESTATE.TR_BT_DOUBLE_R) {
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                     this.OnBtDoubleR();
                 } else if (inNowState == Global.GAMESTATE.TR_BT_FUNCTION) {
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                     this.OnBtFunction();
                 } else if (inNowState == Global.GAMESTATE.TR_BT_HOME) {
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                     this.OnBtHome();
                 } else if (inNowState == Global.GAMESTATE.TR_BT_TEST_01) {
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                     this.OnBtTester01();
                 } else if (inNowState == Global.GAMESTATE.TR_BT_TEST_02) {
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                     this.OnBtTester02();
                 } else if (inNowState == Global.GAMESTATE.TR_BT_TEST_03) {
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                     this.OnBtTester03();
                 }
             }
@@ -70181,7 +70189,7 @@ var SceneGame = function () {
                                 }
 
                                 Global.g.changeState(Global.GAMESTATE.JP_START_GLITTER, Global.g.getAllJpPos());
-                                _context.next = 39;
+                                _context.next = 32;
                                 break;
 
                             case 9:
@@ -70195,30 +70203,18 @@ var SceneGame = function () {
                                 Global.g.diffCredits = 0;
                                 Global.g.gameNet.takeWin();
                                 Global.g.changeState(Global.GAMESTATE.IDLE);
-                                _context.next = 39;
+                                _context.next = 32;
                                 break;
 
                             case 17:
                                 this.gameHistory.addSymbol(hitSymbolID);
                                 Global.g.win = Global.g.symbolBet[hitSymbolID] * pay;
-
-                                if (!(Global.g.jackpotResultNum != 0)) {
-                                    _context.next = 24;
-                                    break;
-                                }
-
-                                this.gameNumber.setAllByGameData();
-                                Global.g.changeState(Global.GAMESTATE.JP_START_GLITTER, Global.g.getAllJpPos());
-                                _context.next = 39;
-                                break;
-
-                            case 24:
                                 this.gameNumber.setAllByGameData();
                                 this.gameNumber.clearBitAtWin(hitSymbolID);
                                 // satat HIT, play sound and stay
 
                                 if (pay <= 3) hitLevel = 1;else if (pay < 20) hitLevel = 2;else hitLevel = 3;
-                                winHitSound = Global.g.mario.game.sound.play("BS_WinHit0" + hitLevel.toString());
+                                winHitSound = Global.g.mario.game.sound.play("BS_WinHit0" + hitLevel.toString(), Global.g.soundVolume);
                                 soundDone = false;
 
                                 winHitSound.onStop.addOnce(function () {
@@ -70226,28 +70222,33 @@ var SceneGame = function () {
                                 });
                                 Global.g.changeState(Global.GAMESTATE.HIT);
 
-                            case 31:
+                            case 26:
                                 if (soundDone) {
-                                    _context.next = 36;
+                                    _context.next = 31;
                                     break;
                                 }
 
-                                _context.next = 34;
+                                _context.next = 29;
                                 return System.Delay(0);
 
-                            case 34:
-                                _context.next = 31;
+                            case 29:
+                                _context.next = 26;
                                 break;
 
-                            case 36:
-                                // State WIN
-                                if (pay >= 30) {
-                                    this.gameAnm.playWin();
+                            case 31:
+                                // State Change to next
+                                if (Global.g.jackpotResultNum != 0) {
+                                    Global.g.changeState(Global.GAMESTATE.JP_START_GLITTER, Global.g.getAllJpPos());
+                                } else {
+                                    // State WIN
+                                    if (pay >= 30) {
+                                        this.gameAnm.playWin();
+                                    }
+                                    this.winAudio = Global.g.mario.game.sound.play("BS_WinBG0" + Global.g.mario.game.rnd.integerInRange(1, 8).toString(), Global.g.musicVolume);
+                                    Global.g.changeState(Global.GAMESTATE.WIN);
                                 }
-                                this.winAudio = Global.g.mario.game.sound.play("BS_WinBG0" + Global.g.mario.game.rnd.integerInRange(1, 8).toString());
-                                Global.g.changeState(Global.GAMESTATE.WIN);
 
-                            case 39:
+                            case 32:
                             case "end":
                                 return _context.stop();
                         }
@@ -70260,12 +70261,12 @@ var SceneGame = function () {
         value: function doubleDone() {
             //console.log("doubleDone") ;       // -------- moses test -----------
             if (Global.g.checkDoubleWin() == true) {
-                Global.g.mario.game.sound.play("BS_DoubleWin");
+                Global.g.mario.game.sound.play("BS_DoubleWin", Global.g.soundVolume);
                 Global.g.win *= 2;
                 this.gameNumber.setWin();
                 Global.g.changeState(Global.GAMESTATE.DOUBLE_WIN);
             } else {
-                Global.g.mario.game.sound.play("BS_DoubleLose");
+                Global.g.mario.game.sound.play("BS_DoubleLose", Global.g.soundVolume);
                 Global.g.win = 0;
                 this.gameNumber.setAllByGameData();
                 this.clearBetToMinConstraint();
@@ -70286,6 +70287,12 @@ var SceneGame = function () {
         key: "jackpotNowPosGlitterDone",
         value: function jackpotNowPosGlitterDone() {
             Global.g.changeState(Global.GAMESTATE.JP_ROLL);
+        }
+    }, {
+        key: "jackpotNoWinDone",
+        value: function jackpotNoWinDone() {
+            this.clearBetToMinConstraint();
+            Global.g.changeState(Global.GAMESTATE.IDLE);
         }
     }, {
         key: "jackpotRollDone",
@@ -70310,8 +70317,8 @@ var SceneGame = function () {
                                     break;
                                 }
 
-                                this.clearBetToMinConstraint();
-                                Global.g.changeState(Global.GAMESTATE.IDLE);
+                                Global.g.gameNet.takeWin();
+                                Global.g.changeState(Global.GAMESTATE.JP_NO_WIN);
                                 _context2.next = 22;
                                 break;
 
@@ -70321,9 +70328,9 @@ var SceneGame = function () {
                                 // state WinHit, play sound and stay
 
                                 if (bigWinAnm) {
-                                    winHitSound = Global.g.mario.game.sound.play("BS_WinHit03");
+                                    winHitSound = Global.g.mario.game.sound.play("BS_WinHit03", Global.g.soundVolume);
                                 } else {
-                                    winHitSound = Global.g.mario.game.sound.play("BS_WinHit02");
+                                    winHitSound = Global.g.mario.game.sound.play("BS_WinHit02", Global.g.soundVolume);
                                 }
                                 soundDone = false;
 
@@ -70350,7 +70357,7 @@ var SceneGame = function () {
                                 if (bigWinAnm) {
                                     this.gameAnm.playWin();
                                 }
-                                this.winAudio = Global.g.mario.game.sound.play("BS_WinBG0" + Global.g.mario.game.rnd.integerInRange(1, 8).toString());
+                                this.winAudio = Global.g.mario.game.sound.play("BS_WinBG0" + Global.g.mario.game.rnd.integerInRange(1, 8).toString(), Global.g.musicVolume);
                                 Global.g.changeState(Global.GAMESTATE.WIN);
 
                             case 22:
@@ -70440,7 +70447,7 @@ var SceneGame = function () {
             this.backupBet();
             this.gameNumber.setAllByGameData();
             this.gameRoller.showIdle();
-            Global.g.mario.game.sound.play("BS_BetBt03");
+            Global.g.mario.game.sound.play("BS_BetBt03", Global.g.soundVolume);
         }
     }, {
         key: "OnBtDoubleL",
@@ -70520,7 +70527,7 @@ var SceneGame = function () {
                     this.backupBet();
                     this.gameNumber.setAllByGameData();
                     this.gameRoller.showIdle();
-                    Global.g.mario.game.sound.play("BS_BetBt0" + (symID + 1).toString());
+                    Global.g.mario.game.sound.play("BS_BetBt0" + (symID + 1).toString(), Global.g.soundVolume);
                 }
             }
         }
@@ -70812,7 +70819,7 @@ var GameNumber = function () {
                 this.takeWinDistWin = para1 | 0; // float to int
                 this.takeWinDeltaTime = 0;
                 this.takeWinAlreadyTake = 0;
-                this.takeWinSound = Global.g.mario.game.sound.play("CS_Scoring", 1, true);
+                this.takeWinSound = Global.g.mario.game.sound.play("CS_Scoring", Global.g.soundVolume, true);
                 if (this.takeWinDistWin <= this.TAKE_WIN_MIN_TIME_CREDIT) {
                     this.takeWinTime = this.TAKE_WIN_MIN_TIME;
                 } else if (this.takeWinDistWin <= this.TAKE_WIN_MAX_TIME_CREDIT) {
@@ -71154,7 +71161,7 @@ var GameBt = function () {
             this.aSymbolTgrBt[7] = new TriggerButton_1.default(Global.g.mario.onUpdate, Global.g.level.fSymbol08Bt, 7);
             for (var i = 0; i < Global.g.symbolNum; i++) {
                 this.aSymbolTgrBt[i].onTrigger.add(function (inID) {
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                     _this.sceneGame.OnBtSymbol(inID, true);
                 }, this); // It's not Phaser.Button, It's TriggerButton
             }
@@ -71193,7 +71200,7 @@ var GameBt = function () {
             }
             if (this.autoPlayTriggerDeltaTime >= timeToGo) {
                 this.autoPlayTriggerDeltaTime = 0;
-                Global.g.mario.game.sound.play("CS_PressBt");
+                Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                 this.sceneGame.OnBtStart();
             }
         }
@@ -71281,7 +71288,7 @@ var GameBt = function () {
     }, {
         key: "OnTgrBtAllAdd1",
         value: function OnTgrBtAllAdd1(inID) {
-            Global.g.mario.game.sound.play("CS_PressBt");
+            Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
             this.sceneGame.OnBtAllAdd1();
             if (this.allAdd1TgrBt.checkPressable()) {
                 if (!this.checkAllAdd1Able(true)) {
@@ -71555,7 +71562,7 @@ var LockButton = function () {
                     this.isLock = true;
                     this.justLock = true;
                     this.regButton.setFrames(1, 1, 1, 1);
-                    Global.g.mario.game.sound.play("CS_PressBt");
+                    Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
                 }
             }
         }
@@ -71714,7 +71721,7 @@ var GameRoller = function () {
         this.JP_NOW_POS_GLITTER_STEP_TIME = 0.067;
         this.jpNowPosGlitterTotalDeltaTime = 0;
         this.jpNowPosGlitterStepDeltaTime = 0;
-        this.JP_ROLL_TIME = 0.05;
+        this.JP_ROLL_TIME = 0.03;
         this.JP_ROLL_HIT_TIME = 1;
         this.JP_ROLL_GLITTER_TIME = 0.05;
         this.jpRollDeltaTimeCountDown = this.JP_ROLL_TIME;
@@ -71791,7 +71798,7 @@ var GameRoller = function () {
                     // Done for prevent user leave web page for a long time at last step
                     if (this.rollerStepTime >= this.ROLLER_DEC_TIME) {
                         console.log("User leave web page for a long time at last step and jump to dest");
-                        Global.g.mario.game.sound.play("BS_Normal03_00");
+                        Global.g.mario.game.sound.play("BS_Normal03_00", Global.g.soundVolume);
                         this.rollerNowPos = this.rollerStopPos;
                         this.rollStop();
                         return;
@@ -71815,7 +71822,7 @@ var GameRoller = function () {
                             this.cruiseSoundIng = false;
                             this.cruiseSound.stop();
                         }
-                        Global.g.mario.game.sound.play("BS_Normal03_0" + (this.rollerDecendPosThroughTotal - posThroughNow).toString());
+                        Global.g.mario.game.sound.play("BS_Normal03_0" + (this.rollerDecendPosThroughTotal - posThroughNow).toString(), Global.g.soundVolume);
                     }
                     // Show light
                     this.showLight();
@@ -71876,11 +71883,11 @@ var GameRoller = function () {
                         // Sound
                         this.rollerRaisePosThrough += leap;
                         if (this.rollerRaisePosThrough <= 10) {
-                            Global.g.mario.game.sound.play("BS_Normal01_0" + (this.rollerRaisePosThrough - 1).toString());
+                            Global.g.mario.game.sound.play("BS_Normal01_0" + (this.rollerRaisePosThrough - 1).toString(), Global.g.soundVolume);
                         } else {
                             if (!this.cruiseSoundIng) {
                                 this.cruiseSoundIng = true;
-                                this.cruiseSound = Global.g.mario.game.sound.play("BS_Normal02", 1, true);
+                                this.cruiseSound = Global.g.mario.game.sound.play("BS_Normal02", Global.g.soundVolume, true);
                             }
                         }
                         // Show light
@@ -71990,22 +71997,23 @@ var GameRoller = function () {
                     }
                 }
             } else if (this.gameState == Global.GAMESTATE.JP_ROLL) {
+                var clearSymbolAlready = false;
                 // delta time
                 this.jpRollDeltaTimeCountDown -= deltaTime;
                 this.jpRollGlitterDeltaTime += deltaTime;
-                // Jp lamp glitter
+                // Glitter
                 if (this.jpRollGlitterDeltaTime >= this.JP_ROLL_GLITTER_TIME) {
                     this.jpRollGlitterDeltaTime = 0;
                     if (this.jpLampSprite.frame == 0) {
                         this.jpLampSprite.frame = 1;
-                        //for( var i=0 ; i<this.aJpRollHitPosNowIndex ; i++ ){
-                        //    this.aSlot[this.aJpRollHitPos[i]].lightOnOff(false) ;
-                        //}
+                        for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                            this.aSlot[this.aJpRollHitPos[i]].lightOnOff(false);
+                        }
                     } else {
                         this.jpLampSprite.frame = 0;
-                        //for( var i=0 ; i<this.aJpRollHitPosNowIndex ; i++ ){
-                        //    this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true) ;
-                        //}
+                        for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                            this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
+                        }
                     }
                 }
                 // Roll vext step
@@ -72027,14 +72035,20 @@ var GameRoller = function () {
                 }
                 // Symbols on off 
                 this.allSymbolOff();
-                for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
-                    this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
+                if (this.jpLampSprite.frame == 1) {
+                    for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                        this.aSlot[this.aJpRollHitPos[i]].lightOnOff(false);
+                    }
+                } else {
+                    for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                        this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
+                    }
                 }
                 this.aSlot[this.rollerNowPos].lightOnOff(true);
                 // Hit & next one & Done
                 if (this.rollerNowPos == this.aJpRollHitPos[this.aJpRollHitPosNowIndex]) {
                     this.jpRollDeltaTimeCountDown = this.JP_ROLL_HIT_TIME;
-                    Global.g.mario.game.sound.play("BS_BonusWin0" + Global.g.mario.game.rnd.integerInRange(1, 3).toString());
+                    Global.g.mario.game.sound.play("BS_BonusWin0" + Global.g.mario.game.rnd.integerInRange(1, 3).toString(), Global.g.soundVolume);
                     var returnHitPay = this.getHitPay(this.rollerNowPos);
                     if (returnHitPay.isLuckyTime) {
                         console.log("ERROR returnHitPay in GameRoller::update()");
@@ -72050,6 +72064,9 @@ var GameRoller = function () {
                             this.jpRollSound.stop();
                         }
                         this.jpLampSprite.frame = 1;
+                        for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                            this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
+                        }
                         this.sceneGame.jackpotRollDone(true, aJackpotRollHitSymbol, this.getBigWinAnmPlayable());
                     } else {
                         this.jpRollWay = this.countRollWay(this.rollerNowPos, this.aJpRollHitPos[this.aJpRollHitPosNowIndex]);
@@ -72057,15 +72074,17 @@ var GameRoller = function () {
                             this.jpRollSound.stop();
                         }
                         this.jpLampSprite.frame = 1;
+                        for (var i = 0; i < this.aJpRollHitPosNowIndex; i++) {
+                            this.aSlot[this.aJpRollHitPos[i]].lightOnOff(true);
+                        }
                         this.sceneGame.jackpotRollDone(false, aJackpotRollHitSymbol, this.getBigWinAnmPlayable());
                     }
                 }
             } else if (this.gameState == Global.GAMESTATE.JP_NO_WIN) {
                 this.jpNoWinDeltaTime += deltaTime;
                 if (this.jpNoWinDeltaTime >= this.JP_NO_WIN_TIME) {
-                    var _aJackpotRollHitSymbol = this.getJackpoyRollHitSymbol();
                     this.jpLampSprite.frame = 0;
-                    this.sceneGame.jackpotRollDone(true, _aJackpotRollHitSymbol, this.getBigWinAnmPlayable());
+                    this.sceneGame.jackpotNoWinDone();
                 }
             }
         }
@@ -72090,14 +72109,15 @@ var GameRoller = function () {
             } else if (inNowState == Global.GAMESTATE.JP_NOW_POS_GLITTER) {
                 this.jpNowPosGlitterTotalDeltaTime = 0;
                 this.jpNowPosGlitterStepDeltaTime = 0;
-                this.jpNowPosGlitterSound = Global.g.mario.game.sound.play("BS_HitLuckyTime0" + Global.g.mario.game.rnd.integerInRange(1, 2).toString());
+                this.jpNowPosGlitterSound = Global.g.mario.game.sound.play("BS_HitLuckyTime0" + Global.g.mario.game.rnd.integerInRange(1, 2).toString(), Global.g.soundVolume);
                 //console.log("NowPosGlitter") ;          // ---------- moses test ---------
             } else if (inNowState == Global.GAMESTATE.JP_ROLL) {
                 this.jpRollDeltaTimeCountDown = this.JP_ROLL_TIME;
-                this.jpRollSound = Global.g.mario.game.sound.play("BS_BonusRun0" + Global.g.mario.game.rnd.integerInRange(1, 3).toString());
+                this.jpRollSound = Global.g.mario.game.sound.play("BS_BonusRun0" + Global.g.mario.game.rnd.integerInRange(1, 3).toString(), Global.g.soundVolume);
                 this.jpRollGlitterDeltaTime = 0;
                 //console.log("Roller") ;     // --------------- moses test ------------
             } else if (inNowState == Global.GAMESTATE.JP_NO_WIN) {
+                this.jpNoWinDeltaTime = 0;
                 this.setJpRollNoWin();
             } else if (inNowState == Global.GAMESTATE.DOUBLE) {
                 if (para1 == null) {
@@ -72241,7 +72261,7 @@ var GameRoller = function () {
         value: function setJpGlitter() {
             this.jpStartGlitterTotalDeltaTime = 0.0;
             this.jpStartGlitterDeltaTime = 0.0;
-            this.jpStartGlitterSound = Global.g.mario.game.sound.play("BS_HitJP");
+            this.jpStartGlitterSound = Global.g.mario.game.sound.play("BS_HitJP", Global.g.soundVolume);
         }
     }, {
         key: "setJpRollHits",
@@ -72266,7 +72286,7 @@ var GameRoller = function () {
         value: function setJpRollNoWin() {
             this.jpNoWinDeltaTime = 0;
             this.jpLampSprite.frame = 0;
-            Global.g.mario.game.sound.play("BS_BonusNoWin");
+            Global.g.mario.game.sound.play("BS_BonusNoWin", Global.g.soundVolume);
         }
     }, {
         key: "setDoubleRight",
@@ -72821,7 +72841,7 @@ var GameDouble = function () {
             if (!this.isDoubling) return;
             this.deltaAddTime += deltaTime;
             if (this.deltaAddTime >= this.deltaTimeNowStep) {
-                Global.g.mario.game.sound.play("BS_DoubleRun");
+                Global.g.mario.game.sound.play("BS_DoubleRun", Global.g.soundVolume);
                 this.deltaAddTime = 0.0;
                 this.deltaTimeNowStep += this.deltaTimeStepAcc;
                 if (this.deltaTimeNowStep >= this.deltaTimeMaxStep) {
@@ -72861,6 +72881,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var SliderBar_1 = __webpack_require__(382);
 var Global = __webpack_require__(10);
 
 var FunctionMenu = function () {
@@ -72898,6 +72919,26 @@ var FunctionMenu = function () {
             this.gameinfoIndexes[1] = Global.g.level.fHU_PageLt_01;
             this.gameinfoIndexes[2] = Global.g.level.fHU_PageLt_02;
             this.gameinfoIndexes[3] = Global.g.level.fHU_PageLt_03;
+            this.audioMusicSliderBar = new SliderBar_1.default(Global.g.level.fAU_BtMusic, Global.g.level.fAU_LineMusic, 280, Global.g.musicVolume);
+            this.audioSoundSliderBar = new SliderBar_1.default(Global.g.level.fAU_BtSound, Global.g.level.fAU_LineSound, 280, Global.g.soundVolume);
+            this.audioMusicSliderBar.onDrag.add(function (posXNormal) {
+                Global.g.musicVolume = posXNormal;
+            }, this);
+            this.audioMusicSliderBar.onDragStart.add(function (posXNormal) {
+                Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
+            }, this);
+            this.audioMusicSliderBar.onDragStop.add(function (posXNormal) {
+                Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
+            }, this);
+            this.audioSoundSliderBar.onDrag.add(function (posXNormal) {
+                Global.g.soundVolume = posXNormal;
+            }, this);
+            this.audioSoundSliderBar.onDragStart.add(function (posXNormal) {
+                Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
+            }, this);
+            this.audioSoundSliderBar.onDragStop.add(function (posXNormal) {
+                Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
+            }, this);
             this.closeAll();
         }
     }, {
@@ -72910,6 +72951,8 @@ var FunctionMenu = function () {
             Global.g.level.fFuncMenuGameInfoPageRight.onInputDown.remove(this.OnBtGameInfoRight, this);
             Global.g.level.fFuncMenuGameInfoPageLeft.onInputDown.remove(this.OnBtGameInfoLeft, this);
             Global.g.level.fFuncMenuAudioExitBt.onInputDown.remove(this.OnBtExit, this);
+            this.audioMusicSliderBar.rebootClean();
+            this.audioSoundSliderBar.rebootClean();
             for (var i = 0; i < this.gameInfoPageMax; i++) {
                 this.gameInfoGroup.remove(this.gameInfoPages[i]);
             }
@@ -72922,12 +72965,13 @@ var FunctionMenu = function () {
     }, {
         key: "OnBtExit",
         value: function OnBtExit() {
-            Global.g.mario.game.sound.play("CS_PressBt");
+            Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
             this.closeAll();
         }
     }, {
         key: "OnBtListGameInfo",
         value: function OnBtListGameInfo() {
+            Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
             this.listGroup.visible = false;
             this.gameInfoGroup.visible = true;
             this.gameInfoShowPage(0);
@@ -72935,12 +72979,14 @@ var FunctionMenu = function () {
     }, {
         key: "OnBtListAudio",
         value: function OnBtListAudio() {
+            Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
             this.listGroup.visible = false;
             this.audioGroup.visible = true;
         }
     }, {
         key: "OnBtGameInfoRight",
         value: function OnBtGameInfoRight() {
+            Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
             var nextIndex = this.gameInfoPageNow + 1;
             if (nextIndex >= this.gameInfoPageMax) {
                 nextIndex = 0;
@@ -72950,6 +72996,7 @@ var FunctionMenu = function () {
     }, {
         key: "OnBtGameInfoLeft",
         value: function OnBtGameInfoLeft() {
+            Global.g.mario.game.sound.play("CS_PressBt", Global.g.soundVolume);
             var nextIndex = this.gameInfoPageNow - 1;
             if (nextIndex < 0) {
                 nextIndex = this.gameInfoPageMax - 1;
@@ -72990,6 +73037,119 @@ var FunctionMenu = function () {
 }();
 
 exports.default = FunctionMenu;
+
+/***/ }),
+/* 382 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", { value: true });
+
+var SliderBar = function () {
+    // Start dotSprite position will be 0 of initial PosXNormal
+    function SliderBar(inDotSprite, inLineSprite, inMoveWidth, posXNormal) {
+        _classCallCheck(this, SliderBar);
+
+        this.dotSprite = inDotSprite;
+        this.moveWidth = inMoveWidth;
+        if (inLineSprite != null) {
+            this.lineSprite = inLineSprite;
+        } else {
+            this.lineSprite = null;
+        }
+        this.dotSpriteZeroPos = new Phaser.Point(this.dotSprite.position.x, this.dotSprite.position.y);
+        var dotSpriteHeight = this.dotSprite.height;
+        var dotSpriteWidth = this.dotSprite.width;
+        this.onDragStart = new Phaser.Signal();
+        this.onDrag = new Phaser.Signal();
+        this.onDragStop = new Phaser.Signal();
+        if (this.moveWidth < dotSpriteWidth) {
+            console.log("!!! Error in SliderBar::constructor() moveWidth too small");
+            this.moveWidth = dotSpriteWidth;
+        }
+        this.moveWidth -= dotSpriteWidth;
+        this.sliderBounds = new Phaser.Rectangle(this.dotSprite.position.x, this.dotSprite.position.y, this.moveWidth + dotSpriteWidth, dotSpriteHeight);
+        this.dotSprite.anchor.set(0);
+        this.dotSprite.inputEnabled = true;
+        this.dotSprite.input.enableDrag();
+        this.dotSprite.input.boundsRect = this.sliderBounds;
+        this.dotSprite.events.onInputDown.add(this.onDotInputDown, this);
+        this.dotSprite.events.onInputUp.add(this.onDotInputUp, this);
+        this.dotSprite.events.onDragUpdate.add(this.onDotDragUpdate, this);
+        this.setPosXNormal(posXNormal);
+    }
+
+    _createClass(SliderBar, [{
+        key: "setPosXNormal",
+        value: function setPosXNormal(posNormal) {
+            if (posNormal < 0) {
+                console.log("!!! Error in SliderBar::setPosXNormal() posNormal too small");
+                posNormal = 0;
+            } else if (posNormal > 1.0) {
+                console.log("!!! Error in SliderBar::setPosXNormal() posNormal too big");
+                posNormal = 1.0;
+            }
+            this.nowPosX = this.moveWidth * posNormal + this.dotSpriteZeroPos.x;
+            this.dotSprite.position.x = this.nowPosX;
+            this.updateLine();
+        }
+    }, {
+        key: "getPosXNormal",
+        value: function getPosXNormal() {
+            return (this.dotSprite.position.x - this.dotSpriteZeroPos.x) / this.moveWidth;
+        }
+    }, {
+        key: "rebootClean",
+        value: function rebootClean() {
+            this.dotSprite.events.onInputDown.remove(this.onDotInputDown, this);
+            this.dotSprite.events.onInputUp.remove(this.onDotInputUp, this);
+            this.dotSprite.events.onDragUpdate.remove(this.onDotDragUpdate, this);
+        }
+    }, {
+        key: "onDotInputDown",
+        value: function onDotInputDown() {
+            if (this.onDragStart) {
+                this.onDragStart.dispatch(this.getPosXNormal());
+            }
+            this.updateLine();
+        }
+    }, {
+        key: "onDotDragUpdate",
+        value: function onDotDragUpdate() {
+            if (this.onDrag && this.nowPosX != this.dotSprite.position.x) {
+                this.onDrag.dispatch(this.getPosXNormal());
+            }
+            this.nowPosX = this.dotSprite.position.x;
+            this.updateLine();
+        }
+    }, {
+        key: "onDotInputUp",
+        value: function onDotInputUp() {
+            if (this.onDragStop) {
+                this.onDragStop.dispatch(this.getPosXNormal());
+            }
+            this.updateLine();
+        }
+    }, {
+        key: "updateLine",
+        value: function updateLine() {
+            if (this.lineSprite == null) {
+                return;
+            }
+            this.lineSprite.resizeFrame(this.lineSprite, this.dotSprite.width / 2 + (this.dotSprite.position.x - this.dotSpriteZeroPos.x), this.lineSprite.height);
+        }
+    }]);
+
+    return SliderBar;
+}();
+
+exports.default = SliderBar;
 
 /***/ })
 /******/ ]);
