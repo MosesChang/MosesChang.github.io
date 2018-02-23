@@ -208,48 +208,6 @@
     },
     {
       "type": "atlas",
-      "key": "CenterSignIdle1",
-      "textureURL": "assets/game/Atlas/CenterSignIdle1.png",
-      "atlasURL": "assets/game/Atlas/CenterSignIdle1.json",
-      "format": "TEXTURE_ATLAS_JSON_HASH"
-    },
-    {
-      "type": "atlas",
-      "key": "CenterSignIdle2",
-      "textureURL": "assets/game/Atlas/CenterSignIdle2.png",
-      "atlasURL": "assets/game/Atlas/CenterSignIdle2.json",
-      "format": "TEXTURE_ATLAS_JSON_HASH"
-    },
-    {
-      "type": "atlas",
-      "key": "CenterSignIdle3",
-      "textureURL": "assets/game/Atlas/CenterSignIdle3.png",
-      "atlasURL": "assets/game/Atlas/CenterSignIdle3.json",
-      "format": "TEXTURE_ATLAS_JSON_HASH"
-    },
-    {
-      "type": "atlas",
-      "key": "CenterSignIdle4",
-      "textureURL": "assets/game/Atlas/CenterSignIdle4.png",
-      "atlasURL": "assets/game/Atlas/CenterSignIdle4.json",
-      "format": "TEXTURE_ATLAS_JSON_HASH"
-    },
-    {
-      "type": "atlas",
-      "key": "CenterSignWin1",
-      "textureURL": "assets/game/Atlas/CenterSignWin1.png",
-      "atlasURL": "assets/game/Atlas/CenterSignWin1.json",
-      "format": "TEXTURE_ATLAS_JSON_HASH"
-    },
-    {
-      "type": "atlas",
-      "key": "CenterSignWin2",
-      "textureURL": "assets/game/Atlas/CenterSignWin2.png",
-      "atlasURL": "assets/game/Atlas/CenterSignWin2.json",
-      "format": "TEXTURE_ATLAS_JSON_HASH"
-    },
-    {
-      "type": "atlas",
       "key": "WinBolt",
       "textureURL": "assets/game/Atlas/WinBolt.png",
       "atlasURL": "assets/game/Atlas/WinBolt.json",
@@ -666,10 +624,24 @@
       "key": "BS_WinHit03",
       "urls": ["assets/game/Audio/BS_WinHit03.mp3"],
       "autoDecode": true
+    },
+    {
+      "type": "atlas",
+      "key": "CenterSignWin",
+      "textureURL": "assets/game/Atlas/CenterSignWin.png",
+      "atlasURL": "assets/game/Atlas/CenterSignWin.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
+    },
+    {
+      "type": "atlas",
+      "key": "CenterSignIdle",
+      "textureURL": "assets/game/Atlas/CenterSignIdle.png",
+      "atlasURL": "assets/game/Atlas/CenterSignIdle.json",
+      "format": "TEXTURE_ATLAS_JSON_HASH"
     }
   ],
   "meta": {
-    "generated": "1518056953621",
+    "generated": "1519382097494",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

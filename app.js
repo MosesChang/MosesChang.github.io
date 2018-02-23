@@ -66047,23 +66047,15 @@ var Level = function (_Phaser$State) {
             this.add.sprite(41, 94, 'GameImage1', 'BU_WinFrame', _groupBackground);
             var _groupHistory = this.add.group();
             var _groupCenterSign = this.add.group();
-            var _centerSignIdle1 = this.add.sprite(106, 243, 'CenterSignIdle1', '001', _groupCenterSign);
-            var _centerSignIdle1_play = _centerSignIdle1.animations.add('play', ['001', '002', '003', '004', '005', '006', '007', '008', '009', '010', '011', '012', '013', '014', '015', '016', '017', '018', '019', '020', '021', '022', '023', '024', '025', '026', '027', '028', '029', '030'], 30, false);
-            var _centerSignIdle2 = this.add.sprite(106, 243, 'CenterSignIdle2', '031', _groupCenterSign);
-            var _centerSignIdle2_play = _centerSignIdle2.animations.add('play', ['031', '032', '033', '034', '035', '036', '037', '038', '039', '040', '041', '042', '043', '044', '045', '046', '047', '048', '049', '050', '051', '052', '053', '054', '055', '056', '057', '058', '059', '060'], 30, false);
-            var _centerSignIdle3 = this.add.sprite(106, 243, 'CenterSignIdle3', '061', _groupCenterSign);
-            var _centerSignIdle3_play = _centerSignIdle3.animations.add('play', ['061', '062', '063', '064', '065', '066', '067', '068', '069', '070', '071', '072', '073', '074', '075', '076', '077', '078', '079', '080', '081', '082', '083', '084', '085', '086', '087', '088', '089', '090'], 30, false);
-            var _centerSignIdle4 = this.add.sprite(106, 243, 'CenterSignIdle4', '091', _groupCenterSign);
-            _centerSignIdle4.animations.add('play', ['091', '092', '093', '094', '095', '096', '097', '098', '099', '100', '101', '102', '103', '104', '105', '106', '107', '108', '109', '110', '111', '112', '113', '114', '115', '116', '117', '118', '119', '120'], 30, false);
-            var _centerSignWin1 = this.add.sprite(106, 243, 'CenterSignWin1', '01', _groupCenterSign);
-            var _centerSignWin1_play = _centerSignWin1.animations.add('play', ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'], 30, false);
-            var _centerSignWin2 = this.add.sprite(106, 243, 'CenterSignWin2', '31', _groupCenterSign);
-            var _centerSignWin2_play = _centerSignWin2.animations.add('play', ['31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60'], 30, false);
             var _WinBoltLeft = this.add.sprite(0, 60, 'WinBolt', '01', _groupCenterSign);
             _WinBoltLeft.animations.add('play', ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15'], 30, false);
             var _WinBoltRight = this.add.sprite(540, 60, 'WinBolt', '01', _groupCenterSign);
             _WinBoltRight.scale.setTo(-1.0, 1.0);
             _WinBoltRight.animations.add('play', ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15'], 30, false);
+            var _centerSignIdle = this.add.sprite(106, 243, 'CenterSignIdle', '01', _groupCenterSign);
+            var _centerSignIdle_play = _centerSignIdle.animations.add('play', ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60'], 15, false);
+            var _centerSignWin = this.add.sprite(106, 243, 'CenterSignWin', '01', _groupCenterSign);
+            var _centerSignWin_play = _centerSignWin.animations.add('play', ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'], 15, false);
             var _groupBt = this.add.group();
             var _StartBt = this.add.button(405, 665, 'StartBt', this.OnBtStart, this, 0, 0, 1, 0, _groupBt);
             var _AutoBt = this.add.button(311, 671, 'AutoBt', undefined, null, 0, 0, 1, 0, _groupBt);
@@ -66162,19 +66154,12 @@ var Level = function (_Phaser$State) {
             // public fields
             this.fGameBackground = _GameBackground;
             this.fGroupHistory = _groupHistory;
-            this.fCenterSignIdle1 = _centerSignIdle1;
-            this.fCenterSignIdle1_play = _centerSignIdle1_play;
-            this.fCenterSignIdle2 = _centerSignIdle2;
-            this.fCenterSignIdle2_play = _centerSignIdle2_play;
-            this.fCenterSignIdle3 = _centerSignIdle3;
-            this.fCenterSignIdle3_play = _centerSignIdle3_play;
-            this.fCenterSignIdle4 = _centerSignIdle4;
-            this.fCenterSignWin1 = _centerSignWin1;
-            this.fCenterSignWin1_play = _centerSignWin1_play;
-            this.fCenterSignWin2 = _centerSignWin2;
-            this.fCenterSignWin2_play = _centerSignWin2_play;
             this.fWinBoltLeft = _WinBoltLeft;
             this.fWinBoltRight = _WinBoltRight;
+            this.fCenterSignIdle = _centerSignIdle;
+            this.fCenterSignIdle_play = _centerSignIdle_play;
+            this.fCenterSignWin = _centerSignWin;
+            this.fCenterSignWin_play = _centerSignWin_play;
             this.fGroupBt = _groupBt;
             this.fStartBt = _StartBt;
             this.fAutoBt = _AutoBt;
@@ -70091,9 +70076,6 @@ var SceneGame = function () {
                     if (this.functionMenu != null) {
                         this.functionMenu.rebootClean();
                     }
-                    if (this.gameAnm != null) {
-                        this.gameAnm.rebootClean();
-                    }
                     if (this.gameHistory != null) {
                         this.gameHistory.rebootClean();
                     }
@@ -70931,80 +70913,31 @@ var Global = __webpack_require__(10);
 var GameAnm = function () {
     function GameAnm() {
         _classCallCheck(this, GameAnm);
-
-        this.spriteIdle = new Array(4);
     }
 
     _createClass(GameAnm, [{
         key: "create",
         value: function create() {
-            var _this = this;
-
-            this.spriteIdle[0] = Global.g.level.fCenterSignIdle1;
-            this.spriteIdle[1] = Global.g.level.fCenterSignIdle2;
-            this.spriteIdle[2] = Global.g.level.fCenterSignIdle3;
-            this.spriteIdle[3] = Global.g.level.fCenterSignIdle4;
+            this.spriteIdle = Global.g.level.fCenterSignIdle;
             Global.g.level.fWinBoltLeft.blendMode = PIXI.blendModes.ADD;
             Global.g.level.fWinBoltRight.blendMode = PIXI.blendModes.ADD;
-            Global.g.level.fCenterSignIdle1_play.onComplete.add(function () {
-                _this.visibleIdleByPage(1);
-                _this.spriteIdle[1].animations.play("play");
-            }, this);
-            Global.g.level.fCenterSignIdle2_play.onComplete.add(function () {
-                _this.visibleIdleByPage(2);
-                _this.spriteIdle[2].animations.play("play");
-            }, this);
-            Global.g.level.fCenterSignIdle3_play.onComplete.add(function () {
-                _this.visibleIdleByPage(3);
-                _this.spriteIdle[3].animations.play("play");
-            }, this);
-            Global.g.level.fCenterSignWin1_play.onComplete.add(function () {
-                Global.g.level.fCenterSignWin1.animations.stop("play");
-                Global.g.level.fCenterSignWin1.visible = false;
-                Global.g.level.fCenterSignWin2.visible = true;
-                Global.g.level.fCenterSignWin2.animations.play("play");
-            }, this);
-            Global.g.level.fCenterSignWin2_play.onComplete.add(function () {
-                Global.g.level.fCenterSignWin2.animations.stop("play");
-                Global.g.level.fCenterSignWin2.visible = false;
-                Global.g.level.fCenterSignWin1.visible = true;
-                Global.g.level.fCenterSignWin1.animations.play("play");
-            }, this);
-            this.visibleIdleByPage(0);
-            Global.g.level.fCenterSignWin1.visible = false;
-            Global.g.level.fCenterSignWin2.visible = false;
+            this.spriteIdle.visible = true;
+            Global.g.level.fCenterSignWin.visible = false;
             Global.g.level.fWinBoltLeft.visible = false;
             Global.g.level.fWinBoltRight.visible = false;
         }
     }, {
-        key: "rebootClean",
-        value: function rebootClean() {
-            Global.g.level.fCenterSignIdle1_play.onComplete.removeAll();
-            Global.g.level.fCenterSignIdle2_play.onComplete.removeAll();
-            Global.g.level.fCenterSignIdle3_play.onComplete.removeAll();
-            Global.g.level.fCenterSignWin1_play.onComplete.removeAll();
-            Global.g.level.fCenterSignWin2_play.onComplete.removeAll();
-        }
-    }, {
         key: "playIdle",
         value: function playIdle() {
-            this.visibleIdleByPage(0);
-            this.spriteIdle[0].animations.play("play");
-        }
-    }, {
-        key: "visibleIdleByPage",
-        value: function visibleIdleByPage(page) {
-            for (var i = 0; i < 4; i++) {
-                if (page == i) this.spriteIdle[i].visible = true;else this.spriteIdle[i].visible = false;
-            }
+            this.spriteIdle.visible = true;
+            this.spriteIdle.animations.play("play");
         }
     }, {
         key: "playWin",
         value: function playWin() {
-            Global.g.level.fCenterSignWin2.animations.stop("play");
-            Global.g.level.fCenterSignWin2.visible = false;
-            Global.g.level.fCenterSignWin1.visible = true;
-            Global.g.level.fCenterSignWin1.animations.play("play");
+            Global.g.level.fCenterSignWin.animations.stop("play");
+            Global.g.level.fCenterSignWin.visible = true;
+            Global.g.level.fCenterSignWin.animations.play("play", 15, true);
             Global.g.level.fWinBoltLeft.visible = true;
             Global.g.level.fWinBoltLeft.animations.play("play", 30, true);
             Global.g.level.fWinBoltRight.visible = true;
@@ -71013,10 +70946,8 @@ var GameAnm = function () {
     }, {
         key: "stopWin",
         value: function stopWin() {
-            Global.g.level.fCenterSignWin1.animations.stop("play");
-            Global.g.level.fCenterSignWin2.animations.stop("play");
-            Global.g.level.fCenterSignWin1.visible = false;
-            Global.g.level.fCenterSignWin2.visible = false;
+            Global.g.level.fCenterSignWin.animations.stop("play");
+            Global.g.level.fCenterSignWin.visible = false;
             Global.g.level.fWinBoltLeft.animations.stop("play");
             Global.g.level.fWinBoltLeft.visible = false;
             Global.g.level.fWinBoltRight.animations.stop("play");
