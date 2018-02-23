@@ -69069,7 +69069,7 @@ Phaser.Loader.prototype.processPack = function (pack) {
 */
 Phaser.Loader.prototype.xhrLoad = function (file, url, type, onload, dupFlag) {
     // assets version control
-    url += '?version=' + ASSETS_VERSION;
+    url += '?version=' + "0.1.9";
 
     if (this.useXDomainRequest && window.XDomainRequest) {
         this.xhrLoadWithXDR(file, url, type, onload);
@@ -69332,7 +69332,7 @@ Phaser.Loader.prototype.loadImageTag = function (file) {
         file.url += document.imageUrlSuffix;
     }
     // assets version control
-    file.url += '?version=' + ASSETS_VERSION;
+    file.url += '?version=' + "0.1.9";
 
     var _this = this;
 
@@ -69490,7 +69490,7 @@ Phaser.Loader.prototype.requestHEAD = function (url, file) {
     var xhr = new XMLHttpRequest();
     this.totalHeadCount++;
     // assets version control
-    xhr.open('HEAD', UrlJoin(currentURL, url + (this.isFileTypeImage(file.type) && document.imageUrlSuffix ? document.imageUrlSuffix : '')) + ('?version=' + ASSETS_VERSION));
+    xhr.open('HEAD', UrlJoin(currentURL, url + (this.isFileTypeImage(file.type) && document.imageUrlSuffix ? document.imageUrlSuffix : '')) + ('?version=' + "0.1.9"));
     xhr.onreadystatechange = function () {
         try {
             if (xhr.readyState === xhr.HEADERS_RECEIVED && xhr.status === 200) {
