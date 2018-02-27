@@ -263,7 +263,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 Object.defineProperty(exports, "__esModule", { value: true });
-// net renew: 171225_1050
+// net renew: 180226_1734
 var GAMESTATE;
 (function (GAMESTATE) {
     // Normal state, save it
@@ -331,8 +331,8 @@ var GameData = function () {
         this.testerDebugBonusWin = false;
         //    public testerSceneGameUpdate: boolean = true ;
         this.testerSceneGameUpdate = false;
-        this.testerFullScreenOff = true;
-        //    public testerFullScreenOff: boolean = false ;
+        //    public testerFullScreenOff: boolean = true ;
+        this.testerFullScreenOff = false;
         this.testerFpsShow = true;
         this.onStateChange = new Phaser.Signal();
         this.resetNumbers();
@@ -66265,7 +66265,7 @@ var Level = function (_Phaser$State) {
         key: "afterCreate",
         value: function afterCreate() {
             //console.log("Level::afterCreate") ;
-            //this.fGroupBackground.cacheAsBitmap = true ;
+            this.fGroupBackground.cacheAsBitmap = true;
             this.game.state.start("Mario", false);
         }
     }, {
@@ -66996,7 +66996,7 @@ var GameClient = function () {
 
             return url;
         }
-        /** 檢查失�??�接reject，�?以�??��??���?
+        /** 檢查失�??�接reject，�?以�??��??���
          *
          * Is it a MUST??
          */
@@ -68201,7 +68201,7 @@ var MarioBet = function () {
         get: function get() {
             if (typeof this.values === "undefined" || !this.values) {
                 this.values = Array(this.Max - this.Min + 1);
-                for (var i = 0; i < this.values.length; i++) {
+                for (var i = 0; i < this.values.length; ++i) {
                     this.values[i] = i + this.Min;
                 }
             }
@@ -68785,7 +68785,7 @@ exports.default = Group;
 
 
 // -----------------------------------------------------------------------------------------------------
-// Modified from phaser-ce version 2.8.7
+// Modified from phaser-ce version 2.10.1
 // -----------------------------------------------------------------------------------------------------
 //
 // HOW TO USE??
@@ -68831,6 +68831,9 @@ Phaser.Loader.prototype.start = function () {
     this.loadedFilesSize = 0;
     this.totalHeadCount = 0;
     this.loadedHeadCount = 0;
+
+    // How many times has error happened?
+    this.errorTimes = 0;
 
     this._imageTypeArr = ['image', 'bitmapFont', 'spritesheet', 'atlasJSONArray', 'atlasJSONHash', 'atlasXML'];
     this.isFileTypeImage = function (type) {
@@ -69059,11 +69062,6 @@ Phaser.Loader.prototype.xhrLoad = function (file, url, type, onload, dupFlag) {
     // assets version control
     url += '?version=' + "0.1.9";
 
-    if (this.useXDomainRequest && window.XDomainRequest) {
-        this.xhrLoadWithXDR(file, url, type, onload);
-        return;
-    }
-
     file.requestObject = this.createXHR(file, url, type, onload, dupFlag);
     file.requestUrl = url;
 
@@ -69289,17 +69287,22 @@ Phaser.Loader.prototype.xhrOnLoad = function (file, onload) {
  */
 Phaser.Loader.prototype.xhrOnError = function (file) {
     try {
-        this.loadedFilesSize -= file.loadedSize;
-        setTimeout(function () {
-            var url = file.requestUrl.split('&decache=', 1);
-            if (url[0].lastIndexOf('?version=') > -1) {
-                url = url[0] + '&decache=' + Math.random();
-            } else {
-                url = url[0];
-            }
-            file.requestObject = this.createXHR(file, url, file.requestObject.responseType, file.requestObject.onload);
-            file.requestObject.send();
-        }.bind(this), 1000);
+        if (this.errorTimes > 5) {
+            throw new Error('Please check your Internet connection');
+        } else {
+            ++this.errorTimes;
+            this.loadedFilesSize -= file.loadedSize;
+            setTimeout(function () {
+                var url = file.requestUrl.split('&decache=', 1);
+                if (url[0].lastIndexOf('?version=') > -1) {
+                    url = url[0] + '&decache=' + Math.random();
+                } else {
+                    url = url[0];
+                }
+                file.requestObject = this.createXHR(file, url, file.requestObject.responseType, file.requestObject.onload);
+                file.requestObject.send();
+            }.bind(this), 1000);
+        }
     } catch (e) {
         if (!this.hasLoaded) {
             this.asyncComplete(file, e.message || 'Exception');
