@@ -66040,11 +66040,37 @@ var Level = function (_Phaser$State) {
         key: "create",
         value: function create() {
             var _groupBackground = this.add.group();
-            var _GameBackground = this.add.sprite(0, 0, 'GameBackground', null, _groupBackground);
+            this.add.sprite(0, 0, 'GameBackground', null, _groupBackground);
             this.add.sprite(395, 65, 'GameImage1', 'BU_ValueFrame', _groupBackground);
             this.add.sprite(43, 66, 'GameImage1', 'BU_TotalbetFrame', _groupBackground);
             this.add.sprite(281, 94, 'GameImage1', 'BU_CreditFrame', _groupBackground);
             this.add.sprite(41, 94, 'GameImage1', 'BU_WinFrame', _groupBackground);
+            var _groupBetStaticUI = this.add.group(_groupBackground);
+            this.add.sprite(112, 767, 'GameImage1', 'BU_Pay40x_2', _groupBetStaticUI);
+            this.add.sprite(164, 767, 'GameImage1', 'BU_Pay30x_2', _groupBetStaticUI);
+            this.add.sprite(216, 767, 'GameImage1', 'BU_Pay20x_2', _groupBetStaticUI);
+            this.add.sprite(303, 767, 'GameImage1', 'BU_Pay20x_2', _groupBetStaticUI);
+            this.add.sprite(355, 767, 'GameImage1', 'BU_Pay15x_2', _groupBetStaticUI);
+            this.add.sprite(407, 767, 'GameImage1', 'BU_Pay10x_2', _groupBetStaticUI);
+            this.add.sprite(36, 767, 'GameImage1', 'BU_Pay100x', _groupBetStaticUI);
+            this.add.sprite(484, 767, 'GameImage1', 'BU_Pay5x', _groupBetStaticUI);
+            var _groupNumberBackground = this.add.group(_groupBackground);
+            this.add.sprite(464, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(439, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(414, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(389, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(364, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(339, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(314, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(289, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(224, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(199, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(174, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(149, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(124, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(99, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(74, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
+            this.add.sprite(49, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
             var _groupHistory = this.add.group();
             var _groupCenterSign = this.add.group();
             var _WinBoltLeft = this.add.sprite(0, 60, 'WinBolt', '01', _groupCenterSign);
@@ -66074,14 +66100,6 @@ var Level = function (_Phaser$State) {
             var _Tester02Bt = this.add.button(178, 243, 'Symbol04Bt', this.OnBtTester02, this, 0, 0, 1, 0, _groupBt);
             var _Tester03Bt = this.add.button(250, 243, 'Symbol04Bt', this.OnBtTester03, this, 0, 0, 1, 0, _groupBt);
             var _groupBetUI = this.add.group();
-            this.add.sprite(484, 767, 'GameImage1', 'BU_Pay5x', _groupBetUI);
-            this.add.sprite(36, 767, 'GameImage1', 'BU_Pay100x', _groupBetUI);
-            this.add.sprite(407, 767, 'GameImage1', 'BU_Pay10x_2', _groupBetUI);
-            this.add.sprite(355, 767, 'GameImage1', 'BU_Pay15x_2', _groupBetUI);
-            this.add.sprite(303, 767, 'GameImage1', 'BU_Pay20x_2', _groupBetUI);
-            this.add.sprite(216, 767, 'GameImage1', 'BU_Pay20x_2', _groupBetUI);
-            this.add.sprite(164, 767, 'GameImage1', 'BU_Pay30x_2', _groupBetUI);
-            this.add.sprite(112, 767, 'GameImage1', 'BU_Pay40x_2', _groupBetUI);
             var _PayFrameLightRight0 = this.add.sprite(392, 764, 'GameImage1', 'BU_PayFrameLt', _groupBetUI);
             var _PayFrameLightRight1 = this.add.sprite(340, 764, 'GameImage1', 'BU_PayFrameLt', _groupBetUI);
             var _PayFrameLightRight2 = this.add.sprite(288, 764, 'GameImage1', 'BU_PayFrameLt', _groupBetUI);
@@ -66100,23 +66118,6 @@ var Level = function (_Phaser$State) {
             var _groupSymbolLight = this.add.group();
             var _groupLightNormal = this.add.group();
             var _groupLightLight = this.add.group();
-            var _groupNumberBackground = this.add.group();
-            this.add.sprite(464, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(439, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(414, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(389, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(364, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(339, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(314, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(289, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(224, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(199, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(174, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(149, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(124, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(99, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(74, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
-            this.add.sprite(49, 119, 'GameImage1', 'BU_Eight', _groupNumberBackground);
             var _groupNumber = this.add.group();
             var _groupFunctionMenu = this.add.group();
             var _FuncMenuDarkBg = this.add.sprite(0, 0, 'GameImage1', 'BU_BlackBlock', _groupFunctionMenu);
@@ -66152,7 +66153,9 @@ var Level = function (_Phaser$State) {
             var _AU_BtMusic = this.add.sprite(130, 381, 'GameImage1', 'AU_Bt', _groupFuncMenuAudio);
             var _FuncMenuAudioExitBt = this.add.button(487, 186, 'FuncMenuExitBt', undefined, this, 0, 0, 1, 0, _groupFuncMenuAudio);
             // public fields
-            this.fGameBackground = _GameBackground;
+            this.fGroupBackground = _groupBackground;
+            this.fGroupBetStaticUI = _groupBetStaticUI;
+            this.fGroupNumberBackground = _groupNumberBackground;
             this.fGroupHistory = _groupHistory;
             this.fWinBoltLeft = _WinBoltLeft;
             this.fWinBoltRight = _WinBoltRight;
@@ -66195,7 +66198,6 @@ var Level = function (_Phaser$State) {
             this.fGroupSymbolLight = _groupSymbolLight;
             this.fGroupLightNormal = _groupLightNormal;
             this.fGroupLightLight = _groupLightLight;
-            this.fGroupNumberBackground = _groupNumberBackground;
             this.fGroupNumber = _groupNumber;
             this.fGroupFunctionMenu = _groupFunctionMenu;
             this.fFuncMenuDarkBg = _FuncMenuDarkBg;
@@ -66263,6 +66265,7 @@ var Level = function (_Phaser$State) {
         key: "afterCreate",
         value: function afterCreate() {
             //console.log("Level::afterCreate") ;
+            this.fGroupBackground.cacheAsBitmap = true;
             this.game.state.start("Mario", false);
         }
     }, {
@@ -70540,6 +70543,7 @@ var SceneGame = function () {
             console.log("fGroupFuncMenuList:" + Global.g.level.fGroupFuncMenuList.children.length);
             console.log("fGroupNumber:" + Global.g.level.fGroupNumber.children.length);
             console.log("fGroupNumberBackground:" + Global.g.level.fGroupNumberBackground.children.length);
+            console.log("fGroupBetStaticUI:" + Global.g.level.fGroupBetStaticUI.children.length);
             console.log("fGroupLightLight:" + Global.g.level.fGroupLightLight.children.length);
             console.log("fGroupLightNormal:" + Global.g.level.fGroupLightNormal.children.length);
             console.log("fGroupSymbolLight:" + Global.g.level.fGroupSymbolLight.children.length);
