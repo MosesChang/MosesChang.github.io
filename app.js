@@ -66265,7 +66265,7 @@ var Level = function (_Phaser$State) {
         key: "afterCreate",
         value: function afterCreate() {
             //console.log("Level::afterCreate") ;
-            this.fGroupBackground.cacheAsBitmap = true;
+            //this.fGroupBackground.cacheAsBitmap = true ;
             this.game.state.start("Mario", false);
         }
     }, {
