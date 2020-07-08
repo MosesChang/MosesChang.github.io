@@ -69,15 +69,24 @@ var TileType;
     TileType[TileType["Wall"] = 2] = "Wall";
 })(TileType || (TileType = {}));
 var Tile = (function () {
-    function Tile(game, id, sprite) {
+    function Tile(game, id, sprite, effectGroup) {
+        this.ORIGIN_HP = [Number.POSITIVE_INFINITY, 100, Number.POSITIVE_INFINITY];
         this.game = game;
         this.sprite = sprite;
         this.sprite.anchor.setTo(0.5, 0.5);
         this.setTileType(id);
+        this.hp = this.ORIGIN_HP[this.type];
         if (id === TileType.Wall) {
+            // Wall add to physic
             this.game.physics.p2.enable(this.sprite);
             this.sprite.body.kinematic = true;
             this.sprite.body.static = true;
+        }
+        else if (id === TileType.Hay) {
+            // Hay add effect
+            this.effectSprite = this.game.add.sprite(0, 0, 'tileImage', id, effectGroup);
+            this.effectSprite.position.setTo(this.sprite.position.x, this.sprite.position.y);
+            this.effectSprite.anchor.setTo(0.5, 0.5);
         }
     }
     Tile.prototype.setTileType = function (id) {
@@ -112,10 +121,17 @@ var Tile = (function () {
             return false;
         }
     };
-    Tile.prototype.hitBullet = function (point) {
-        if (this.type === TileType.Hay) {
-            this.type = TileType.Floor;
-            this.sprite.frame = TileType.Floor;
+    Tile.prototype.hitBullet = function (damage) {
+        this.hp -= damage;
+        if (this.hp <= 0) {
+            this.setTileType(TileType.Floor);
+            this.hp = this.ORIGIN_HP[TileType.Floor];
+            if (this.effectSprite) {
+                this.effectSprite.visible = false;
+            }
+        }
+        else if (this.type === TileType.Hay) {
+            this.game.add.tween(this.effectSprite.scale).to({ x: 1.5, y: 1.5 }, 100, Phaser.Easing.Cubic.Out, true, 0, 0, true);
         }
     };
     return Tile;
@@ -125,6 +141,16 @@ var MainState = (function (_super) {
     __extends(MainState, _super);
     function MainState() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.aPress = false;
+        _this.bPress = false;
+        _this.rPress = false;
+        _this.lPress = false;
+        _this.uPress = false;
+        _this.dPress = false;
+        _this.BULLET_DAMAGE = [10, 20, 25];
+        _this.TANK_THRUST = 400;
+        _this.TANK_ROTATE = 50;
+        _this.BULLET_VELOCITY = 400;
         _this.TILE_WIDTH = 32;
         _this.VISIBLE_TILE_RADIUS = 15; // test will be 5
         return _this;
@@ -138,30 +164,27 @@ var MainState = (function (_super) {
         this.game.physics.startSystem(Phaser.Physics.P2JS);
         // Tile group
         this.tileGroup = new Phaser.Group(this.game);
+        this.tileEffectGroup = new Phaser.Group(this.game);
         // Tank
-        this.tankSprite = this.game.add.sprite(0, 0, 'tankImage');
+        this.tankSprite = this.game.add.sprite(0, 0, 'tankImage', 0);
         this.tankSprite.anchor.setTo(0.5, 0.5);
         this.game.physics.p2.enable(this.tankSprite);
         this.tankSprite.body.setCircle(15);
         this.tankSprite.body.damping = 0.95;
         this.game.camera.follow(this.tankSprite, Phaser.Camera.FOLLOW_LOCKON, 0.1, 0.1);
         // Bullet
-        this.bulletSprite = this.game.add.sprite(0, 0, 'bulletImage');
+        this.bulletSprite = this.game.add.sprite(0, 0, 'bulletImage', 0);
         this.bulletSprite.anchor.setTo(0.5, 0.5);
         this.bulletSprite.visible = false;
         this.bulletVelocity = new Phaser.Point(0, 0);
         // Tile init
         this.tileAssign();
-        // Bullet
-        this.game.input.keyboard.addKey(Phaser.KeyCode.ONE).onDown.add(function () {
-            if (!_this.bulletSprite.visible) {
-                var lootAt = new Phaser.Point(Math.cos(Phaser.Math.degToRad(_this.tankSprite.body.angle - 90)), Math.sin(Phaser.Math.degToRad(_this.tankSprite.body.angle - 90)));
-                _this.bulletSprite.visible = true;
-                _this.bulletSprite.position.setTo(_this.tankSprite.position.x + (lootAt.x * 18), _this.tankSprite.position.y + (lootAt.y * 18));
-                _this.bulletVelocity.x = lootAt.x * 300;
-                _this.bulletVelocity.y = lootAt.y * 300;
-            }
-        });
+        // Bullet fire
+        this.game.input.keyboard.addKey(Phaser.KeyCode.ONE).onDown.add(function () { return _this.bulletFire(); });
+        // Tank color
+        this.game.input.keyboard.addKey(Phaser.KeyCode.TWO).onDown.add(function () { return _this.changeTankColor(); });
+        // Pad
+        this.initBts();
         // Cursor
         this.cursors = this.game.input.keyboard.createCursorKeys();
     };
@@ -169,56 +192,29 @@ var MainState = (function (_super) {
         // input and move
         this.tankSprite.body.setZeroRotation();
         var move = false;
-        if (this.cursors.up.isDown) {
-            this.tankSprite.body.thrust(400);
+        if (this.cursors.up.isDown || this.uPress) {
+            this.tankSprite.body.thrust(this.TANK_THRUST);
             move = true;
         }
-        else if (this.cursors.down.isDown) {
-            this.tankSprite.body.thrust(-400);
+        else if (this.cursors.down.isDown || this.dPress) {
+            this.tankSprite.body.thrust(-this.TANK_THRUST);
             move = true;
         }
-        if (this.cursors.left.isDown) {
-            this.tankSprite.body.rotateLeft(100);
-            move = true;
+        if (this.cursors.left.isDown || this.lPress) {
+            this.tankSprite.body.rotateLeft(this.TANK_ROTATE);
         }
-        else if (this.cursors.right.isDown) {
-            this.tankSprite.body.rotateRight(100);
-            move = true;
+        else if (this.cursors.right.isDown || this.rPress) {
+            this.tankSprite.body.rotateRight(this.TANK_ROTATE);
         }
-        // Bullet
-        if (this.bulletSprite.visible) {
-            this.bulletSprite.position.setTo(this.bulletSprite.position.x + (this.bulletVelocity.x * this.game.time.elapsed / 1000), this.bulletSprite.position.y + (this.bulletVelocity.y * this.game.time.elapsed / 1000));
-            var pos = this.bulletSprite.position;
-            if (pos.x >= this.rightBoundry * this.TILE_WIDTH || pos.x <= this.leftBoundry * this.TILE_WIDTH ||
-                pos.y >= this.bottomBoundry * this.TILE_WIDTH || pos.y <= this.topBoundry * this.TILE_WIDTH) {
-                this.bulletSprite.visible = false;
-            }
-            else {
-                var xless = (this.bulletSprite.position.x / this.TILE_WIDTH | 0) - 2;
-                var xMore = (this.bulletSprite.position.x / this.TILE_WIDTH | 0) + 2;
-                var yless = (this.bulletSprite.position.y / this.TILE_WIDTH | 0) - 2;
-                var yMore = (this.bulletSprite.position.y / this.TILE_WIDTH | 0) + 2;
-                for (var iX = xless; iX <= xMore; iX++) {
-                    for (var iY = yless; iY <= yMore; iY++) {
-                        if (iX < this.leftBoundry || iX > this.rightBoundry || iY < this.topBoundry || iY > this.bottomBoundry) {
-                            continue;
-                        }
-                        if (this.tiles[iX][iY].type !== TileType.Floor) {
-                            if (this.tiles[iX][iY].ckeckCollision(this.bulletSprite.position)) {
-                                this.bulletSprite.visible = false;
-                                if (this.tiles[iX][iY].type === TileType.Hay) {
-                                    this.tiles[iX][iY].hitBullet(100);
-                                }
-                                break;
-                            }
-                        }
-                    }
-                    if (this.bulletSprite.visible === false) {
-                        break;
-                    }
-                }
-            }
-        }
+        // Bullet move & collision
+        this.bulletMoveCollision();
+        // Pad position follow camera
+        this.aBt.position.setTo(this.game.camera.position.x + 580, this.game.camera.position.y + 460);
+        this.bBt.position.setTo(this.game.camera.position.x + 680, this.game.camera.position.y + 460);
+        this.rBt.position.setTo(this.game.camera.position.x + 500, this.game.camera.position.y + 478);
+        this.lBt.position.setTo(this.game.camera.position.x + 380, this.game.camera.position.y + 478);
+        this.uBt.position.setTo(this.game.camera.position.x + 445, this.game.camera.position.y + 410);
+        this.dBt.position.setTo(this.game.camera.position.x + 445, this.game.camera.position.y + 532);
         // Tile assign (create, show & hide)
         if (move) {
             this.tileAssign();
@@ -247,7 +243,7 @@ var MainState = (function (_super) {
                     else if (randID === 10) {
                         randID = 2;
                     }
-                    this.tiles[iX][iY] = new Tile(this.game, randID, tileSprite);
+                    this.tiles[iX][iY] = new Tile(this.game, randID, tileSprite, this.tileEffectGroup);
                     this.allTileIndex.push(new Phaser.Point(iX, iY));
                 }
                 else {
@@ -275,6 +271,159 @@ var MainState = (function (_super) {
         }
         return isExist;
     };
+    MainState.prototype.bulletMoveCollision = function () {
+        if (this.bulletSprite.visible) {
+            // Bullet move
+            this.bulletSprite.position.setTo(this.bulletSprite.position.x + (this.bulletVelocity.x * this.game.time.elapsed / 1000), this.bulletSprite.position.y + (this.bulletVelocity.y * this.game.time.elapsed / 1000));
+            var pos = this.bulletSprite.position;
+            // Boundry check
+            if (pos.x >= this.rightBoundry * this.TILE_WIDTH || pos.x <= this.leftBoundry * this.TILE_WIDTH ||
+                pos.y >= this.bottomBoundry * this.TILE_WIDTH || pos.y <= this.topBoundry * this.TILE_WIDTH) {
+                this.bulletSprite.visible = false;
+            }
+            else {
+                var xless = (this.bulletSprite.position.x / this.TILE_WIDTH | 0) - 2;
+                var xMore = (this.bulletSprite.position.x / this.TILE_WIDTH | 0) + 2;
+                var yless = (this.bulletSprite.position.y / this.TILE_WIDTH | 0) - 2;
+                var yMore = (this.bulletSprite.position.y / this.TILE_WIDTH | 0) + 2;
+                for (var iX = xless; iX <= xMore; iX++) {
+                    for (var iY = yless; iY <= yMore; iY++) {
+                        if (iX < this.leftBoundry || iX > this.rightBoundry || iY < this.topBoundry || iY > this.bottomBoundry) {
+                            continue;
+                        }
+                        if (this.tiles[iX][iY].type !== TileType.Floor) {
+                            if (this.tiles[iX][iY].ckeckCollision(this.bulletSprite.position)) {
+                                this.bulletSprite.visible = false;
+                                // Hit hey
+                                if (this.tiles[iX][iY].type === TileType.Hay) {
+                                    this.tiles[iX][iY].hitBullet(this.BULLET_DAMAGE[this.bulletSprite.frame]);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    if (this.bulletSprite.visible === false) {
+                        break;
+                    }
+                }
+            }
+        }
+    };
+    MainState.prototype.initBts = function () {
+        var _this = this;
+        this.aPress = false;
+        this.aBt = this.game.add.button(0, 0, 'xbox360', undefined, this, '360_A', '360_A', '360_A');
+        this.aBt.alpha = 0.5;
+        this.aBt.events.onInputDown.add(function () {
+            _this.aPress = true;
+            _this.aBt.alpha = 1;
+            _this.bulletFire();
+        }, this);
+        this.aBt.events.onInputOut.add(function () {
+            _this.aPress = false;
+            _this.aBt.alpha = 0.5;
+        }, this);
+        this.aBt.events.onInputUp.add(function () {
+            _this.aPress = false;
+            _this.aBt.alpha = 0.5;
+        }, this);
+        this.bPress = false;
+        this.bBt = this.game.add.button(0, 0, 'xbox360', undefined, this, '360_B', '360_B', '360_B');
+        this.bBt.alpha = 0.5;
+        this.bBt.events.onInputDown.add(function () {
+            _this.bPress = true;
+            _this.bBt.alpha = 1;
+            _this.changeTankColor();
+        }, this);
+        this.bBt.events.onInputOut.add(function () {
+            _this.bPress = false;
+            _this.bBt.alpha = 0.5;
+        }, this);
+        this.bBt.events.onInputUp.add(function () {
+            _this.bPress = false;
+            _this.bBt.alpha = 0.5;
+        }, this);
+        this.rPress = false;
+        this.rBt = this.game.add.button(0, 0, 'rBtImage', undefined, this, 0, 0, 0);
+        this.rBt.alpha = 0.5;
+        this.rBt.events.onInputDown.add(function () {
+            _this.rPress = true;
+            _this.rBt.alpha = 1;
+        }, this);
+        this.rBt.events.onInputOut.add(function () {
+            _this.rPress = false;
+            _this.rBt.alpha = 0.5;
+        }, this);
+        this.rBt.events.onInputUp.add(function () {
+            _this.rPress = false;
+            _this.rBt.alpha = 0.5;
+        }, this);
+        this.lPress = false;
+        this.lBt = this.game.add.button(0, 0, 'lBtImage', undefined, this, 0, 0, 0);
+        this.lBt.alpha = 0.5;
+        this.lBt.events.onInputDown.add(function () {
+            _this.lPress = true;
+            _this.lBt.alpha = 1;
+        }, this);
+        this.lBt.events.onInputOut.add(function () {
+            _this.lPress = false;
+            _this.lBt.alpha = 0.5;
+        }, this);
+        this.lBt.events.onInputUp.add(function () {
+            _this.lPress = false;
+            _this.lBt.alpha = 0.5;
+        }, this);
+        this.uPress = false;
+        this.uBt = this.game.add.button(0, 0, 'uBtImage', undefined, this, 0, 0, 0);
+        this.uBt.alpha = 0.5;
+        this.uBt.events.onInputDown.add(function () {
+            _this.uPress = true;
+            _this.uBt.alpha = 1;
+        }, this);
+        this.uBt.events.onInputOut.add(function () {
+            _this.uPress = false;
+            _this.uBt.alpha = 0.5;
+        }, this);
+        this.uBt.events.onInputUp.add(function () {
+            _this.uPress = false;
+            _this.uBt.alpha = 0.5;
+        }, this);
+        this.dPress = false;
+        this.dBt = this.game.add.button(0, 0, 'dBtImage', undefined, this, 0, 0, 0);
+        this.dBt.alpha = 0.5;
+        this.dBt.events.onInputDown.add(function () {
+            _this.dPress = true;
+            _this.dBt.alpha = 1;
+        }, this);
+        this.dBt.events.onInputOut.add(function () {
+            _this.dPress = false;
+            _this.dBt.alpha = 0.5;
+        }, this);
+        this.dBt.events.onInputUp.add(function () {
+            _this.dPress = false;
+            _this.dBt.alpha = 0.5;
+        }, this);
+    };
+    MainState.prototype.bulletFire = function () {
+        if (!this.bulletSprite.visible) {
+            var recoil = (this.tankSprite.frame + 1) * 0.9 * -this.TANK_THRUST;
+            this.tankSprite.body.thrust(recoil);
+            var lootAt = new Phaser.Point(Math.cos(Phaser.Math.degToRad(this.tankSprite.body.angle - 90)), Math.sin(Phaser.Math.degToRad(this.tankSprite.body.angle - 90)));
+            this.bulletSprite.visible = true;
+            this.bulletSprite.frame = this.tankSprite.frame;
+            this.bulletSprite.position.setTo(this.tankSprite.position.x + (lootAt.x * 18), this.tankSprite.position.y + (lootAt.y * 18));
+            this.bulletVelocity.x = lootAt.x * this.BULLET_VELOCITY;
+            this.bulletVelocity.y = lootAt.y * this.BULLET_VELOCITY;
+        }
+    };
+    MainState.prototype.changeTankColor = function () {
+        var frameID = this.tankSprite.frame;
+        frameID++;
+        if (frameID > 2) {
+            frameID = 0;
+        }
+        this.tankSprite.frame = frameID;
+    };
     return MainState;
 }(state_1.default));
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -295,12 +444,14 @@ var __extends = (this && this.__extends) || function (d, b) {
 /** Imports */
 var state_1 = __webpack_require__(1);
 // Webpack will replace these imports with a URLs to images
-var skyImage = __webpack_require__(14); // const skyImage = '/assets/images/sky.png';
-var platformImage = __webpack_require__(13);
-var starImage = __webpack_require__(15);
-var dudeImage = __webpack_require__(12);
-var tileImage = __webpack_require__(17);
-var tankImage = __webpack_require__(16);
+var xbox360Image = __webpack_require__(19);
+var xbox360Json = __webpack_require__(18);
+var rBtImage = __webpack_require__(14);
+var uBtImage = __webpack_require__(17);
+var lBtImage = __webpack_require__(13);
+var dBtImage = __webpack_require__(12);
+var tileImage = __webpack_require__(16);
+var tankImage = __webpack_require__(15);
 var bulletImage = __webpack_require__(11);
 // The state for loading core resources for the game
 var PreloaderState = (function (_super) {
@@ -310,13 +461,14 @@ var PreloaderState = (function (_super) {
     }
     PreloaderState.prototype.preload = function () {
         console.debug('Assets loading started');
-        this.game.load.image('sky', skyImage);
-        this.game.load.image('platform', platformImage);
-        this.game.load.image('star', starImage);
-        this.game.load.spritesheet('dude', dudeImage, 32, 48);
+        this.game.load.atlas('xbox360', xbox360Image, xbox360Json);
+        this.game.load.image('rBtImage', rBtImage);
+        this.game.load.image('uBtImage', uBtImage);
+        this.game.load.image('lBtImage', lBtImage);
+        this.game.load.image('dBtImage', dBtImage);
         this.game.load.spritesheet('tileImage', tileImage, 32, 32);
-        this.game.load.image('tankImage', tankImage);
-        this.game.load.image('bulletImage', bulletImage);
+        this.game.load.spritesheet('tankImage', tankImage, 31, 40);
+        this.game.load.spritesheet('bulletImage', bulletImage, 17, 17);
     };
     PreloaderState.prototype.create = function () {
         console.debug('Assets loading completed');
@@ -349,48 +501,60 @@ module.exports = __webpack_require__.p + "assets/images/bullet.png";
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/dude.png";
+module.exports = __webpack_require__.p + "assets/images/dBt.png";
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/platform.png";
+module.exports = __webpack_require__.p + "assets/images/lBt.png";
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/sky.png";
+module.exports = __webpack_require__.p + "assets/images/rBt.png";
 
 /***/ }),
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/star.png";
+module.exports = __webpack_require__.p + "assets/images/tank.png";
 
 /***/ }),
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/tank.png";
+module.exports = __webpack_require__.p + "assets/images/tile.png";
 
 /***/ }),
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/tile.png";
+module.exports = __webpack_require__.p + "assets/images/uBt.png";
 
 /***/ }),
-/* 18 */,
-/* 19 */,
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/xbox360.json";
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/xbox360.png";
+
+/***/ }),
 /* 20 */,
 /* 21 */,
 /* 22 */,
 /* 23 */,
 /* 24 */,
 /* 25 */,
-/* 26 */
+/* 26 */,
+/* 27 */,
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -443,5 +607,5 @@ if (!module.parent) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)(module)))
 
 /***/ })
-],[26]);
+],[28]);
 //# sourceMappingURL=main.js.map
