@@ -1,0 +1,706 @@
+
+WFX_Winbox.png
+size: 1592,1044
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+images/BA_Winbox01/BA_Winbox01_01
+  rotate: false
+  xy: 1353, 985
+  size: 126, 59
+  orig: 260, 530
+  offset: 67, 458
+  index: -1
+images/BA_Winbox01/BA_Winbox01_02
+  rotate: false
+  xy: 1353, 985
+  size: 126, 59
+  orig: 260, 530
+  offset: 67, 458
+  index: -1
+images/BA_Winbox01/BA_Winbox01_03
+  rotate: false
+  xy: 1349, 929
+  size: 126, 56
+  orig: 260, 530
+  offset: 67, 459
+  index: -1
+images/BA_Winbox01/BA_Winbox01_04
+  rotate: false
+  xy: 1344, 874
+  size: 126, 55
+  orig: 260, 530
+  offset: 67, 459
+  index: -1
+images/BA_Winbox01/BA_Winbox01_05
+  rotate: false
+  xy: 1340, 750
+  size: 126, 54
+  orig: 260, 530
+  offset: 67, 459
+  index: -1
+images/BA_Winbox01/BA_Winbox01_06
+  rotate: false
+  xy: 953, 63
+  size: 126, 57
+  orig: 260, 530
+  offset: 67, 456
+  index: -1
+images/BA_Winbox01/BA_Winbox01_07
+  rotate: false
+  xy: 827, 63
+  size: 126, 56
+  orig: 260, 530
+  offset: 67, 457
+  index: -1
+images/BA_Winbox01/BA_Winbox01_08
+  rotate: false
+  xy: 1337, 629
+  size: 126, 53
+  orig: 260, 530
+  offset: 67, 459
+  index: -1
+images/BA_Winbox01/BA_Winbox01_09
+  rotate: false
+  xy: 1336, 576
+  size: 126, 53
+  orig: 260, 530
+  offset: 67, 458
+  index: -1
+images/BA_Winbox01/BA_Winbox01_10
+  rotate: false
+  xy: 1335, 456
+  size: 126, 52
+  orig: 260, 530
+  offset: 67, 459
+  index: -1
+images/BA_Winbox01/BA_Winbox01_11
+  rotate: false
+  xy: 1327, 406
+  size: 126, 50
+  orig: 260, 530
+  offset: 67, 461
+  index: -1
+images/BA_Winbox01/BA_Winbox01_12
+  rotate: false
+  xy: 1320, 354
+  size: 126, 52
+  orig: 260, 530
+  offset: 67, 459
+  index: -1
+images/BA_Winbox01/BA_Winbox01_13
+  rotate: false
+  xy: 1316, 306
+  size: 126, 48
+  orig: 260, 530
+  offset: 67, 461
+  index: -1
+images/BA_Winbox01/BA_Winbox01_14
+  rotate: false
+  xy: 1316, 306
+  size: 126, 48
+  orig: 260, 530
+  offset: 67, 461
+  index: -1
+images/BA_Winbox01/BA_Winbox01_15
+  rotate: false
+  xy: 1321, 198
+  size: 126, 44
+  orig: 260, 530
+  offset: 67, 461
+  index: -1
+images/BA_Winbox01/BA_Winbox01_16
+  rotate: false
+  xy: 948, 120
+  size: 126, 42
+  orig: 260, 530
+  offset: 67, 463
+  index: -1
+images/BA_Winbox01/BA_Winbox01_17
+  rotate: false
+  xy: 1074, 120
+  size: 126, 42
+  orig: 260, 530
+  offset: 67, 463
+  index: -1
+images/BA_Winbox01/BA_Winbox01_18
+  rotate: false
+  xy: 1200, 121
+  size: 123, 41
+  orig: 260, 530
+  offset: 67, 465
+  index: -1
+images/BA_Winbox01/BA_Winbox01_19
+  rotate: true
+  xy: 1466, 748
+  size: 126, 50
+  orig: 260, 530
+  offset: 67, 461
+  index: -1
+images/BA_Winbox01/BA_Winbox01_20
+  rotate: true
+  xy: 1463, 622
+  size: 126, 58
+  orig: 260, 530
+  offset: 67, 457
+  index: -1
+images/BA_Winbox01/BA_Winbox01_21
+  rotate: false
+  xy: 830, 0
+  size: 126, 63
+  orig: 260, 530
+  offset: 67, 455
+  index: -1
+images/BA_Winbox01/BA_Winbox01_22
+  rotate: false
+  xy: 956, 0
+  size: 126, 63
+  orig: 260, 530
+  offset: 67, 453
+  index: -1
+images/BA_Winbox01/BA_Winbox01_23
+  rotate: false
+  xy: 1337, 682
+  size: 126, 68
+  orig: 260, 530
+  offset: 67, 451
+  index: -1
+images/BA_Winbox01/BA_Winbox01_24
+  rotate: false
+  xy: 1208, 0
+  size: 126, 67
+  orig: 260, 530
+  offset: 67, 452
+  index: -1
+images/BA_Winbox01/BA_Winbox01_25
+  rotate: false
+  xy: 1323, 135
+  size: 126, 63
+  orig: 260, 530
+  offset: 67, 455
+  index: -1
+images/BA_Winbox02/BA_Winbox02_01
+  rotate: true
+  xy: 340, 521
+  size: 58, 499
+  orig: 260, 530
+  offset: 9, 14
+  index: -1
+images/BA_Winbox02/BA_Winbox02_02
+  rotate: true
+  xy: 340, 521
+  size: 58, 499
+  orig: 260, 530
+  offset: 9, 14
+  index: -1
+images/BA_Winbox02/BA_Winbox02_03
+  rotate: true
+  xy: 340, 638
+  size: 59, 499
+  orig: 260, 530
+  offset: 8, 16
+  index: -1
+images/BA_Winbox02/BA_Winbox02_04
+  rotate: true
+  xy: 340, 756
+  size: 59, 500
+  orig: 260, 530
+  offset: 8, 17
+  index: -1
+images/BA_Winbox02/BA_Winbox02_05
+  rotate: false
+  xy: 215, 39
+  size: 58, 499
+  orig: 260, 530
+  offset: 9, 18
+  index: -1
+images/BA_Winbox02/BA_Winbox02_06
+  rotate: true
+  xy: 327, 291
+  size: 57, 497
+  orig: 260, 530
+  offset: 10, 20
+  index: -1
+images/BA_Winbox02/BA_Winbox02_07
+  rotate: true
+  xy: 843, 767
+  size: 55, 497
+  orig: 260, 530
+  offset: 12, 20
+  index: -1
+images/BA_Winbox02/BA_Winbox02_08
+  rotate: true
+  xy: 840, 658
+  size: 54, 497
+  orig: 260, 530
+  offset: 13, 20
+  index: -1
+images/BA_Winbox02/BA_Winbox02_09
+  rotate: true
+  xy: 839, 604
+  size: 54, 497
+  orig: 260, 530
+  offset: 13, 19
+  index: -1
+images/BA_Winbox02/BA_Winbox02_10
+  rotate: false
+  xy: 273, 37
+  size: 54, 501
+  orig: 260, 530
+  offset: 13, 14
+  index: -1
+images/BA_Winbox02/BA_Winbox02_11
+  rotate: true
+  xy: 327, 10
+  size: 53, 503
+  orig: 260, 530
+  offset: 14, 11
+  index: -1
+images/BA_Winbox02/BA_Winbox02_12
+  rotate: true
+  xy: 844, 878
+  size: 54, 500
+  orig: 260, 530
+  offset: 13, 12
+  index: -1
+images/BA_Winbox02/BA_Winbox02_13
+  rotate: true
+  xy: 839, 493
+  size: 54, 496
+  orig: 260, 530
+  offset: 13, 13
+  index: -1
+images/BA_Winbox02/BA_Winbox02_14
+  rotate: true
+  xy: 839, 493
+  size: 54, 496
+  orig: 260, 530
+  offset: 13, 13
+  index: -1
+images/BA_Winbox02/BA_Winbox02_15
+  rotate: true
+  xy: 824, 329
+  size: 57, 492
+  orig: 260, 530
+  offset: 10, 14
+  index: -1
+images/BA_Winbox02/BA_Winbox02_16
+  rotate: true
+  xy: 825, 272
+  size: 57, 490
+  orig: 260, 530
+  offset: 10, 14
+  index: -1
+images/BA_Winbox02/BA_Winbox02_17
+  rotate: true
+  xy: 823, 162
+  size: 57, 487
+  orig: 260, 530
+  offset: 10, 17
+  index: -1
+images/BA_Winbox02/BA_Winbox02_18
+  rotate: true
+  xy: 327, 119
+  size: 57, 495
+  orig: 260, 530
+  offset: 10, 14
+  index: -1
+images/BA_Winbox02/BA_Winbox02_19
+  rotate: true
+  xy: 848, 988
+  size: 56, 505
+  orig: 260, 530
+  offset: 11, 9
+  index: -1
+images/BA_Winbox02/BA_Winbox02_20
+  rotate: false
+  xy: 54, 532
+  size: 55, 512
+  orig: 260, 530
+  offset: 12, 5
+  index: -1
+images/BA_Winbox02/BA_Winbox02_21
+  rotate: false
+  xy: 0, 530
+  size: 54, 514
+  orig: 260, 530
+  offset: 13, 4
+  index: -1
+images/BA_Winbox02/BA_Winbox02_22
+  rotate: false
+  xy: 109, 534
+  size: 57, 510
+  orig: 260, 530
+  offset: 10, 8
+  index: -1
+images/BA_Winbox02/BA_Winbox02_23
+  rotate: false
+  xy: 166, 538
+  size: 58, 506
+  orig: 260, 530
+  offset: 9, 10
+  index: -1
+images/BA_Winbox02/BA_Winbox02_24
+  rotate: false
+  xy: 282, 539
+  size: 58, 505
+  orig: 260, 530
+  offset: 9, 11
+  index: -1
+images/BA_Winbox02/BA_Winbox02_25
+  rotate: true
+  xy: 340, 815
+  size: 57, 503
+  orig: 260, 530
+  offset: 10, 12
+  index: -1
+images/BA_Winbox03/BA_Winbox03_01
+  rotate: true
+  xy: 1461, 450
+  size: 126, 50
+  orig: 260, 530
+  offset: 67, 11
+  index: -1
+images/BA_Winbox03/BA_Winbox03_02
+  rotate: true
+  xy: 1461, 450
+  size: 126, 50
+  orig: 260, 530
+  offset: 67, 11
+  index: -1
+images/BA_Winbox03/BA_Winbox03_03
+  rotate: false
+  xy: 1453, 402
+  size: 126, 48
+  orig: 260, 530
+  offset: 67, 12
+  index: -1
+images/BA_Winbox03/BA_Winbox03_04
+  rotate: false
+  xy: 1442, 306
+  size: 126, 44
+  orig: 260, 530
+  offset: 67, 13
+  index: -1
+images/BA_Winbox03/BA_Winbox03_05
+  rotate: false
+  xy: 822, 119
+  size: 126, 43
+  orig: 260, 530
+  offset: 67, 14
+  index: -1
+images/BA_Winbox03/BA_Winbox03_06
+  rotate: false
+  xy: 1462, 577
+  size: 126, 45
+  orig: 260, 530
+  offset: 67, 13
+  index: -1
+images/BA_Winbox03/BA_Winbox03_07
+  rotate: false
+  xy: 1446, 350
+  size: 126, 52
+  orig: 260, 530
+  offset: 67, 9
+  index: -1
+images/BA_Winbox03/BA_Winbox03_08
+  rotate: false
+  xy: 1205, 67
+  size: 126, 54
+  orig: 260, 530
+  offset: 67, 9
+  index: -1
+images/BA_Winbox03/BA_Winbox03_09
+  rotate: true
+  xy: 1516, 792
+  size: 126, 58
+  orig: 260, 530
+  offset: 67, 7
+  index: -1
+images/BA_Winbox03/BA_Winbox03_10
+  rotate: true
+  xy: 1521, 666
+  size: 126, 58
+  orig: 260, 530
+  offset: 67, 8
+  index: -1
+images/BA_Winbox03/BA_Winbox03_11
+  rotate: true
+  xy: 1538, 918
+  size: 126, 54
+  orig: 260, 530
+  offset: 67, 10
+  index: -1
+images/BA_Winbox03/BA_Winbox03_12
+  rotate: true
+  xy: 1511, 451
+  size: 126, 53
+  orig: 260, 530
+  offset: 67, 12
+  index: -1
+images/BA_Winbox03/BA_Winbox03_13
+  rotate: false
+  xy: 1447, 201
+  size: 126, 52
+  orig: 260, 530
+  offset: 67, 12
+  index: -1
+images/BA_Winbox03/BA_Winbox03_14
+  rotate: false
+  xy: 1447, 201
+  size: 126, 52
+  orig: 260, 530
+  offset: 67, 12
+  index: -1
+images/BA_Winbox03/BA_Winbox03_15
+  rotate: false
+  xy: 1449, 150
+  size: 126, 51
+  orig: 260, 530
+  offset: 67, 12
+  index: -1
+images/BA_Winbox03/BA_Winbox03_16
+  rotate: false
+  xy: 1457, 99
+  size: 126, 51
+  orig: 260, 530
+  offset: 67, 12
+  index: -1
+images/BA_Winbox03/BA_Winbox03_17
+  rotate: false
+  xy: 1447, 253
+  size: 126, 53
+  orig: 260, 530
+  offset: 67, 11
+  index: -1
+images/BA_Winbox03/BA_Winbox03_18
+  rotate: false
+  xy: 1331, 73
+  size: 126, 62
+  orig: 260, 530
+  offset: 67, 6
+  index: -1
+images/BA_Winbox03/BA_Winbox03_19
+  rotate: false
+  xy: 1082, 0
+  size: 126, 64
+  orig: 260, 530
+  offset: 67, 5
+  index: -1
+images/BA_Winbox03/BA_Winbox03_20
+  rotate: false
+  xy: 1340, 804
+  size: 126, 70
+  orig: 260, 530
+  offset: 67, 3
+  index: -1
+images/BA_Winbox03/BA_Winbox03_21
+  rotate: false
+  xy: 1335, 508
+  size: 126, 68
+  orig: 260, 530
+  offset: 67, 4
+  index: -1
+images/BA_Winbox03/BA_Winbox03_22
+  rotate: false
+  xy: 1321, 242
+  size: 126, 64
+  orig: 260, 530
+  offset: 67, 5
+  index: -1
+images/BA_Winbox03/BA_Winbox03_23
+  rotate: false
+  xy: 1334, 13
+  size: 126, 60
+  orig: 260, 530
+  offset: 67, 6
+  index: -1
+images/BA_Winbox03/BA_Winbox03_24
+  rotate: true
+  xy: 1479, 918
+  size: 126, 59
+  orig: 260, 530
+  offset: 67, 5
+  index: -1
+images/BA_Winbox03/BA_Winbox03_25
+  rotate: false
+  xy: 1079, 64
+  size: 126, 56
+  orig: 260, 530
+  offset: 67, 7
+  index: -1
+images/BA_Winbox04/BA_Winbox04_01
+  rotate: true
+  xy: 340, 579
+  size: 59, 499
+  orig: 260, 530
+  offset: 193, 14
+  index: -1
+images/BA_Winbox04/BA_Winbox04_02
+  rotate: true
+  xy: 340, 579
+  size: 59, 499
+  orig: 260, 530
+  offset: 193, 14
+  index: -1
+images/BA_Winbox04/BA_Winbox04_03
+  rotate: true
+  xy: 327, 234
+  size: 57, 498
+  orig: 260, 530
+  offset: 193, 14
+  index: -1
+images/BA_Winbox04/BA_Winbox04_04
+  rotate: true
+  xy: 327, 176
+  size: 58, 496
+  orig: 260, 530
+  offset: 193, 13
+  index: -1
+images/BA_Winbox04/BA_Winbox04_05
+  rotate: true
+  xy: 327, 406
+  size: 59, 497
+  orig: 260, 530
+  offset: 193, 12
+  index: -1
+images/BA_Winbox04/BA_Winbox04_06
+  rotate: true
+  xy: 340, 697
+  size: 59, 500
+  orig: 260, 530
+  offset: 193, 8
+  index: -1
+images/BA_Winbox04/BA_Winbox04_07
+  rotate: true
+  xy: 340, 872
+  size: 59, 503
+  orig: 260, 530
+  offset: 193, 6
+  index: -1
+images/BA_Winbox04/BA_Winbox04_08
+  rotate: false
+  xy: 224, 538
+  size: 58, 506
+  orig: 260, 530
+  offset: 193, 3
+  index: -1
+images/BA_Winbox04/BA_Winbox04_09
+  rotate: false
+  xy: 159, 30
+  size: 56, 504
+  orig: 260, 530
+  offset: 193, 4
+  index: -1
+images/BA_Winbox04/BA_Winbox04_10
+  rotate: false
+  xy: 104, 27
+  size: 55, 505
+  orig: 260, 530
+  offset: 193, 3
+  index: -1
+images/BA_Winbox04/BA_Winbox04_11
+  rotate: true
+  xy: 844, 932
+  size: 56, 505
+  orig: 260, 530
+  offset: 193, 2
+  index: -1
+images/BA_Winbox04/BA_Winbox04_12
+  rotate: true
+  xy: 327, 63
+  size: 56, 500
+  orig: 260, 530
+  offset: 193, 6
+  index: -1
+images/BA_Winbox04/BA_Winbox04_13
+  rotate: true
+  xy: 327, 465
+  size: 56, 501
+  orig: 260, 530
+  offset: 193, 4
+  index: -1
+images/BA_Winbox04/BA_Winbox04_14
+  rotate: true
+  xy: 327, 465
+  size: 56, 501
+  orig: 260, 530
+  offset: 193, 4
+  index: -1
+images/BA_Winbox04/BA_Winbox04_15
+  rotate: true
+  xy: 843, 822
+  size: 56, 497
+  orig: 260, 530
+  offset: 193, 8
+  index: -1
+images/BA_Winbox04/BA_Winbox04_16
+  rotate: true
+  xy: 327, 348
+  size: 58, 497
+  orig: 260, 530
+  offset: 193, 7
+  index: -1
+images/BA_Winbox04/BA_Winbox04_17
+  rotate: true
+  xy: 839, 547
+  size: 57, 494
+  orig: 260, 530
+  offset: 193, 8
+  index: -1
+images/BA_Winbox04/BA_Winbox04_18
+  rotate: true
+  xy: 840, 712
+  size: 55, 497
+  orig: 260, 530
+  offset: 193, 4
+  index: -1
+images/BA_Winbox04/BA_Winbox04_19
+  rotate: true
+  xy: 825, 219
+  size: 53, 496
+  orig: 260, 530
+  offset: 193, 6
+  index: -1
+images/BA_Winbox04/BA_Winbox04_20
+  rotate: true
+  xy: 824, 386
+  size: 54, 496
+  orig: 260, 530
+  offset: 193, 6
+  index: -1
+images/BA_Winbox04/BA_Winbox04_21
+  rotate: true
+  xy: 828, 440
+  size: 53, 499
+  orig: 260, 530
+  offset: 193, 6
+  index: -1
+images/BA_Winbox04/BA_Winbox04_22
+  rotate: false
+  xy: 52, 24
+  size: 52, 506
+  orig: 260, 530
+  offset: 193, 8
+  index: -1
+images/BA_Winbox04/BA_Winbox04_23
+  rotate: false
+  xy: 0, 20
+  size: 52, 510
+  orig: 260, 530
+  offset: 193, 8
+  index: -1
+images/BA_Winbox04/BA_Winbox04_24
+  rotate: true
+  xy: 340, 989
+  size: 55, 508
+  orig: 260, 530
+  offset: 193, 10
+  index: -1
+images/BA_Winbox04/BA_Winbox04_25
+  rotate: true
+  xy: 340, 931
+  size: 58, 504
+  orig: 260, 530
+  offset: 193, 12
+  index: -1

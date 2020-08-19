@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<font>
+  <info aa="1" outline="0" smooth="1" unicode="1" charset="" spacing="1,1" stretchH="100" face="MessageBoxText" padding="0,0,0,0" bold="0" italic="0" size="32"/>
+  <common scaleW="195" blueChnl="0" pages="1" base="26" packed="0" greenChnl="0" lineHeight="32" scaleH="40" redChnl="0" alphaChnl="1"/>
+  <pages>
+    <page id="0" file="MessageBoxText.png"/>
+  </pages>
+  <chars count="14">
+    <char height="26" width="18" yoffset="0" xadvance="18" y="34" x="36" chnl="15" id="55" xoffset="0" page="0"/>
+    <char height="26" width="18" yoffset="0" xadvance="18" y="0" x="52" chnl="15" id="49" xoffset="0" page="0"/>
+    <char height="26" width="18" yoffset="0" xadvance="18" y="0" x="34" chnl="15" id="48" xoffset="0" page="0"/>
+    <char height="26" width="18" yoffset="0" xadvance="18" y="34" x="54" chnl="15" id="56" xoffset="0" page="0"/>
+    <char height="34" width="8" yoffset="0" xadvance="8" y="0" x="18" chnl="15" id="44" xoffset="0" page="0"/>
+    <char height="26" width="18" yoffset="0" xadvance="18" y="34" x="18" chnl="15" id="54" xoffset="0" page="0"/>
+    <char height="34" width="8" yoffset="0" xadvance="8" y="0" x="26" chnl="15" id="46" xoffset="0" page="0"/>
+    <char height="26" width="18" yoffset="0" xadvance="18" y="0" x="106" chnl="15" id="52" xoffset="0" page="0"/>
+    <char height="26" width="18" yoffset="0" xadvance="18" y="34" x="0" chnl="15" id="53" xoffset="0" page="0"/>
+    <char height="26" width="18" yoffset="0" xadvance="18" y="0" x="70" chnl="15" id="50" xoffset="0" page="0"/>
+    <char height="26" width="18" yoffset="0" xadvance="18" y="0" x="88" chnl="15" id="51" xoffset="0" page="0"/>
+    <char height="34" width="18" yoffset="0" xadvance="18" y="0" x="0" chnl="15" id="36" xoffset="0" page="0"/>
+    <char height="26" width="18" yoffset="0" xadvance="18" y="34" x="72" chnl="15" id="57" xoffset="0" page="0"/>
+    <char height="26" width="60" yoffset="0" xadvance="60" y="60" x="0" chnl="15" id="8734" xoffset="0" page="0"/>
+  </chars>
+</font>

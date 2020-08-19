@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<font>
+  <info aa="1" outline="0" smooth="1" unicode="1" charset="" spacing="1,1" stretchH="100" face="MessageBoxText" padding="0,0,0,0" bold="0" italic="0" size="32"/>
+  <common scaleW="195" blueChnl="0" pages="1" base="26" packed="0" greenChnl="0" lineHeight="32" scaleH="40" redChnl="0" alphaChnl="1"/>
+  <pages>
+    <page id="0" file="MessageBoxText.png"/>
+  </pages>
+  <chars count="13">
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="385" chnl="15" id="55" xoffset="0" page="0"/>
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="139" chnl="15" id="49" xoffset="0" page="0"/>
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="98" chnl="15" id="48" xoffset="0" page="0"/>
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="426" chnl="15" id="56" xoffset="0" page="0"/>
+    <char height="62" width="22" yoffset="0" xadvance="22" y="1" x="52" chnl="15" id="44" xoffset="0" page="0"/>
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="344" chnl="15" id="54" xoffset="0" page="0"/>
+    <char height="62" width="22" yoffset="0" xadvance="22" y="1" x="75" chnl="15" id="46" xoffset="0" page="0"/>
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="262" chnl="15" id="52" xoffset="0" page="0"/>
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="303" chnl="15" id="53" xoffset="0" page="0"/>
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="180" chnl="15" id="50" xoffset="0" page="0"/>
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="221" chnl="15" id="51" xoffset="0" page="0"/>
+    <char height="62" width="50" yoffset="0" xadvance="50" y="1" x="1" chnl="15" id="36" xoffset="0" page="0"/>
+    <char height="62" width="40" yoffset="0" xadvance="40" y="1" x="467" chnl="15" id="57" xoffset="0" page="0"/>
+  </chars>
+</font>

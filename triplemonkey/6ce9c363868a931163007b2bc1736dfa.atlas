@@ -1,0 +1,76 @@
+
+WFX_Bigwin.png
+size: 2014,961
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BA_Coin/BA_Coin_01
+  rotate: true
+  xy: 0, 354
+  size: 607, 505
+  orig: 644, 515
+  offset: 14, 0
+  index: -1
+BA_Coin/BA_Coin_02
+  rotate: true
+  xy: 1003, 435
+  size: 526, 503
+  orig: 644, 515
+  offset: 37, 0
+  index: -1
+BA_Coin/BA_Coin_03
+  rotate: false
+  xy: 0, 0
+  size: 378, 354
+  orig: 644, 515
+  offset: 125, 128
+  index: -1
+BA_Coin/BA_Coin_04
+  rotate: true
+  xy: 1018, 42
+  size: 393, 362
+  orig: 644, 515
+  offset: 118, 107
+  index: -1
+BA_Coin/BA_Coin_05
+  rotate: false
+  xy: 586, 50
+  size: 432, 371
+  orig: 644, 515
+  offset: 98, 55
+  index: -1
+BA_Coin/BA_Coin_06
+  rotate: false
+  xy: 1506, 5
+  size: 470, 452
+  orig: 644, 515
+  offset: 82, 6
+  index: -1
+BA_Coin/BA_Coin_07
+  rotate: false
+  xy: 1506, 457
+  size: 508, 504
+  orig: 644, 515
+  offset: 63, 0
+  index: -1
+BA_Coin/BA_Coin_08
+  rotate: true
+  xy: 505, 421
+  size: 540, 498
+  orig: 644, 515
+  offset: 43, 0
+  index: -1
+Big
+  rotate: true
+  xy: 378, 128
+  size: 226, 123
+  orig: 226, 123
+  offset: 0, 0
+  index: -1
+Max
+  rotate: false
+  xy: 378, 26
+  size: 208, 102
+  orig: 208, 102
+  offset: 0, 0
+  index: -1
