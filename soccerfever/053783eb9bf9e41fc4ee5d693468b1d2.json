@@ -1,0 +1,90 @@
+{
+	"spriteCount": 1,
+	"styleCount": 2,
+	"configs": [
+	  {
+		"symbol": "WW",
+		"spriteFrames": [
+          ["BU_SymbolWW.png"],
+          ["BU_SymbolWW_Blur.png"]
+		]
+      },
+      {
+		"symbol": "C1",
+		"spriteFrames": [
+          ["BU_SymbolC1.png"],
+          ["BU_SymbolC1_Blur.png"]
+		]
+	  },
+	  {
+		"symbol": "M1",
+		"spriteFrames": [
+          ["BU_SymbolM1.png"],
+          ["BU_SymbolM1_Blur.png"]
+		]
+	  },
+	  {
+		"symbol": "M2",
+		"spriteFrames": [
+          ["BU_SymbolM2.png"],
+          ["BU_SymbolM2_Blur.png"]
+		]
+	  },
+	  {
+		"symbol": "M3",
+		"spriteFrames": [
+          ["BU_SymbolM3.png"],
+          ["BU_SymbolM3_Blur.png"]
+		]
+	  },
+	  {
+		"symbol": "M4",
+		"spriteFrames": [
+          ["BU_SymbolM4.png"],
+          ["BU_SymbolM4_Blur.png"]
+		]
+	  },
+	  {
+		"symbol": "M5",
+		"spriteFrames": [
+          ["BU_SymbolM5.png"],
+          ["BU_SymbolM5_Blur.png"]
+		]
+      },
+	  {
+		"symbol": "M6",
+		"spriteFrames": [
+          ["BU_SymbolM6.png"],
+          ["BU_SymbolM6_Blur.png"]
+		]
+      },
+	  {
+		"symbol": "M7",
+		"spriteFrames": [
+          ["BU_SymbolM7.png"],
+          ["BU_SymbolM7_Blur.png"]
+		]
+      },
+	  {
+		"symbol": "M8",
+		"spriteFrames": [
+          ["BU_SymbolM8.png"],
+          ["BU_SymbolM8_Blur.png"]
+		]
+      },
+	  {
+		"symbol": "M9",
+		"spriteFrames": [
+          ["BU_SymbolM9.png"],
+          ["BU_SymbolM9_Blur.png"]
+		]
+      },
+      {
+		"symbol": "MT",
+		"spriteFrames": [
+          ["BU_SymbolMT.png"],
+          ["BU_SymbolMT_Blur.png"]
+		]
+      }
+	]
+  }

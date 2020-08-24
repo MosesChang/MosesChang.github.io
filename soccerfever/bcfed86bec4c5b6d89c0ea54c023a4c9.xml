@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<font>
+  <info aa="1" outline="0" smooth="1" unicode="1" charset="" spacing="1,1" stretchH="100" face="MessageBoxText" padding="0,0,0,0" bold="0" italic="0" size="32"/>
+  <common scaleW="195" blueChnl="0" pages="1" base="26" packed="0" greenChnl="0" lineHeight="32" scaleH="40" redChnl="0" alphaChnl="1"/>
+  <pages>
+    <page id="0" file="MessageBoxText.png"/>
+  </pages>
+  <chars count="18">
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="224" chnl="15" id="55" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="86" chnl="15" id="49" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="63" chnl="15" id="48" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="247" chnl="15" id="56" xoffset="0" page="0"/>
+    <char height="32" width="12" yoffset="0" xadvance="12" y="1" x="37" chnl="15" id="44" xoffset="0" page="0"/>
+    <char height="32" width="12" yoffset="0" xadvance="12" y="1" x="1" chnl="15" id="32" xoffset="0" page="0"/>
+    <char height="32" width="12" yoffset="0" xadvance="12" y="1" x="50" chnl="15" id="46" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="155" chnl="15" id="52" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="178" chnl="15" id="53" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="14" chnl="15" id="36" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="132" chnl="15" id="51" xoffset="0" page="0"/>
+    <char height="32" width="66" yoffset="0" xadvance="66" y="1" x="721" chnl="15" id="67" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="109" chnl="15" id="50" xoffset="0" page="0"/>
+    <char height="26" width="284" yoffset="0" xadvance="284" y="1" x="293" chnl="15" id="65" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="270" chnl="15" id="57" xoffset="0" page="0"/>
+    <char height="26" width="234" yoffset="0" xadvance="234" y="1" x="788" chnl="15" id="68" xoffset="0" page="0"/>
+    <char height="32" width="22" yoffset="0" xadvance="22" y="1" x="201" chnl="15" id="54" xoffset="0" page="0"/>
+    <char height="26" width="142" yoffset="0" xadvance="142" y="1" x="578" chnl="15" id="66" xoffset="0" page="0"/>
+  </chars>
+</font>
